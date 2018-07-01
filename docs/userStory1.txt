@@ -1,0 +1,1 @@
+Emoji Pets will have the ability to breed with each other and inherit traits from superclasses. 

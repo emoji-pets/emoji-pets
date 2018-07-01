@@ -1,0 +1,1 @@
+As a game player i want a pet that i can care for and both with, level up, gain experience and abilities and show it off to friends and family. 
