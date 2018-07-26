@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.emojipets;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
+
+  private Button gameMenu;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,16 @@ public class MainActivity extends AppCompatActivity
 
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
+
+    //This button goes to the Game Menu Page but it crashes the app when it is pressed I don't know why.
+    gameMenu = findViewById(R.id.button);
+    gameMenu.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent i = new Intent(MainActivity.this, GameMenuActivity.class);
+        startActivity(i);
+      }
+    });
   }
 
   @Override

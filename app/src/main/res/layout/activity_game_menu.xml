@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/layout"
+  android:background="@drawable/gradient_list"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="edu.cnm.deepdive.emojipets.GameMenuActivity">
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="@id/layout"
+    app:layout_constraintLeft_toLeftOf="@id/layout"
+    app:layout_constraintRight_toRightOf="@id/layout"
+    app:layout_constraintTop_toTopOf="@id/layout"/>
+
+  <ImageView
+    android:id="@+id/imageView"
+    android:layout_width="259dp"
+    android:layout_height="123dp"
+    android:layout_marginTop="16dp"
+    app:layout_constraintLeft_toLeftOf="@id/layout"
+    app:layout_constraintRight_toRightOf="@id/layout"
+    app:layout_constraintTop_toTopOf="@id/layout"
+    app:srcCompat="@android:drawable/alert_light_frame"/>
+
+  <com.andexert.library.RippleView
+    android:id="@+id/more"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"/>
+
+  <!--<ImageButton-->
+  <!--android:id="@+id/imageButton"-->
+  <!--android:layout_width="wrap_content"-->
+  <!--android:layout_height="wrap_content"-->
+  <!--android:background="@drawable/button"-->
+  <!--app:layout_constraintHorizontal_bias="0.501"-->
+  <!--app:layout_constraintLeft_toLeftOf="@id/layout"-->
+  <!--app:layout_constraintRight_toRightOf="@id/layout"-->
+  <!--app:layout_constraintBottom_toTopOf="@+id/imageButton2"-->
+  <!--app:layout_constraintTop_toBottomOf="@id/imageView"-->
+  <!--app:srcCompat="@drawable/new_game_button"-->
+  <!--tools:layout_editor_absoluteY="170dp"/>-->
+
+  <Button
+    android:id="@+id/imageButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/button"
+    app:layout_constraintHorizontal_bias="0.501"
+    app:layout_constraintLeft_toLeftOf="@id/layout"
+    app:layout_constraintRight_toRightOf="@id/layout"
+    app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+    app:layout_constraintTop_toBottomOf="@id/imageView"
+    app:srcCompat="@drawable/new_game_button"
+    tools:layout_editor_absoluteY="170dp"/>
+
+  <ImageButton
+    android:id="@+id/imageButton2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@null"
+    app:layout_constraintLeft_toLeftOf="@id/layout"
+    app:layout_constraintRight_toRightOf="@id/layout"
+    app:layout_constraintBottom_toTopOf="@+id/imageButton3"
+    app:layout_constraintTop_toBottomOf="@id/imageButton"
+    app:srcCompat="@drawable/saved_button"
+    tools:layout_editor_absoluteY="291dp"/>
+  <ImageButton
+    android:id="@+id/imageButton3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@null"
+    app:layout_constraintLeft_toLeftOf="@id/layout"
+    app:layout_constraintRight_toRightOf="@id/layout"
+    app:layout_constraintBottom_toBottomOf="@id/layout"
+    app:layout_constraintTop_toBottomOf="@id/imageButton2"
+    app:srcCompat="@drawable/help_button"
+    tools:layout_editor_absoluteY="402dp"/>
+
+</android.support.constraint.ConstraintLayout>
