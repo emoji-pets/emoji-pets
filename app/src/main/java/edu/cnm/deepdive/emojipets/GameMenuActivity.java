@@ -15,7 +15,7 @@ public class GameMenuActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+    setContentView(R.layout.activity_game_menu);
 
     ConstraintLayout constraintLayout = findViewById(R.id.layout);
     AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
