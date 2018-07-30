@@ -10,6 +10,7 @@
   tools:context="edu.cnm.deepdive.emojipets.GameMenuActivity">
 
   <TextView
+    android:id="@+id/textView4"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="@id/layout"
@@ -25,7 +26,7 @@
     app:layout_constraintLeft_toLeftOf="@id/layout"
     app:layout_constraintRight_toRightOf="@id/layout"
     app:layout_constraintTop_toTopOf="@id/layout"
-    app:srcCompat="@android:drawable/alert_light_frame"/>
+    app:srcCompat="@drawable/emoji_pets_title"/>
 
   <com.andexert.library.RippleView
     android:id="@+id/more"
@@ -81,5 +82,57 @@
     app:layout_constraintTop_toBottomOf="@id/imageButton2"
     app:srcCompat="@drawable/help_button"
     tools:layout_editor_absoluteY="402dp"/>
+  <TextView
+    android:id="@+id/textView2"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="serif"
+    android:text="New Game "
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintHorizontal_bias="0.501"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.488"/>
+  <TextView
+    android:id="@+id/textView5"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:fontFamily="serif"
+    android:text="Continue"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toTopOf="@+id/imageButton3"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/imageButton2"
+    app:layout_constraintVertical_bias="0.736"/>
+  <TextView
+    android:id="@+id/textView6"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:fontFamily="serif"
+    android:text="Help"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="18sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/imageButton3"
+    app:layout_constraintVertical_bias="0.744"/>
 
 </android.support.constraint.ConstraintLayout>
