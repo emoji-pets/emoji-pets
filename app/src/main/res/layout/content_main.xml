@@ -36,6 +36,13 @@
       android:layout_height="match_parent"
       android:text="Game Menu"/>
 
+    <Button
+      android:id="@+id/my_pet_button"
+      style="@style/Widget.AppCompat.Button"
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:text="@string/my_pet"/>
+
   </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
