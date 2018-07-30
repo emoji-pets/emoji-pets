@@ -29,10 +29,10 @@ public class PetActivity extends AppCompatActivity {
   long courageCurrentTime;
   long healthCurrentTime;
 
-  long powerCurrentValue;
-  long manaCurrentValue;
-  long courageCurrentValue;
-  long healthCurrentValue;
+  float powerCurrentValue;
+  float manaCurrentValue;
+  float courageCurrentValue;
+  float healthCurrentValue;
 
   Timer timer;
   TimerTask timerTask;
@@ -52,22 +52,15 @@ public class PetActivity extends AppCompatActivity {
     couragePoints = (TextView) findViewById(R.id.courage);
     healthPoints = (TextView) findViewById(R.id.health);
 
-    powerCurrentTime = System.currentTimeMillis();
-    manaCurrentTime = System.currentTimeMillis();
-    courageCurrentTime = System.currentTimeMillis();
-    healthCurrentTime = System.currentTimeMillis();
+    powerCurrentTime = System.currentTimeMillis() + 100200;
+    manaCurrentTime = System.currentTimeMillis() + 100200;
+    courageCurrentTime = System.currentTimeMillis() + 100200;
+    healthCurrentTime = System.currentTimeMillis() + 100200;
 
-    powerCurrentValue = 1000000;
-    manaCurrentValue = 1000000;
-    courageCurrentValue = 1000000;
-    healthCurrentValue = 1000000;
-
-    powerPoints.setText(String.format("%.2f power points", (float) powerCurrentValue / 10000));
-    manaPoints.setText(String.format("%.2f mana points", (float) powerCurrentValue / 10000));
-    couragePoints.setText(String.format("%.2f courage points", (float) powerCurrentValue / 10000));
-    healthPoints.setText(String.format("%.2f health points", (float) powerCurrentValue / 10000));
-
-
+    powerCurrentValue = (float) powerCurrentTime;
+    manaCurrentValue = (float) manaCurrentTime;
+    courageCurrentValue = (float) courageCurrentTime;
+    healthCurrentValue = (float) healthCurrentTime;
 
     Thread t = new Thread() {
 
@@ -79,22 +72,22 @@ public class PetActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
               @Override
               public void run() {
-                powerCurrentValue = powerCurrentValue + (powerCurrentTime - System.currentTimeMillis());
+                powerCurrentValue = powerCurrentTime - System.currentTimeMillis();
                 powerCurrentValue = powerCurrentValue < 0 ? 0 : powerCurrentValue;
-                powerCurrentValue = powerCurrentValue > 1000000 ? 1000000 : powerCurrentValue;
-                powerPoints.setText(String.format("%.2f power points", (float) powerCurrentValue / 10000));
-                manaCurrentValue = manaCurrentValue + (manaCurrentTime - System.currentTimeMillis());
+                powerCurrentValue = powerCurrentValue > 100000 ? 100000 : powerCurrentValue;
+                powerPoints.setText(String.format("%.2f power points", (float) powerCurrentValue / 1000));
+                manaCurrentValue = manaCurrentTime - System.currentTimeMillis();
                 manaCurrentValue = manaCurrentValue < 0 ? 0 : manaCurrentValue;
-                manaCurrentValue = manaCurrentValue > 1000000 ? 1000000 : manaCurrentValue;
-                manaPoints.setText(String.format("%.2f mana points", (float) manaCurrentValue / 10000));
-                healthCurrentValue = healthCurrentValue + (healthCurrentTime - System.currentTimeMillis());
+                manaCurrentValue = manaCurrentValue > 100000 ? 100000 : manaCurrentValue;
+                manaPoints.setText(String.format("%.2f mana points", (float) manaCurrentValue / 1000));
+                healthCurrentValue = healthCurrentTime - System.currentTimeMillis();
                 healthCurrentValue = healthCurrentValue < 0 ? 0 : healthCurrentValue;
-                healthCurrentValue = healthCurrentValue > 1000000 ? 1000000 : healthCurrentValue;
-                healthPoints.setText(String.format("%.2f health points", (float) healthCurrentValue / 10000));
-                courageCurrentValue = courageCurrentValue + (courageCurrentTime - System.currentTimeMillis());
+                healthCurrentValue = healthCurrentValue > 100000 ? 100000 : healthCurrentValue;
+                healthPoints.setText(String.format("%.2f health points", (float) healthCurrentValue / 1000));
+                courageCurrentValue = courageCurrentTime - System.currentTimeMillis();
                 courageCurrentValue = courageCurrentValue < 0 ? 0 : courageCurrentValue;
-                courageCurrentValue = courageCurrentValue > 1000000 ? 1000000 : courageCurrentValue;
-                couragePoints.setText(String.format("%.2f courage points", (float) courageCurrentValue / 10000));
+                courageCurrentValue = courageCurrentValue > 100000 ? 100000 : courageCurrentValue;
+                couragePoints.setText(String.format("%.2f courage points", (float) courageCurrentValue / 1000));
               }
             });
           }
@@ -103,35 +96,36 @@ public class PetActivity extends AppCompatActivity {
       }
     };
 
+    powerPoints.setText(String.format("%.2f power points", (powerCurrentValue) / 1000));
+    manaPoints.setText(String.format("%.2f mana points", (manaCurrentValue) / 1000));
+    couragePoints.setText(String.format("%.2f courage points", (courageCurrentValue)/ 1000));
+    healthPoints.setText(String.format("%.2f health points", (healthCurrentValue)/ 1000));
+
     power.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        powerCurrentTime = powerCurrentTime > System.currentTimeMillis() ? powerCurrentTime :
-            System.currentTimeMillis() + 2000;
+        powerCurrentTime = System.currentTimeMillis() + 100200;
       }
     });
 
     mana.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        manaCurrentTime = manaCurrentTime > System.currentTimeMillis() ? manaCurrentTime :
-            System.currentTimeMillis() + 2000;
+        manaCurrentTime = System.currentTimeMillis() + 100200;
       }
     });
 
     courage.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        courageCurrentTime = courageCurrentTime > System.currentTimeMillis() ? courageCurrentTime :
-            System.currentTimeMillis() + 2000;
+        courageCurrentTime = System.currentTimeMillis() + 100200;
       }
     });
 
     health.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        healthCurrentTime = healthCurrentTime > System.currentTimeMillis() ? healthCurrentTime :
-            System.currentTimeMillis() + 2000;
+        healthCurrentTime = System.currentTimeMillis() + 100200;
       }
     });
 
