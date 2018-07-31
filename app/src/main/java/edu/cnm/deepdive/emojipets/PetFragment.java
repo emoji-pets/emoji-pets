@@ -1,18 +1,25 @@
 package edu.cnm.deepdive.emojipets;
 
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class PetActivity extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass. Activities that contain this fragment must implement the
+ * {@link PetFragment.OnFragmentInteractionListener} interface to handle interaction events. Use the
+ * {@link PetFragment#newInstance} factory method to create an instance of this fragment.
+ */
+public class PetFragment extends Fragment {
 
   Button power;
   Button mana;
@@ -37,20 +44,41 @@ public class PetActivity extends AppCompatActivity {
   Timer timer;
   TimerTask timerTask;
 
+  public PetFragment() {
+    // Required empty public constructor
+  }
+
+  /**
+   * Use this factory method to create a new instance of this fragment using the provided
+   * parameters.
+   *
+   * @param param1 Parameter 1.
+   * @param param2 Parameter 2.
+   * @return A new instance of fragment PetFragment.
+   */
+  // TODO: Rename and change types and number of parameters
+  public static PetFragment newInstance(String param1, String param2) {
+    PetFragment fragment = new PetFragment();
+    Bundle args = new Bundle();
+    fragment.setArguments(args);
+    return fragment;
+  }
+
   @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_pet);
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,
+      Bundle savedInstanceState) {
 
-    power = findViewById(R.id.boost_power);
-    mana = findViewById(R.id.boost_mana);
-    courage = findViewById(R.id.boost_courage);
-    health = findViewById(R.id.boost_health);
+    View v = inflater.inflate(R.layout.fragment_pet, container, false);
 
-    powerPoints = (TextView) findViewById(R.id.power);
-    manaPoints = (TextView) findViewById(R.id.mana);
-    couragePoints = (TextView) findViewById(R.id.courage);
-    healthPoints = (TextView) findViewById(R.id.health);
+    power = v.findViewById(R.id.boost_power);
+    mana = v.findViewById(R.id.boost_mana);
+    courage = v.findViewById(R.id.boost_courage);
+    health = v.findViewById(R.id.boost_health);
+
+    powerPoints = (TextView) v.findViewById(R.id.power);
+    manaPoints = (TextView) v.findViewById(R.id.mana);
+    couragePoints = (TextView) v.findViewById(R.id.courage);
+    healthPoints = (TextView) v.findViewById(R.id.health);
 
     powerCurrentTime = System.currentTimeMillis() + 100200;
     manaCurrentTime = System.currentTimeMillis() + 100200;
@@ -69,7 +97,7 @@ public class PetActivity extends AppCompatActivity {
         try {
           while (!isInterrupted()) {
             Thread.sleep(100);
-            runOnUiThread(new Runnable() {
+            getActivity().runOnUiThread(new Runnable() {
               @Override
               public void run() {
                 powerCurrentValue = powerCurrentTime - System.currentTimeMillis();
@@ -130,30 +158,18 @@ public class PetActivity extends AppCompatActivity {
     });
 
     t.start();
+
+    return inflater.inflate(R.layout.fragment_pet, container, false);
   }
 
-//  private class myTimerTask extends TimerTask{
-//    @Override
-//    public void run() {
-//      // TODO Auto-generated method stub
-//      powerCurrentValue--;
-//      manaCurrentValue--;
-//      courageCurrentValue--;
-//      healthCurrentValue--;
-//      updateLabel.sendEmptyMessage(0);
-//    }
-//  }
-//
-//  private Handler updateLabel = new Handler(){
-//    @Override
-//    public void handleMessage(Message msg) {
-//      // TODO Auto-generated method stub
-//      //super.handleMessage(msg);
-//
-//      powerPoints.setText(String.format("%.2f power points", (float) powerCurrentValue / 10000));
-//      manaPoints.setText(String.format("%.2f mana points", (float) manaCurrentValue / 10000));
-//      healthPoints.setText(String.format("%.2f health points", (float) powerCurrentValue / 10000));
-//      couragePoints.setText(String.format("%.2f courage points", (float) powerCurrentValue / 10000));
-//    }
-//  };
+
+  /**
+   * This interface must be implemented by activities that contain this fragment to allow an
+   * interaction in this fragment to be communicated to the activity and potentially other fragments
+   * contained in that activity.
+   * <p>
+   * See the Android Training lesson <a href= "http://developer.android.com/training/basics/fragments/communicating.html"
+   * >Communicating with Other Fragments</a> for more information.
+   */
+
 }

@@ -24,3 +24,5 @@
     app:menu="@menu/activity_main_drawer"/>
 
 </android.support.v4.widget.DrawerLayout>
+<!--// understanding computers and cognition-->
+<!--// what computers still cant do-->

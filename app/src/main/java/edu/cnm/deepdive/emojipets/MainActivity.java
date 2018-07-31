@@ -2,6 +2,7 @@ package edu.cnm.deepdive.emojipets;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,12 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-  private ImageButton signIn;
+  private Button gameMenu;
   private Button petButton;
 
   @Override
@@ -37,24 +37,11 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
 
-    //This button goes to the Game Menu Page but it crashes the app when it is pressed I don't know why.
-    signIn = findViewById(R.id.button);
-    signIn.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent i = new Intent(MainActivity.this, SignInActivity.class);
-        startActivity(i);
-      }
-    });
-
-    petButton = findViewById(R.id.my_pet_button);
-    petButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Intent i = new Intent(MainActivity.this, PetActivity.class);
-        startActivity(i);
-      }
-    });
+    PetFragment petFragment = new PetFragment();
+    FragmentManager manager = getSupportFragmentManager();
+    manager.beginTransaction()
+        .replace(R.id.main_activity, petFragment)
+        .commit();
   }
 
   @Override
