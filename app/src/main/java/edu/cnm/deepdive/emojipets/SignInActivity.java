@@ -12,20 +12,20 @@ import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class GameMenuActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
-  private Button newGame;
+  private Button signIn;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_game_menu);
+    setContentView(R.layout.activity_sign_in);
 
-    newGame = findViewById(R.id.imageButton);
-    newGame.setOnClickListener(new OnClickListener() {
+    signIn = findViewById(R.id.imageButton);
+    signIn.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent i = new Intent(GameMenuActivity.this, NewGameActivity.class);
+        Intent i = new Intent(SignInActivity.this, LoginActivity.class);
         startActivity(i);
       }
     });
@@ -36,16 +36,14 @@ public class GameMenuActivity extends AppCompatActivity {
     animationDrawable.setExitFadeDuration(4000);
     animationDrawable.start();
 
-    // Rotation animation
-    final ImageButton imageButton3 = findViewById(R.id.imageButton3);
-    imageButton3.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        imageButton3.animate().rotation(imageButton3.getRotation()-360).start();
-        Intent i = new Intent(GameMenuActivity.this, HelpActivity.class);
-        startActivity(i);
-      }
-    });
+//    // Rotation animation
+//    final ImageButton imageButton3 = findViewById(R.id.imageButton3);
+//    imageButton3.setOnClickListener(new OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        imageButton3.animate().rotation(imageButton3.getRotation()-360).start();
+//      }
+//    });
 
     // Fade animation
     final ImageButton imageButton2 = findViewById(R.id.imageButton2);
@@ -58,5 +56,12 @@ public class GameMenuActivity extends AppCompatActivity {
       }
     });
   }
+
+//  // Tried having sliding transition animation when switching ti another activity but didn't work (no effect) LR
+//  public void openNewGameActivity(View view) {
+//    Intent intent = new Intent(this, NewGameActivity.class);
+//    startActivity(intent);
+//    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//  }
 }
 
