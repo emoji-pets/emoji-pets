@@ -8,6 +8,7 @@
   android:paddingRight="@dimen/activity_horizontal_margin"
   android:gravity="center_horizontal"
   android:orientation="vertical"
+  android:background="@drawable/emoticon_background"
   tools:context="edu.cnm.deepdive.emojipets.LoginActivity">
 
   <!-- Login progress -->

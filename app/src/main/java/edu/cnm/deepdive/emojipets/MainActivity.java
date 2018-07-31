@@ -13,11 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-  private Button gameMenu;
+  private ImageButton signIn;
   private Button petButton;
 
   @Override
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity
     navigationView.setNavigationItemSelectedListener(this);
 
     //This button goes to the Game Menu Page but it crashes the app when it is pressed I don't know why.
-    gameMenu = findViewById(R.id.button);
-    gameMenu.setOnClickListener(new OnClickListener() {
+    signIn = findViewById(R.id.button);
+    signIn.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         Intent i = new Intent(MainActivity.this, SignInActivity.class);
