@@ -10,9 +10,13 @@
       android:icon="@drawable/ic_pets_black_24dp"
       android:title="My Pet"/>
     <item
-      android:id="@+id/friends_fragment"
+      android:id="@+id/following_fragment"
+      android:icon="@drawable/ic_following_black_24dp"
+      android:title="Following"/>
+    <item
+      android:id="@+id/followers_fragment"
       android:icon="@drawable/ic_people_outline_black_24dp"
-      android:title="My Friends"/>
+      android:title="Followers"/>
     <item
       android:id="@+id/settings_fragment"
       android:icon="@drawable/ic_settings_black_24dp"

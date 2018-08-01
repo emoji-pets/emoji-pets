@@ -88,14 +88,24 @@ public class MainActivity extends AppCompatActivity
       manager.beginTransaction()
           .replace(R.id.main_activity, petFragment)
           .commit();
-    } else if (id == R.id.friends_fragment) {
-      FriendsFragment friendsFragment = new FriendsFragment();
+    } else if (id == R.id.following_fragment) {
+      FollowingFragment followingFragment = new FollowingFragment();
       FragmentManager manager = getSupportFragmentManager();
       manager.beginTransaction()
-          .replace(R.id.main_activity, friendsFragment)
+          .replace(R.id.main_activity, followingFragment)
+          .commit();
+    } else if (id == R.id.followers_fragment) {
+      FollowersFragment followersFragment = new FollowersFragment();
+      FragmentManager manager = getSupportFragmentManager();
+      manager.beginTransaction()
+          .replace(R.id.main_activity, followersFragment)
           .commit();
     } else if (id == R.id.settings_fragment) {
-
+      SettingsFragment settingsFragment = new SettingsFragment();
+      FragmentManager manager = getSupportFragmentManager();
+      manager.beginTransaction()
+          .replace(R.id.main_activity, settingsFragment)
+          .commit();
     }
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
