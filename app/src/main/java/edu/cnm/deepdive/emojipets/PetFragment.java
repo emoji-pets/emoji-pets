@@ -44,6 +44,8 @@ public class PetFragment extends Fragment {
   Timer timer;
   TimerTask timerTask;
 
+  Thread t;
+
   public PetFragment() {
     // Required empty public constructor
   }
@@ -90,7 +92,7 @@ public class PetFragment extends Fragment {
     courageCurrentValue = (float) courageCurrentTime;
     healthCurrentValue = (float) healthCurrentTime;
 
-    Thread t = new Thread() {
+    t = new Thread() {
 
       @Override
       public void run() {
@@ -164,6 +166,11 @@ public class PetFragment extends Fragment {
     return v;
   }
 
+  @Override
+  public void onDetach() {
+    super.onDetach();
+    t.interrupt();
+  }
 
   /**
    * This interface must be implemented by activities that contain this fragment to allow an

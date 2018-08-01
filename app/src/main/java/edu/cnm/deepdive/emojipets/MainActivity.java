@@ -82,17 +82,19 @@ public class MainActivity extends AppCompatActivity
     // Handle navigation view item clicks here.
     int id = item.getItemId();
 
-    if (id == R.id.nav_camera) {
-      // Handle the camera action
-    } else if (id == R.id.nav_gallery) {
-
-    } else if (id == R.id.nav_slideshow) {
-
-    } else if (id == R.id.nav_manage) {
-
-    } else if (id == R.id.nav_share) {
-
-    } else if (id == R.id.nav_send) {
+    if (id == R.id.pet_fragment) {
+      PetFragment petFragment = new PetFragment();
+      FragmentManager manager = getSupportFragmentManager();
+      manager.beginTransaction()
+          .replace(R.id.main_activity, petFragment)
+          .commit();
+    } else if (id == R.id.friends_fragment) {
+      FriendsFragment friendsFragment = new FriendsFragment();
+      FragmentManager manager = getSupportFragmentManager();
+      manager.beginTransaction()
+          .replace(R.id.main_activity, friendsFragment)
+          .commit();
+    } else if (id == R.id.settings_fragment) {
 
     }
 
