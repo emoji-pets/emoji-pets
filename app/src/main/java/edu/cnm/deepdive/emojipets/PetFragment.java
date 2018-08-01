@@ -100,6 +100,7 @@ public class PetFragment extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
               @Override
               public void run() {
+                // Here we update the value of
                 powerCurrentValue = powerCurrentTime - System.currentTimeMillis();
                 powerCurrentValue = powerCurrentValue < 0 ? 0 : powerCurrentValue;
                 powerCurrentValue = powerCurrentValue > 100000 ? 100000 : powerCurrentValue;
@@ -125,6 +126,7 @@ public class PetFragment extends Fragment {
     };
 
     powerPoints.setText(String.format("%.2f power points", (powerCurrentValue) / 1000));
+//    powerPoints.setText("TEST");
     manaPoints.setText(String.format("%.2f mana points", (manaCurrentValue) / 1000));
     couragePoints.setText(String.format("%.2f courage points", (courageCurrentValue)/ 1000));
     healthPoints.setText(String.format("%.2f health points", (healthCurrentValue)/ 1000));
@@ -159,7 +161,7 @@ public class PetFragment extends Fragment {
 
     t.start();
 
-    return inflater.inflate(R.layout.fragment_pet, container, false);
+    return v;
   }
 
 
