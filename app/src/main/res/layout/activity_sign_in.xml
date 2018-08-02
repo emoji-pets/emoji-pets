@@ -51,7 +51,7 @@
   <!--app:srcCompat="@drawable/new_game_button"-->
   <!--tools:layout_editor_absoluteY="170dp"/>-->
 
-  <Button
+  <com.google.android.gms.common.SignInButton
     android:id="@+id/imageButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

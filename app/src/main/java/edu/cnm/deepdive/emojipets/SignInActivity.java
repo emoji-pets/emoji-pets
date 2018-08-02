@@ -11,22 +11,28 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
 public class SignInActivity extends AppCompatActivity {
 
-  private Button signIn;
+  private static final int REQUEST_CODE = 1000;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sign_in);
 
-    signIn = findViewById(R.id.imageButton);
+    SignInButton signIn = findViewById(R.id.imageButton);
     signIn.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent i = new Intent(SignInActivity.this, LoginActivity.class);
-        startActivity(i);
+        Intent intent = EmojiPetApplication.getInstance().getSignInClient().getSignInIntent();
+        startActivityForResult(intent, REQUEST_CODE);
       }
     });
 
@@ -57,7 +63,28 @@ public class SignInActivity extends AppCompatActivity {
     });
   }
 
-//  // Tried having sliding transition animation when switching ti another activity but didn't work (no effect) LR
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == REQUEST_CODE) {
+      try {
+        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+        GoogleSignInAccount account = task.getResult(ApiException.class);
+        EmojiPetApplication.getInstance().setSignInAccount(account);
+        switchToMain();
+      } catch (ApiException e) {
+        Toast.makeText(this, "Unable to sign in.  Please check you credentials and connection.",
+            Toast.LENGTH_LONG).show();
+      }
+    }
+  }
+
+  private void switchToMain() {
+    Intent intent = new Intent(this, MainActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+    startActivity(intent);
+  }
+
+  //  // Tried having sliding transition animation when switching ti another activity but didn't work (no effect) LR
 //  public void openNewGameActivity(View view) {
 //    Intent intent = new Intent(this, NewGameActivity.class);
 //    startActivity(intent);
