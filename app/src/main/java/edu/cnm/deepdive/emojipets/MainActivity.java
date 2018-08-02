@@ -1,9 +1,9 @@
 package edu.cnm.deepdive.emojipets;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,14 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
-
-  private Button gameMenu;
-  private Button petButton;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +38,10 @@ public class MainActivity extends AppCompatActivity
     manager.beginTransaction()
         .replace(R.id.main_activity, petFragment)
         .commit();
+
+    ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.emoji_pets_title), "translationX", 100f);
+    animation.setDuration(1000);
+    animation.start();
   }
 
   @Override
@@ -56,24 +56,29 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.main, menu);
     return true;
   }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
-    int id = item.getItemId();
-
-    //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
+    switch (item.getItemId()) {
+      case R.id.action_logout:
+        signOut();
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
     }
+  }
 
-    return super.onOptionsItemSelected(item);
+  private void signOut() {
+    EmojiPetApplication application = EmojiPetApplication.getInstance().getInstance();
+    application.getSignInClient().signOut().addOnCompleteListener(this, (task) -> {
+      application.setSignInAccount(null);
+      Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(intent);
+    });
   }
 
   @SuppressWarnings("StatementWithEmptyBody")

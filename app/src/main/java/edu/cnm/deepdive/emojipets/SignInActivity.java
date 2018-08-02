@@ -27,7 +27,7 @@ public class SignInActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sign_in);
 
-    SignInButton signIn = findViewById(R.id.imageButton);
+    Button signIn = findViewById(R.id.imageButton1);
     signIn.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -51,16 +51,16 @@ public class SignInActivity extends AppCompatActivity {
 //      }
 //    });
 
-    // Fade animation
-    final ImageButton imageButton2 = findViewById(R.id.imageButton2);
-    imageButton2.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Animation animation = new AlphaAnimation(1.0f, 0.0f);
-        animation.setDuration(1000);
-        imageButton2.startAnimation(animation);
-      }
-    });
+//    // Fade animation
+//    final ImageButton imageButton2 = findViewById(R.id.imageButton2);
+//    imageButton2.setOnClickListener(new OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        Animation animation = new AlphaAnimation(1.0f, 0.0f);
+//        animation.setDuration(1000);
+//        imageButton2.startAnimation(animation);
+//      }
+//    });
   }
 
   @Override

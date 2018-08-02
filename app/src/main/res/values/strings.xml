@@ -23,7 +23,7 @@
   </string>
 
   <!-- Oauth client-->
-  <string name="web_client_id">726718017398-nb9cq3ji1rbo4no9js0nt0bdj7i2qr2e.apps.googleusercontent.com</string>
+  <string name="web_client_id">156574812337-gdgvafho71lln8ab1rfge19gedh5n93q.apps.googleusercontent.com</string>
   <string name="request_passphrase">Request Passphrase</string>
   <string name="action_logout">Sign out</string>
   <string name="base_url">http://10.0.2.2:18081/rest/</string> <!-- Access localhost from emulator. -->
