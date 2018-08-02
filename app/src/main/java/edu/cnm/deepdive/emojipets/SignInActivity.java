@@ -36,6 +36,7 @@ public class SignInActivity extends AppCompatActivity {
       }
     });
 
+    //Background animation
     ConstraintLayout constraintLayout = findViewById(R.id.layout);
     AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
     animationDrawable.setEnterFadeDuration(2000);

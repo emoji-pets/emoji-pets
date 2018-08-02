@@ -2,8 +2,10 @@ package edu.cnm.deepdive.emojipets;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -75,6 +77,12 @@ public class PetFragment extends Fragment {
       Bundle savedInstanceState) {
 
     View v = inflater.inflate(R.layout.fragment_pet, container, false);
+
+    ConstraintLayout constraintLayout = v.findViewById(R.id.pet_layout);
+    AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
+    animationDrawable.setEnterFadeDuration(2000);
+    animationDrawable.setExitFadeDuration(4000);
+    animationDrawable.start();
 
     power = v.findViewById(R.id.boost_power);
     mana = v.findViewById(R.id.boost_mana);
@@ -209,6 +217,7 @@ public class PetFragment extends Fragment {
     t.start();
 
     return v;
+
   }
 
   @Override
