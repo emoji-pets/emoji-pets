@@ -5,12 +5,13 @@ import java.util.List;
 public class Player {
 
   long id;
-  String displayName;
+  String oauthId;
+  String display_name;
   String status;
-  String emoji;
+  String pet_name;
+  String pet_emoji;
   List<Follower> followers;
   List<Follower> following;
-  String petName;
   int level;
   int xp;
   int maxXp;
@@ -25,39 +26,16 @@ public class Player {
   int healthPointsMax;
   String href;
 
-  public Player(long id, String displayName, String status, String emoji,
-      List<Follower> followers, List<Follower> following, String petName, int level, int xp,
-      int maxXp, long timeStamp, int couragePoints, int couragePointsMax, int manaPoints,
-      int manaPointsMax, int powerPoints, int powerPointsMax, int healthPoints, int healthPointsMax,
-      String href) {
-    this.id = id;
-    this.displayName = displayName;
-    this.status = status;
-    this.emoji = emoji;
-    this.followers = followers;
-    this.following = following;
-    this.petName = petName;
-    this.level = level;
-    this.xp = xp;
-    this.maxXp = maxXp;
-    this.timeStamp = timeStamp;
-    this.couragePoints = couragePoints;
-    this.couragePointsMax = couragePointsMax;
-    this.manaPoints = manaPoints;
-    this.manaPointsMax = manaPointsMax;
-    this.powerPoints = powerPoints;
-    this.powerPointsMax = powerPointsMax;
-    this.healthPoints = healthPoints;
-    this.healthPointsMax = healthPointsMax;
-    this.href = href;
+  public Player() {
+
   }
 
-  public String getDisplayName() {
-    return displayName;
+  public String getDisplay_name() {
+    return display_name;
   }
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  public void setDisplay_name(String display_name) {
+    this.display_name = display_name;
   }
 
   public String getStatus() {
@@ -68,12 +46,12 @@ public class Player {
     this.status = status;
   }
 
-  public String getEmoji() {
-    return emoji;
+  public String getPet_emoji() {
+    return pet_emoji;
   }
 
-  public void setEmoji(String emoji) {
-    this.emoji = emoji;
+  public void setPet_emoji(String pet_emoji) {
+    this.pet_emoji = pet_emoji;
   }
 
   public List<Follower> getFollowers() {
@@ -92,12 +70,12 @@ public class Player {
     this.following = following;
   }
 
-  public String getPetName() {
-    return petName;
+  public String getPet_name() {
+    return pet_name;
   }
 
-  public void setPetName(String petName) {
-    this.petName = petName;
+  public void setPet_name(String pet_name) {
+    this.pet_name = pet_name;
   }
 
   public int getLevel() {
@@ -202,5 +180,13 @@ public class Player {
 
   public void setHref(String href) {
     this.href = href;
+  }
+
+  public String getOauthId() {
+    return oauthId;
+  }
+
+  public void setOauthId(String oauthId) {
+    this.oauthId = oauthId;
   }
 }

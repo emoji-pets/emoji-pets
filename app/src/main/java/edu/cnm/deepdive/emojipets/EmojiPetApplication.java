@@ -5,6 +5,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import edu.cnm.deepdive.emojipets.pojo.Player;
 
 public class EmojiPetApplication extends Application {
 
@@ -12,6 +13,7 @@ public class EmojiPetApplication extends Application {
 
   private GoogleSignInClient signInClient;
   private GoogleSignInAccount signInAccount;
+  private Player player;
 
   @Override
   public void onCreate() {
@@ -45,4 +47,11 @@ public class EmojiPetApplication extends Application {
     this.signInAccount = signInAccount;
   }
 
+  public Player getPlayer() {
+    return player;
+  }
+
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
 }

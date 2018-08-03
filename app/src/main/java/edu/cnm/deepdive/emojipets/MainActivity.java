@@ -2,6 +2,7 @@ package edu.cnm.deepdive.emojipets;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -61,6 +64,19 @@ public class MainActivity extends AppCompatActivity
     return true;
   }
 
+  private void signOut() {
+    EmojiPetApplication application = EmojiPetApplication.getInstance();
+    application.getSignInClient().signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+      @Override
+      public void onComplete(@NonNull Task<Void> task) {
+        EmojiPetApplication.getInstance().setSignInAccount(null);
+        Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+      }
+    });
+  }
+
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     // Handle action bar item clicks here. The action bar will
@@ -69,8 +85,8 @@ public class MainActivity extends AppCompatActivity
     int id = item.getItemId();
 
     //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
+    if (id == R.id.sign_out) {
+      signOut();
     }
 
     return super.onOptionsItemSelected(item);
