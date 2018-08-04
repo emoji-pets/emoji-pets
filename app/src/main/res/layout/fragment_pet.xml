@@ -124,12 +124,11 @@ android:layout_height="match_parent">
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toEndOf="@+id/boost_mana"/>
   <TextView
-    android:id="@+id/character"
+    android:id="@+id/pet"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    android:text="🍜"
     android:textSize="128sp"
     app:layout_constraintBottom_toTopOf="@+id/boost_health"
     app:layout_constraintLeft_toLeftOf="parent"

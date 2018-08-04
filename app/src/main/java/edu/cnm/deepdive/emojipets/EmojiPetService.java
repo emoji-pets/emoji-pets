@@ -6,6 +6,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface EmojiPetService {
@@ -17,6 +18,8 @@ public interface EmojiPetService {
   Call<Player> addUser(@Header("Authorization") String authorization,
       @Body Player player);
 
-
+  @PUT("players/{oauthId}")
+  Call<Player> updatePlayer(@Header("Authorization") String authorization,
+      @Body Player player);
 
 }

@@ -111,6 +111,14 @@ public class CreateAccountActivity extends AppCompatActivity {
         player.setDisplay_name(username.getText().toString());
         player.setPet_name(emojiName.getText().toString());
         player.setPet_emoji(emoji.getText().toString());
+        player.setCouragePointsMax(100);
+        player.setPowerPointsMax(100);
+        player.setHealthPointsMax(100);
+        player.setManaPointsMax(100);
+        player.setManaPoints(System.currentTimeMillis());
+        player.setPowerPoints(System.currentTimeMillis());
+        player.setHealthPoints(System.currentTimeMillis());
+        player.setCouragePoints(System.currentTimeMillis());
         new PostPlayerTask().execute(player);
       }
     });
@@ -143,11 +151,11 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
   }
 
-  private class PostPlayerTask extends AsyncTask<Player, Void, Void> {
+  private class PostPlayerTask extends AsyncTask<Player, Void, Player> {
 
 
     @Override
-    protected Void doInBackground(Player... players) {
+    protected Player doInBackground(Player... players) {
       Player player = null;
       try {
         String token = EmojiPetApplication.getInstance().getSignInAccount().getIdToken();
@@ -156,7 +164,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             getString(R.string.oauth2_header_format, token), players[0]).execute();
         if (response.isSuccessful()) {
           player = response.body();
-          EmojiPetApplication.getInstance().setPlayer(player);
         }
       } catch (IOException e) {
 
@@ -165,7 +172,7 @@ public class CreateAccountActivity extends AppCompatActivity {
           cancel(true);
         }
       }
-      return null;
+      return player;
     }
 
     @Override
@@ -175,7 +182,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
+    protected void onPostExecute(Player player) {
+      EmojiPetApplication.getInstance().setPlayer(player);
       Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);

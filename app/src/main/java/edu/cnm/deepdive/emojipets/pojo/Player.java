@@ -15,19 +15,26 @@ public class Player {
   int level;
   int xp;
   int maxXp;
-  long timeStamp;
-  int couragePoints;
+  long couragePoints;
   int couragePointsMax;
-  int manaPoints;
+  long manaPoints;
   int manaPointsMax;
-  int powerPoints;
+  long powerPoints;
   int powerPointsMax;
-  int healthPoints;
+  long healthPoints;
   int healthPointsMax;
   String href;
 
   public Player() {
 
+  }
+
+  public String getOauthId() {
+    return oauthId;
+  }
+
+  public void setOauthId(String oauthId) {
+    this.oauthId = oauthId;
   }
 
   public String getDisplay_name() {
@@ -44,6 +51,14 @@ public class Player {
 
   public void setStatus(String status) {
     this.status = status;
+  }
+
+  public String getPet_name() {
+    return pet_name;
+  }
+
+  public void setPet_name(String pet_name) {
+    this.pet_name = pet_name;
   }
 
   public String getPet_emoji() {
@@ -70,14 +85,6 @@ public class Player {
     this.following = following;
   }
 
-  public String getPet_name() {
-    return pet_name;
-  }
-
-  public void setPet_name(String pet_name) {
-    this.pet_name = pet_name;
-  }
-
   public int getLevel() {
     return level;
   }
@@ -102,19 +109,11 @@ public class Player {
     this.maxXp = maxXp;
   }
 
-  public long getTimeStamp() {
-    return timeStamp;
-  }
-
-  public void setTimeStamp(long timeStamp) {
-    this.timeStamp = timeStamp;
-  }
-
-  public int getCouragePoints() {
+  public long getCouragePoints() {
     return couragePoints;
   }
 
-  public void setCouragePoints(int couragePoints) {
+  public void setCouragePoints(long couragePoints) {
     this.couragePoints = couragePoints;
   }
 
@@ -126,11 +125,11 @@ public class Player {
     this.couragePointsMax = couragePointsMax;
   }
 
-  public int getManaPoints() {
+  public long getManaPoints() {
     return manaPoints;
   }
 
-  public void setManaPoints(int manaPoints) {
+  public void setManaPoints(long manaPoints) {
     this.manaPoints = manaPoints;
   }
 
@@ -142,11 +141,11 @@ public class Player {
     this.manaPointsMax = manaPointsMax;
   }
 
-  public int getPowerPoints() {
+  public long getPowerPoints() {
     return powerPoints;
   }
 
-  public void setPowerPoints(int powerPoints) {
+  public void setPowerPoints(long powerPoints) {
     this.powerPoints = powerPoints;
   }
 
@@ -158,11 +157,11 @@ public class Player {
     this.powerPointsMax = powerPointsMax;
   }
 
-  public int getHealthPoints() {
+  public long getHealthPoints() {
     return healthPoints;
   }
 
-  public void setHealthPoints(int healthPoints) {
+  public void setHealthPoints(long healthPoints) {
     this.healthPoints = healthPoints;
   }
 
@@ -180,13 +179,5 @@ public class Player {
 
   public void setHref(String href) {
     this.href = href;
-  }
-
-  public String getOauthId() {
-    return oauthId;
-  }
-
-  public void setOauthId(String oauthId) {
-    this.oauthId = oauthId;
   }
 }

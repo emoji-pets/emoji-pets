@@ -79,10 +79,8 @@ public class SignInActivity extends AppCompatActivity {
     }
   }
   private void getAccount() {
-    // TODO make first request to server to test if player exists with for this account
-    String personId = EmojiPetApplication.getInstance().getSignInAccount().getId();
+    // make first request to server to test if player exists with for this account
     Gson gson = new GsonBuilder()
-        .excludeFieldsWithoutExposeAnnotation()
         .create();
     service = new Retrofit.Builder()
         .baseUrl(getString(R.string.base_url))
@@ -93,7 +91,7 @@ public class SignInActivity extends AppCompatActivity {
     new GetAccountTask().execute();
   }
 
-  private class GetAccountTask extends AsyncTask<Void, Void, Player> {
+  private class GetAccountTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPreExecute() {
@@ -101,15 +99,17 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     @Override
-    protected Player doInBackground(Void... voids) {
+    protected Void doInBackground(Void... voids) {
       Player player = null;
       try {
         String token = EmojiPetApplication.getInstance().getSignInAccount().getIdToken();
+        String personId = EmojiPetApplication.getInstance().getSignInAccount().getId();
         Response<Player> response =
             service.get(getString(R.string.oauth2_header_format, token),
-                EmojiPetApplication.getInstance().getSignInAccount().getId()).execute();
+                personId).execute();
         if (response.isSuccessful()) {
           player = response.body();
+          EmojiPetApplication.getInstance().setPlayer(player);
         }
       } catch (IOException e) {
         // Do nothing; passphrase is still null.
@@ -118,7 +118,7 @@ public class SignInActivity extends AppCompatActivity {
           cancel(true);
         }
       }
-      return player;
+      return null;
     }
 
     @Override
@@ -128,8 +128,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostExecute(Player player) {
-      EmojiPetApplication.getInstance().setPlayer(player);
+    protected void onPostExecute(Void aVoid) {
       Intent intent = new Intent(SignInActivity.this, MainActivity.class);
       intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
       startActivity(intent);
