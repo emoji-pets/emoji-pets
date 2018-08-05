@@ -119,6 +119,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         player.setPowerPoints(System.currentTimeMillis());
         player.setHealthPoints(System.currentTimeMillis());
         player.setCouragePoints(System.currentTimeMillis());
+        player.setStatus("I'm a blank status. Tap on me! \uD83D\uDC49");
         new PostPlayerTask().execute(player);
       }
     });

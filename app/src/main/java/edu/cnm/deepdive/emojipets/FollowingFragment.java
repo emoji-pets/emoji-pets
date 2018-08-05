@@ -80,13 +80,13 @@ public class FollowingFragment extends Fragment {
     new GetAllPlayersNames().execute();
 
     // setup auto complete for finding other pets
-    friendSearchAdapter = new AutoCompleteAdapter(getContext(), android.R.layout.simple_dropdown_item_1line, R.id.search_friend_text);
+    friendSearchAdapter = new AutoCompleteAdapter(getContext(), R.layout.friends_dropdown_item, R.id.search_friend_text);
     final AutoCompleteTextView searchNamesAutoComplete = view.findViewById(R.id.search_friends_results);
     searchNamesAutoComplete.setAdapter(friendSearchAdapter);
     searchNamesAutoComplete.setOnItemClickListener(new OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String otherPlayerName = ((TextView) view).getText().toString();
+        String otherPlayerName = ((TextView) view.findViewById(R.id.player_name_for_dropdown)).getText().toString();
         new AddFollower().execute(otherPlayerName);
         searchNamesAutoComplete.setText("");
       }
@@ -125,16 +125,18 @@ public class FollowingFragment extends Fragment {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-      convertView = getLayoutInflater().inflate(R.layout.friends_list, null);
-      TextView emojiCharacter = convertView.findViewById(R.id.emoji_character);
-      TextView playerName = convertView.findViewById(R.id.player_name);
-      TextView emojiName = convertView.findViewById(R.id.emoji_name);
-      TextView emojiStatus = convertView.findViewById(R.id.emoji_status);
+      if (convertView == null) {
+        convertView = getLayoutInflater().inflate(R.layout.friends_dropdown_item, null);
+      }
+      TextView friendsName = convertView.findViewById(R.id.player_name_for_dropdown);
+      TextView friendsPetName = convertView.findViewById(R.id.drop_down_pet_name);
+      TextView friendsEmoji = convertView.findViewById(R.id.emoji_character_for_dropdown);
+      TextView friendsStatus = convertView.findViewById(R.id.drop_down_pet_status);
 
-      emojiCharacter.setText(followList.get(position).getPet_emoji());
-      playerName.setText(followList.get(position).getName());
-      emojiName.setText(followList.get(position).getPet_name());
-      emojiStatus.setText(followList.get(position).getStatus());
+      friendsName.setText(followList.get(position).getDiplay_name());
+      friendsEmoji.setText(followList.get(position).getPet_emoji());
+      friendsPetName.setText("Pet name: " + followList.get(position).getPet_name());
+      friendsStatus.setText("Pet status: " + followList.get(position).getStatus());
 
       return convertView;
     }
@@ -220,23 +222,26 @@ public class FollowingFragment extends Fragment {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
       View view = convertView;
-//      TextView friendsName;
-//      TextView friendsPetName;
-//      TextView friendsEmoji;
+      TextView friendsName;
+      TextView friendsPetName;
+      TextView friendsEmoji;
+      TextView friendsStatus;
       if (convertView == null) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(android.R.layout.simple_dropdown_item_1line, parent, false);
+        view = inflater.inflate(R.layout.friends_dropdown_item, parent, false);
       }
       if (suggestions.size() > 0 && position < suggestions.size()) {
         Player player = suggestions.get(position);
         if (player != null) {
-//          friendsName = view.findViewById(R.id.player_name_for_dropdown);
-//          friendsName.setText(player.getDisplay_name());
-//          friendsEmoji = view.findViewById(R.id.emoji_character_for_dropdown);
-//          friendsEmoji.setText(player.getPet_emoji());
-//          friendsPetName = view.findViewById(R.id.emoji_name_for_dropdown);
-//          friendsPetName.setText(player.getPet_name());
-          ((TextView) view).setText(player.getDisplay_name());
+          friendsName = view.findViewById(R.id.player_name_for_dropdown);
+          friendsName.setText(player.getDisplay_name());
+          friendsEmoji = view.findViewById(R.id.emoji_character_for_dropdown);
+          friendsEmoji.setText(player.getPet_emoji());
+          friendsPetName = view.findViewById(R.id.drop_down_pet_name);
+          friendsPetName.setText("Pet name: " + player.getPet_name());
+          friendsStatus = view.findViewById(R.id.drop_down_pet_status);
+          friendsStatus.setText("Pet status: " + player.getStatus());
+//          ((TextView) view).setText(player.getDisplay_name());
         }
       }
       return view;

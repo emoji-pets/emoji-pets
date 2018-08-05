@@ -102,7 +102,7 @@ public class FollowersFragment extends Fragment {
       TextView emojiStatus = convertView.findViewById(R.id.emoji_status);
 
       emojiCharacter.setText(followList.get(position).getPet_emoji());
-      playerName.setText(followList.get(position).getName());
+      playerName.setText(followList.get(position).getDiplay_name());
       emojiName.setText(followList.get(position).getPet_name());
       emojiStatus.setText(followList.get(position).getStatus());
 
