@@ -92,16 +92,18 @@ public class FollowersFragment extends Fragment {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-      convertView = getLayoutInflater().inflate(R.layout.friends_list, null);
-      TextView emojiCharacter = convertView.findViewById(R.id.emoji_character);
-      TextView playerName = convertView.findViewById(R.id.player_name);
-      TextView emojiName = convertView.findViewById(R.id.emoji_name);
-      TextView emojiStatus = convertView.findViewById(R.id.emoji_status);
+      if (convertView == null) {
+        convertView = getLayoutInflater().inflate(R.layout.friends_dropdown_item, null);
+      }
+      TextView friendsName = convertView.findViewById(R.id.player_name_for_dropdown);
+      TextView friendsPetName = convertView.findViewById(R.id.drop_down_pet_name);
+      TextView friendsEmoji = convertView.findViewById(R.id.emoji_character_for_dropdown);
+      TextView friendsStatus = convertView.findViewById(R.id.drop_down_pet_status);
 
-      emojiCharacter.setText(followList.get(position).getPet_emoji());
-      playerName.setText(followList.get(position).getDisplay_name());
-      emojiName.setText(followList.get(position).getPet_name());
-      emojiStatus.setText(followList.get(position).getStatus());
+      friendsName.setText(followList.get(position).getDisplay_name());
+      friendsEmoji.setText(followList.get(position).getPet_emoji());
+      friendsPetName.setText("Pet name: " + followList.get(position).getPet_name());
+      friendsStatus.setText("Pet status: " + followList.get(position).getStatus());
 
       return convertView;
     }
