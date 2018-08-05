@@ -41,7 +41,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FollowingFragment extends Fragment {
 
   private ListView followingListView;
-  private List<Follower> following;
+  private List<Player> following;
   private FollowAdapter followingAdapter;
   private EmojiPetService service;
   private List<Player> listOfPlayers = new ArrayList<>();
@@ -102,9 +102,9 @@ public class FollowingFragment extends Fragment {
 
   private class FollowAdapter extends BaseAdapter {
 
-    List<Follower> followList;
+    List<Player> followList;
 
-    public FollowAdapter(List<Follower> followList) {
+    public FollowAdapter(List<Player> followList) {
       this.followList = followList;
     }
 
@@ -133,7 +133,7 @@ public class FollowingFragment extends Fragment {
       TextView friendsEmoji = convertView.findViewById(R.id.emoji_character_for_dropdown);
       TextView friendsStatus = convertView.findViewById(R.id.drop_down_pet_status);
 
-      friendsName.setText(followList.get(position).getDiplay_name());
+      friendsName.setText(followList.get(position).getDisplay_name());
       friendsEmoji.setText(followList.get(position).getPet_emoji());
       friendsPetName.setText("Pet name: " + followList.get(position).getPet_name());
       friendsStatus.setText("Pet status: " + followList.get(position).getStatus());

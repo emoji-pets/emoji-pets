@@ -10,8 +10,8 @@ public class Player {
   String status;
   String pet_name;
   String pet_emoji;
-  List<Follower> followers;
-  List<Follower> following;
+  List<Player> followers;
+  List<Player> following;
   int level;
   int xp;
   int maxXp;
@@ -69,19 +69,19 @@ public class Player {
     this.pet_emoji = pet_emoji;
   }
 
-  public List<Follower> getFollowers() {
+  public List<Player> getFollowers() {
     return followers;
   }
 
-  public void setFollowers(List<Follower> followers) {
+  public void setFollowers(List<Player> followers) {
     this.followers = followers;
   }
 
-  public List<Follower> getFollowing() {
+  public List<Player> getFollowing() {
     return following;
   }
 
-  public void setFollowing(List<Follower> following) {
+  public void setFollowing(List<Player> following) {
     this.following = following;
   }
 
