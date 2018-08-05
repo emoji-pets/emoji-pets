@@ -4,7 +4,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:layout_height="match_parent">
+android:layout_height="match_parent"
+  android:focusableInTouchMode="true">
 
   <TextView
     android:id="@+id/courage"
@@ -83,6 +84,8 @@ android:layout_height="match_parent">
       android:id="@+id/pet_status_edit"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:nextFocusUp="@id/pet_status_edit"
+      android:nextFocusLeft="@id/pet_status_edit"
       android:hint="Status"/>
   </android.support.design.widget.TextInputLayout>
 
@@ -99,10 +102,12 @@ android:layout_height="match_parent">
     android:id="@+id/pet_status_set_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="18dp"
-    app:layout_constraintLeft_toRightOf="@id/right_guide"
-    app:layout_constraintTop_toBottomOf="@+id/mana"
-    android:text="post"/>
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:text="post"
+    android:visibility="gone"
+    app:layout_constraintEnd_toEndOf="@+id/pet_status_edit_layout"
+    app:layout_constraintTop_toBottomOf="@+id/pet_status_edit_layout"/>
 
   <Button
     android:id="@+id/boost_power"

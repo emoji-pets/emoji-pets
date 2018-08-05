@@ -10,6 +10,7 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -141,14 +142,39 @@ public class PetFragment extends Fragment {
       }
     };
 
+    v.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        v.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getContext()
+            .getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+      }
+    });
+
+    petStatusEdit.setOnFocusChangeListener(new OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+          petStatusButton.setVisibility(View.VISIBLE);
+        } else {
+          petStatusButton.setVisibility(View.GONE);
+        }
+      }
+    });
+
     petStatusButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         if (petStatusEdit.isFocused()) {
           String text = petStatusEdit.getText().toString();
-          petStatusEdit.setFocusable(false);
+//          petStatusEdit.setFocusable(false);
           EmojiPetApplication.getInstance().getPlayer().setStatus(text);
           new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
+          petStatusEdit.clearFocus();
+          InputMethodManager imm = (InputMethodManager) getContext()
+              .getSystemService(Context.INPUT_METHOD_SERVICE);
+          imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         } else {
           petStatusEdit.setFocusable(true);
           petStatusEdit.requestFocus();
