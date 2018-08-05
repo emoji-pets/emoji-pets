@@ -86,6 +86,7 @@ android:layout_height="match_parent"
       android:layout_height="wrap_content"
       android:nextFocusUp="@id/pet_status_edit"
       android:nextFocusLeft="@id/pet_status_edit"
+      android:selectAllOnFocus="true"
       android:hint="Status"/>
   </android.support.design.widget.TextInputLayout>
 
