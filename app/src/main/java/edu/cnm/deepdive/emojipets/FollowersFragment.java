@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FollowersFragment extends Fragment {
 
   ListView followersListView;
-  List<Follower> followers;
+  List<Player> followers = new ArrayList<>();
   FollowAdapter followersAdapter;
   EmojiPetService service;
 
@@ -46,11 +46,8 @@ public class FollowersFragment extends Fragment {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.followers, container, false);
     getActivity().setTitle("Followers");
-    // Query all folling
-    List<Follower> followers = new ArrayList<>();
-    followers.add(new Follower("Blake", "lil boss", "\uD83D\uDE4A", "Just chillin at the lake RN crystal AF"));
-    followers.add(new Follower("Karol", "Baby", "\uD83D\uDECD", "I found my phone!"));
-    followers.add(new Follower("Husain", "Elvis", "\uD83C\uDF54", "Hanging with friends, see you all next week"));
+    // Get followers
+    followers = EmojiPetApplication.getInstance().getPlayer().getFollowers();
 
     // create adapters
     followersAdapter = new FollowAdapter(followers);
@@ -72,9 +69,9 @@ public class FollowersFragment extends Fragment {
 
   private class FollowAdapter extends BaseAdapter {
 
-    List<Follower> followList;
+    List<Player> followList;
 
-    public FollowAdapter(List<Follower> followList) {
+    public FollowAdapter(List<Player> followList) {
       this.followList = followList;
     }
 
@@ -102,7 +99,7 @@ public class FollowersFragment extends Fragment {
       TextView emojiStatus = convertView.findViewById(R.id.emoji_status);
 
       emojiCharacter.setText(followList.get(position).getPet_emoji());
-      playerName.setText(followList.get(position).getDiplay_name());
+      playerName.setText(followList.get(position).getDisplay_name());
       emojiName.setText(followList.get(position).getPet_name());
       emojiStatus.setText(followList.get(position).getStatus());
 
