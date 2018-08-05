@@ -26,4 +26,9 @@ public interface EmojiPetService {
   @GET("players/")
   Call<List<Player>> getAllPlayers(@Header("Authorization") String authorization);
 
+  @POST("players/{player_oauthId}/follow/{other_player_oauthId}")
+  Call<Player>postFollow(@Header("Authorization") String authorization,
+      @Path("player_oauthId") String playerOauthId, @Path("other_player_oauthId") String otherPlayerOauthId,
+      @Body Player player);
+
 }

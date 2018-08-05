@@ -58,26 +58,13 @@ public class FollowingFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
+    // setup rest service
+    setupService();
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.following, container, false);
     getActivity().setTitle("Following");
-    // setup auto complete for finding other pets
-    friendSearchAdapter = new AutoCompleteAdapter(getContext(), android.R.layout.simple_dropdown_item_1line, R.id.search_friend_text);
-    final AutoCompleteTextView searchNamesAutoComplete = view.findViewById(R.id.search_friends_results);
-    searchNamesAutoComplete.setAdapter(friendSearchAdapter);
-    searchNamesAutoComplete.setOnItemClickListener(new OnItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        String playerName = ((TextView) view.findViewById(R.id.player_name_for_dropdown)).getText().toString();
-
-        Toast.makeText(getContext(), "playerName", Toast.LENGTH_LONG).show();
-      }
-    });
-    // Query all folling
-    List<Follower> following = new ArrayList<>();
-    following.add(new Follower("Blake", "lil boss", "\uD83D\uDE4A", "Just chillin at the lake RN crystal AF"));
-    following.add(new Follower("Karol", "Baby", "\uD83D\uDECD", "I found my phone!"));
-    following.add(new Follower("Husain", "Elvis", "\uD83C\uDF54", "Hanging with friends, see you all next week"));
+    // Query all following
+    following = EmojiPetApplication.getInstance().getPlayer().getFollowing();
 
     // create adapters
     followingAdapter = new FollowAdapter(following);
@@ -88,9 +75,22 @@ public class FollowingFragment extends Fragment {
 
     // Notify both adapters data set changed
     updateLists();
-    setupService();
 
+    // query to get all players for autocomplete
     new GetAllPlayersNames().execute();
+
+    // setup auto complete for finding other pets
+    friendSearchAdapter = new AutoCompleteAdapter(getContext(), android.R.layout.simple_dropdown_item_1line, R.id.search_friend_text);
+    final AutoCompleteTextView searchNamesAutoComplete = view.findViewById(R.id.search_friends_results);
+    searchNamesAutoComplete.setAdapter(friendSearchAdapter);
+    searchNamesAutoComplete.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String otherPlayerName = ((TextView) view).getText().toString();
+        new AddFollower().execute(otherPlayerName);
+        searchNamesAutoComplete.setText("");
+      }
+    });
 
     return view;
 
@@ -279,6 +279,37 @@ public class FollowingFragment extends Fragment {
         }
       }
     };
+  }
+
+  // This needs to be optimized when we scale.
+  private class AddFollower extends AsyncTask<String, Void, Void> {
+
+    @Override
+    protected Void doInBackground(String... strings) {
+      String otherPlayerOauth = mapOfNamesToIds.get(strings[0]);
+      try {
+        String token = EmojiPetApplication.getInstance().getSignInAccount().getIdToken();
+        String playerOauth = EmojiPetApplication.getInstance().getSignInAccount().getId();
+        Response response = service.postFollow(getString(R.string.oauth2_header_format, token),
+            playerOauth,
+            otherPlayerOauth,
+            EmojiPetApplication.getInstance().getPlayer()
+        ).execute();
+        if (response.isSuccessful()) {
+          EmojiPetApplication.getInstance().setPlayer((Player) response.body());
+          following.clear();
+          following.addAll(EmojiPetApplication.getInstance().getPlayer().getFollowing());
+        }
+      } catch (IOException e) {
+
+      }
+      return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      updateLists();
+    }
   }
 
 }
