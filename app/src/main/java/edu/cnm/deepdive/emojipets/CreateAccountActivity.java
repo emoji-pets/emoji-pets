@@ -2,6 +2,7 @@ package edu.cnm.deepdive.emojipets;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,17 +23,10 @@ public class CreateAccountActivity extends AppCompatActivity {
 
   private EmojiPetService service;
 
-  private TextView username;
-  private TextView emojiName;
-  private TextView emoji;
+  private TextInputEditText usernameEditText;
+  private TextInputEditText emojiNameEditText;
+  private TextInputEditText emojiEditText;
 
-  private EditText usernameEditText;
-  private EditText emojiNameEditText;
-  private EditText emojiEditText;
-
-  private Button usernameButton;
-  private Button emojiNameButton;
-  private Button emojiButton;
   private Button createAccountButton;
 
   @Override
@@ -42,64 +36,16 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     setupServices();
 
-    username = findViewById(R.id.create_username_textview);
-    emojiName = findViewById(R.id.create_petname_textview);
-    emoji = findViewById(R.id.create_emoji_textview);
-
     usernameEditText = findViewById(R.id.create_username_edittext);
     emojiNameEditText = findViewById(R.id.create_petname_edittext);
     emojiEditText = findViewById(R.id.create_emoji_edittext);
 
-    usernameButton = findViewById(R.id.create_username_button);
-    emojiNameButton = findViewById(R.id.create_petname_button);
-    emojiButton = findViewById(R.id.create_emoji_button);
     createAccountButton = findViewById(R.id.create_account_button);
     createAccountButton.setClickable(false);
 
-    usernameButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        toggleTextInput(username, usernameEditText, usernameButton);
-      }
-    });
-
-    emojiNameButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        toggleTextInput(emojiName, emojiNameEditText, emojiNameButton);
-      }
-    });
-
-    emojiButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        toggleTextInput(emoji, emojiEditText, emojiButton);
-      }
-    });
-
-    username.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        toggleTextInput(username, usernameEditText, usernameButton);
-      }
-    });
-
-    emojiName.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        toggleTextInput(emojiName, emojiNameEditText, emojiNameButton);
-      }
-    });
-
-    emoji.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        toggleTextInput(emoji, emojiEditText, emojiButton);
-      }
-    });
-
-    if (username.getVisibility() == View.GONE && emojiName.getVisibility() == View.GONE
-        && emoji.getVisibility() == View.GONE) {
+    if (!usernameEditText.getText().toString().equals("") &&
+        !emojiEditText.getText().toString().equals("") &&
+        !emojiNameEditText.getText().toString().equals("")) {
       createAccountButton.setClickable(true);
     }
 
@@ -108,9 +54,9 @@ public class CreateAccountActivity extends AppCompatActivity {
       public void onClick(View v) {
         Player player = new Player();
         player.setOauthId(EmojiPetApplication.getInstance().getSignInAccount().getId());
-        player.setDisplay_name(username.getText().toString());
-        player.setPet_name(emojiName.getText().toString());
-        player.setPet_emoji(emoji.getText().toString());
+        player.setDisplay_name(usernameEditText.getText().toString());
+        player.setPet_name(emojiNameEditText.getText().toString());
+        player.setPet_emoji(emojiEditText.getText().toString());
         player.setCouragePointsMax(100);
         player.setPowerPointsMax(100);
         player.setHealthPointsMax(100);
