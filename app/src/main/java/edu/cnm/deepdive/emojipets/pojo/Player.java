@@ -4,29 +4,37 @@ import java.util.List;
 
 public class Player {
 
-  long id;
-  String oauthId;
-  String display_name;
-  String status;
-  String pet_name;
-  String pet_emoji;
-  List<Player> followers;
-  List<Player> following;
-  int level;
-  int xp;
-  int maxXp;
-  long couragePoints;
-  int couragePointsMax;
-  long manaPoints;
-  int manaPointsMax;
-  long powerPoints;
-  int powerPointsMax;
-  long healthPoints;
-  int healthPointsMax;
-  String href;
+  private long id;
+  private String oauthId;
+  private String display_name;
+  private String status;
+  private String pet_name;
+  private String pet_emoji;
+  private List<Player> followers;
+  private List<Player> following;
+  private int level;
+  private int xp;
+  private int maxXp;
+  private long couragePoints;
+  private int couragePointsMax;
+  private long manaPoints;
+  private int manaPointsMax;
+  private long powerPoints;
+  private int powerPointsMax;
+  private long healthPoints;
+  private int healthPointsMax;
+//  String href;
 
   public Player() {
 
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
   }
 
   public String getOauthId() {
@@ -172,13 +180,13 @@ public class Player {
   public void setHealthPointsMax(int healthPointsMax) {
     this.healthPointsMax = healthPointsMax;
   }
-
-  public String getHref() {
-    return href;
-  }
-
-  public void setHref(String href) {
-    this.href = href;
-  }
+//
+//  public String getHref() {
+//    return href;
+//  }
+//
+//  public void setHref(String href) {
+//    this.href = href;
+//  }
 
 }

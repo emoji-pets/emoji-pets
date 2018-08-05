@@ -20,7 +20,7 @@ public interface EmojiPetService {
       @Body Player player);
 
   @PUT("players/{oauthId}")
-  Call<Player> updatePlayer(@Header("Authorization") String authorization,
+  Call<Player> updatePlayer(@Header("Authorization") String authorization, @Path("oauthId") String oauthId,
       @Body Player player);
 
   @GET("players/")

@@ -170,7 +170,7 @@ public class PetFragment extends Fragment {
           String text = petStatusEdit.getText().toString();
 //          petStatusEdit.setFocusable(false);
           EmojiPetApplication.getInstance().getPlayer().setStatus(text);
-          new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
+          new UpdatePlayer().execute();
           petStatusEdit.clearFocus();
           InputMethodManager imm = (InputMethodManager) getContext()
               .getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -200,7 +200,7 @@ public class PetFragment extends Fragment {
       @Override
       public void onClick(View v) {
         EmojiPetApplication.getInstance().getPlayer().setPowerPoints(System.currentTimeMillis());
-        new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
+        new UpdatePlayer().execute();
       }
     });
 
@@ -208,7 +208,7 @@ public class PetFragment extends Fragment {
       @Override
       public void onClick(View v) {
         EmojiPetApplication.getInstance().getPlayer().setManaPoints(System.currentTimeMillis());
-        new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
+        new UpdatePlayer().execute();
       }
     });
 
@@ -216,7 +216,7 @@ public class PetFragment extends Fragment {
       @Override
       public void onClick(View v) {
         EmojiPetApplication.getInstance().getPlayer().setHealthPoints(System.currentTimeMillis());
-        new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
+        new UpdatePlayer().execute();
       }
     });
 
@@ -224,7 +224,7 @@ public class PetFragment extends Fragment {
       @Override
       public void onClick(View v) {
         EmojiPetApplication.getInstance().getPlayer().setCouragePoints(System.currentTimeMillis());
-        new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
+        new UpdatePlayer().execute();
       }
     });
 
@@ -277,26 +277,26 @@ public class PetFragment extends Fragment {
     }
   }
 
-  private class UpdatePlayer extends AsyncTask<Player, Void, Void> {
+  private class UpdatePlayer extends AsyncTask<Void, Void, Void> {
 
     @Override
-    protected Void doInBackground(Player... players) {
-      Player player = null;
+    protected Void doInBackground(Void... voids) {
       try {
         String token = EmojiPetApplication.getInstance().getSignInAccount().getIdToken();
-
         Response<Player> response = service.updatePlayer(
-            getString(R.string.oauth2_header_format, token), players[0]).execute();
+            getString(R.string.oauth2_header_format, token),
+            EmojiPetApplication.getInstance().getSignInAccount().getId(),
+            EmojiPetApplication.getInstance().getPlayer()).execute();
         if (response.isSuccessful()) {
-          player = response.body();
+          Player player = response.body();
           EmojiPetApplication.getInstance().setPlayer(player);
         }
       } catch (IOException e) {
 
       } finally {
-        if (player == null) {
-          cancel(true);
-        }
+//        if (player == null) {
+//          cancel(true);
+//        }
       }
       return null;
     }
