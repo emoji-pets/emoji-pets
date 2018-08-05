@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class PetFragment extends Fragment {
   TextView petStatusTextView;
   TextView petTextView;
 
-  EditText petStatusEdit;
+  TextInputEditText petStatusEdit;
 
   long powerCurrentTime;
   long manaCurrentTime;
@@ -109,17 +110,9 @@ public class PetFragment extends Fragment {
     // long manaPoints = manaPointsMax + (manaTime - currentTime);
 
     // TODO add pet status endpoints here
-    petStatusTextView = v.findViewById(R.id.pet_status);
-    petStatusTextView.setText(EmojiPetApplication.getInstance().getPlayer().getStatus());
     petStatusEdit = v.findViewById(R.id.pet_status_edit);
-    petStatusEdit.setVisibility(View.GONE);
+    petStatusEdit.setText(EmojiPetApplication.getInstance().getPlayer().getStatus());
     petStatusButton = v.findViewById(R.id.pet_status_set_button);
-    petStatusButton.setVisibility(View.GONE);
-
-    DisplayMetrics displayMetrics = new DisplayMetrics();
-    ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-    int width = displayMetrics.widthPixels;
-    petStatusEdit.setMaxWidth(width - 240);
 
     t = new Thread() {
 
@@ -148,33 +141,26 @@ public class PetFragment extends Fragment {
       }
     };
 
-    petStatusTextView.setOnClickListener(new OnClickListener() {
+    petStatusButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        // TODO add pet status put endpoints here
-        String text = petStatusTextView.getText().toString();
-        petStatusEdit.setText(text);
-        petStatusTextView.setVisibility(View.GONE);
-        petStatusEdit.setSelectAllOnFocus(true);
-        petStatusEdit.requestFocus();
-        petStatusEdit.setVisibility(View.VISIBLE);
-        petStatusButton.setVisibility(View.VISIBLE);
-        petStatusButton.setOnClickListener(new OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            String text = petStatusEdit.getText().toString();
-            petStatusEdit.clearFocus();
-            EmojiPetApplication.getInstance().getPlayer().setStatus(text);
-            new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
-            petStatusTextView.setText(text);
-            petStatusEdit.setVisibility(View.GONE);
-            petStatusButton.setVisibility(View.GONE);
-            petStatusTextView.setVisibility(View.VISIBLE);
-            InputMethodManager imm = (InputMethodManager) getContext()
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-          }
-        });
+        if (petStatusEdit.isFocused()) {
+          String text = petStatusEdit.getText().toString();
+          petStatusEdit.setFocusable(false);
+          EmojiPetApplication.getInstance().getPlayer().setStatus(text);
+          new UpdatePlayer().execute(EmojiPetApplication.getInstance().getPlayer());
+        } else {
+          petStatusEdit.setFocusable(true);
+          petStatusEdit.requestFocus();
+        }
+
+//        petStatusTextView.setText(text);
+//        petStatusEdit.setVisibility(View.GONE);
+//        petStatusButton.setVisibility(View.GONE);
+//        petStatusTextView.setVisibility(View.VISIBLE);
+//        InputMethodManager imm = (InputMethodManager) getContext()
+//            .getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
       }
     });
 
