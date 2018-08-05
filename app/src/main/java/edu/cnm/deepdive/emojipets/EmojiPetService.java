@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.emojipets;
 
 import edu.cnm.deepdive.emojipets.pojo.Player;
+import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -21,5 +22,8 @@ public interface EmojiPetService {
   @PUT("players/{oauthId}")
   Call<Player> updatePlayer(@Header("Authorization") String authorization,
       @Body Player player);
+
+  @GET("players/")
+  Call<List<Player>> getAllPlayers(@Header("Authorization") String authorization);
 
 }

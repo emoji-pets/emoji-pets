@@ -17,11 +17,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.util.CollectionUtils;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.emojipets.pojo.Player;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -104,9 +109,7 @@ public class SignInActivity extends AppCompatActivity {
       try {
         String token = EmojiPetApplication.getInstance().getSignInAccount().getIdToken();
         String personId = EmojiPetApplication.getInstance().getSignInAccount().getId();
-        Response<Player> response =
-            service.get(getString(R.string.oauth2_header_format, token),
-                personId).execute();
+        Response<Player> response = service.get(getString(R.string.oauth2_header_format, token), personId).execute();
         if (response.isSuccessful()) {
           player = response.body();
           EmojiPetApplication.getInstance().setPlayer(player);
