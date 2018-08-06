@@ -9,11 +9,14 @@
     android:id="@+id/search_friends_results"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:hint="@string/search_for_a_friend"
     android:inputType="textAutoComplete|textAutoCorrect"/>
   <ListView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/following_list_view"
+    android:layout_margin="8dp"
+    android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
 

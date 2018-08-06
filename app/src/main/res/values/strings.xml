@@ -34,4 +34,8 @@
   <string name="search_for_a_friend">Search for a friend...</string>
   <string name="create_account">Create account</string>
   <string name="title_activity_create_account_basic_test">CreateAccountBasicActivityTest</string>
+  <string name="title_activity_friend">FriendActivity</string>
+  <string name="title_home">Home</string>
+  <string name="title_dashboard">Dashboard</string>
+  <string name="title_notifications">Notifications</string>
 </resources>

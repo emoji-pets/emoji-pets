@@ -2,6 +2,7 @@ package edu.cnm.deepdive.emojipets;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,10 +19,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.cnm.deepdive.emojipets.pojo.Follower;
 import edu.cnm.deepdive.emojipets.pojo.Player;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +28,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.w3c.dom.Text;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -72,6 +70,17 @@ public class FollowingFragment extends Fragment {
     followingListView = (ListView) view.findViewById(R.id.following_list_view);
     // Set adapters
     followingListView.setAdapter(followingAdapter);
+
+    followingListView.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        TextView displayName = view.findViewById(R.id.friends_list_player_name);
+        String friendId = mapOfNamesToIds.get(displayName.getText().toString());
+        Intent intent = new Intent(getActivity(), FriendActivity.class);
+        intent.putExtra("id", friendId);
+        startActivity(intent);
+      }
+    });
 
     // Notify both adapters data set changed
     updateLists();
@@ -126,12 +135,12 @@ public class FollowingFragment extends Fragment {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
       if (convertView == null) {
-        convertView = getLayoutInflater().inflate(R.layout.friends_dropdown_item, null);
+        convertView = getLayoutInflater().inflate(R.layout.friends_list_item, null);
       }
-      TextView friendsName = convertView.findViewById(R.id.player_name_for_dropdown);
-      TextView friendsPetName = convertView.findViewById(R.id.drop_down_pet_name);
-      TextView friendsEmoji = convertView.findViewById(R.id.emoji_character_for_dropdown);
-      TextView friendsStatus = convertView.findViewById(R.id.drop_down_pet_status);
+      TextView friendsName = convertView.findViewById(R.id.friends_list_player_name);
+      TextView friendsPetName = convertView.findViewById(R.id.friends_list_emoji_name);
+      TextView friendsEmoji = convertView.findViewById(R.id.friends_list_emoji_character);
+      TextView friendsStatus = convertView.findViewById(R.id.friends_list_status);
 
       friendsName.setText(followList.get(position).getDisplay_name());
       friendsEmoji.setText(followList.get(position).getPet_emoji());

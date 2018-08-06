@@ -33,12 +33,13 @@
       android:label="@string/create_account"
       android:name=".CreateAccountActivity"
       android:parentActivityName=".SignInActivity">
-      <!--android:theme="@style/ThemeOverlay.AppCompat.ActionBar"-->
+
+      <!-- android:theme="@style/ThemeOverlay.AppCompat.ActionBar" -->
     </activity>
     <activity
-      android:label="@string/title_activity_create_account_basic_test"
-      android:name=".CreateAccountBasicActivityTest"
-      android:theme="@style/AppTheme">
+      android:label="@string/title_activity_friend"
+      android:name=".FriendActivity"
+      android:parentActivityName=".MainActivity">
     </activity>
   </application>
 
