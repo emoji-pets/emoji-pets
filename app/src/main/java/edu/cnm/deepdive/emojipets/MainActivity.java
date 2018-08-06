@@ -3,10 +3,8 @@ package edu.cnm.deepdive.emojipets;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,8 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
+/**
+ * This is the MainActivity class and it hosts to the navigation drawer.
+ */
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     setSupportActionBar(toolbar);
 
     actionBar = getSupportActionBar();
-    actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffe864")));
+    actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFF67C7")));
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity
         .replace(R.id.main_activity, petFragment)
         .commit();
 
-    ObjectAnimator animation = ObjectAnimator.ofFloat(findViewById(R.id.emoji_pets_title), "translationX", 100f);
+    ObjectAnimator animation = ObjectAnimator
+        .ofFloat(findViewById(R.id.emoji_pets_title), "translationX", 100f);
     animation.setDuration(1000);
     animation.start();
 

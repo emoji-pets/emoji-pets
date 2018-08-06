@@ -98,5 +98,4 @@ public class FollowingFragment extends Fragment {
       return convertView;
     }
   }
-
 }

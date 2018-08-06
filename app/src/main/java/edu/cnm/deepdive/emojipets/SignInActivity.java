@@ -18,6 +18,10 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+/**
+ * This is the SignInActivity Class. It contains a lot of button animations. It hosts to the
+ * logging in activities.
+ */
 public class SignInActivity extends AppCompatActivity {
 
   private static final int REQUEST_CODE = 1000;
@@ -27,6 +31,7 @@ public class SignInActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sign_in);
 
+    // Button for logging in to google to play the app.
     Button signIn = findViewById(R.id.imageButton1);
     signIn.setOnClickListener(new OnClickListener() {
       @Override
@@ -36,14 +41,14 @@ public class SignInActivity extends AppCompatActivity {
       }
     });
 
-    //Background animation
+    //Background animation starter for the background of the SignInActivity.
     ConstraintLayout constraintLayout = findViewById(R.id.layout);
     AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
     animationDrawable.setEnterFadeDuration(2000);
     animationDrawable.setExitFadeDuration(4000);
     animationDrawable.start();
 
-//    // Rotation animation
+//    // Rotation animation for a button.
 //    final ImageButton imageButton3 = findViewById(R.id.imageButton3);
 //    imageButton3.setOnClickListener(new OnClickListener() {
 //      @Override
@@ -52,7 +57,7 @@ public class SignInActivity extends AppCompatActivity {
 //      }
 //    });
 
-//    // Fade animation
+//    // Fade animation for a button.
 //    final ImageButton imageButton2 = findViewById(R.id.imageButton2);
 //    imageButton2.setOnClickListener(new OnClickListener() {
 //      @Override
@@ -85,11 +90,13 @@ public class SignInActivity extends AppCompatActivity {
     startActivity(intent);
   }
 
-  //  // Tried having sliding transition animation when switching ti another activity but didn't work (no effect) LR
+  //  // Tried having sliding transition animation when switching to another activity but didn't work (no effect) LR
 //  public void openNewGameActivity(View view) {
 //    Intent intent = new Intent(this, NewGameActivity.class);
 //    startActivity(intent);
 //    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 //  }
 }
+
+//Commented out animations might be of use later.
 

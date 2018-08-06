@@ -37,9 +37,11 @@ public class FollowersFragment extends Fragment {
     getActivity().setTitle("Followers");
     // Query all folling
     List<Follower> followers = new ArrayList<>();
-    followers.add(new Follower("Blake", "lil boss", "\uD83D\uDE4A", "Just chillin at the lake RN crystal AF"));
+    followers.add(new Follower("Blake", "lil boss", "\uD83D\uDE4A",
+        "Just chillin at the lake RN crystal AF"));
     followers.add(new Follower("Karol", "Baby", "\uD83D\uDECD", "I found my phone!"));
-    followers.add(new Follower("Husain", "Elvis", "\uD83C\uDF54", "Hanging with friends, see you all next week"));
+    followers.add(new Follower("Husain", "Elvis", "\uD83C\uDF54",
+        "Hanging with friends, see you all next week"));
 
     // create adapters
     followersAdapter = new FollowAdapter(followers);
@@ -98,5 +100,4 @@ public class FollowersFragment extends Fragment {
       return convertView;
     }
   }
-
 }

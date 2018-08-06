@@ -16,18 +16,22 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.varunest.sparkbutton.SparkButton;
+import com.varunest.sparkbutton.SparkEventListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class PetFragment extends Fragment {
 
-  Button power;
-  Button mana;
-  Button courage;
-  Button health;
-  Button petStatusButton;
+  SparkButton power;
+  SparkButton mana;
+  SparkButton courage;
+  SparkButton health;
+  ImageButton petStatusButton;
 
   TextView powerPoints;
   TextView manaPoints;
@@ -84,10 +88,10 @@ public class PetFragment extends Fragment {
     animationDrawable.setExitFadeDuration(4000);
     animationDrawable.start();
 
-    power = v.findViewById(R.id.boost_power);
-    mana = v.findViewById(R.id.boost_mana);
-    courage = v.findViewById(R.id.boost_courage);
-    health = v.findViewById(R.id.boost_health);
+    power = v.findViewById(R.id.potty);
+    mana = v.findViewById(R.id.play);
+    courage = v.findViewById(R.id.cuddles);
+    health = v.findViewById(R.id.food);
 
     powerPoints = (TextView) v.findViewById(R.id.power);
     manaPoints = (TextView) v.findViewById(R.id.mana);
@@ -132,19 +136,19 @@ public class PetFragment extends Fragment {
                 powerCurrentValue = powerCurrentTime - System.currentTimeMillis();
                 powerCurrentValue = powerCurrentValue < 0 ? 0 : powerCurrentValue;
                 powerCurrentValue = powerCurrentValue > 100000 ? 100000 : powerCurrentValue;
-                powerPoints.setText(String.format("%.2f power points", (float) powerCurrentValue / 1000));
+                powerPoints.setText(String.format("%.2f Potty", (float) powerCurrentValue / 1000));
                 manaCurrentValue = manaCurrentTime - System.currentTimeMillis();
                 manaCurrentValue = manaCurrentValue < 0 ? 0 : manaCurrentValue;
                 manaCurrentValue = manaCurrentValue > 100000 ? 100000 : manaCurrentValue;
-                manaPoints.setText(String.format("%.2f mana points", (float) manaCurrentValue / 1000));
+                manaPoints.setText(String.format("%.2f Play", (float) manaCurrentValue / 1000));
                 healthCurrentValue = healthCurrentTime - System.currentTimeMillis();
                 healthCurrentValue = healthCurrentValue < 0 ? 0 : healthCurrentValue;
                 healthCurrentValue = healthCurrentValue > 100000 ? 100000 : healthCurrentValue;
-                healthPoints.setText(String.format("%.2f health points", (float) healthCurrentValue / 1000));
+                healthPoints.setText(String.format("%.2f Hunger", (float) healthCurrentValue / 1000));
                 courageCurrentValue = courageCurrentTime - System.currentTimeMillis();
                 courageCurrentValue = courageCurrentValue < 0 ? 0 : courageCurrentValue;
                 courageCurrentValue = courageCurrentValue > 100000 ? 100000 : courageCurrentValue;
-                couragePoints.setText(String.format("%.2f courage points", (float) courageCurrentValue / 1000));
+                couragePoints.setText(String.format("%.2f Cuddle", (float) courageCurrentValue / 1000));
               }
             });
           }
@@ -181,43 +185,82 @@ public class PetFragment extends Fragment {
       }
     });
 
-    powerPoints.setText(String.format("%.2f power points", (powerCurrentValue) / 1000));
-    manaPoints.setText(String.format("%.2f mana points", (manaCurrentValue) / 1000));
-    couragePoints.setText(String.format("%.2f courage points", (courageCurrentValue)/ 1000));
-    healthPoints.setText(String.format("%.2f health points", (healthCurrentValue)/ 1000));
+    powerPoints.setText(String.format("%.2f potty", (powerCurrentValue) / 1000));
+    manaPoints.setText(String.format("%.2f play", (manaCurrentValue) / 1000));
+    couragePoints.setText(String.format("%.2f cuddle", (courageCurrentValue)/ 1000));
+    healthPoints.setText(String.format("%.2f hunger", (healthCurrentValue)/ 1000));
 
-    power.setOnClickListener(new OnClickListener() {
+    health.setEventListener(new SparkEventListener() {
       @Override
-      public void onClick(View v) {
-        powerCurrentTime = System.currentTimeMillis() + 100200;
+      public void onEvent(ImageView button, boolean buttonState) {
+        healthCurrentTime = System.currentTimeMillis() + 100200;
+      }
+
+      @Override
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        health.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
       }
     });
 
-    mana.setOnClickListener(new OnClickListener() {
+    courage.setEventListener(new SparkEventListener() {
       @Override
-      public void onClick(View v) {
-        manaCurrentTime = System.currentTimeMillis() + 100200;
-      }
-    });
-
-    courage.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
+      public void onEvent(ImageView button, boolean buttonState) {
         courageCurrentTime = System.currentTimeMillis() + 100200;
       }
+
+      @Override
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        courage.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
+      }
     });
 
-    health.setOnClickListener(new OnClickListener() {
+    mana.setEventListener(new SparkEventListener() {
       @Override
-      public void onClick(View v) {
-        healthCurrentTime = System.currentTimeMillis() + 100200;
+      public void onEvent(ImageView button, boolean buttonState) {
+        manaCurrentTime = System.currentTimeMillis() + 100200;
+      }
+
+      @Override
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        mana.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
+      }
+    });
+
+    power.setEventListener(new SparkEventListener() {
+      @Override
+      public void onEvent(ImageView button, boolean buttonState) {
+        powerCurrentTime = System.currentTimeMillis() + 100200;
+      }
+
+      @Override
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        power.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
       }
     });
 
     t.start();
 
     return v;
-
   }
 
   @Override
@@ -225,5 +268,4 @@ public class PetFragment extends Fragment {
     super.onDetach();
     t.interrupt();
   }
-
 }
