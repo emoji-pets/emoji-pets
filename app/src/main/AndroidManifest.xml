@@ -21,6 +21,7 @@
       android:name=".MainActivity"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
+      android:windowSoftInputMode="adjustResize"
       android:label="@string/title_activity_login"
       android:name=".SignInActivity">
       <intent-filter>
@@ -30,6 +31,7 @@
       </intent-filter>
     </activity>
     <activity
+      android:windowSoftInputMode="adjustResize"
       android:label="@string/create_account"
       android:name=".CreateAccountActivity"
       android:parentActivityName=".SignInActivity">
@@ -37,6 +39,7 @@
       <!-- android:theme="@style/ThemeOverlay.AppCompat.ActionBar" -->
     </activity>
     <activity
+      android:windowSoftInputMode="adjustResize"
       android:label="@string/title_activity_friend"
       android:name=".FriendActivity"
       android:parentActivityName=".MainActivity">

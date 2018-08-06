@@ -24,19 +24,19 @@ public class FriendActivity extends AppCompatActivity {
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+      FragmentManager manager = getSupportFragmentManager();
       switch (item.getItemId()) {
         case R.id.navigation_home:
           FriendPetFragment friendPetFragment = new FriendPetFragment();
-          FragmentManager manager = getSupportFragmentManager();
           manager.beginTransaction()
               .replace(R.id.friend_activity, friendPetFragment)
               .commit();
           return true;
         case R.id.navigation_dashboard:
-          // mTextMessage.setText(R.string.title_dashboard);
-          return true;
-        case R.id.navigation_notifications:
-          // mTextMessage.setText(R.string.title_notifications);
+          FriendWallFragment friendWallFragment = new FriendWallFragment();
+          manager.beginTransaction()
+              .replace(R.id.friend_activity, friendWallFragment)
+              .commit();
           return true;
       }
       return false;
@@ -51,11 +51,9 @@ public class FriendActivity extends AppCompatActivity {
     Intent intent = getIntent();
     friendId = intent.getStringExtra("id");
 
-    Bundle bundle = new Bundle();
-    bundle.putString("id", friendId);
+    EmojiPetApplication.getInstance().setFriendPeak(friendId);
 
     FriendPetFragment friendPetFragment = new FriendPetFragment();
-    friendPetFragment.setArguments(bundle);
     FragmentManager manager = getSupportFragmentManager();
     manager.beginTransaction()
         .replace(R.id.friend_activity, friendPetFragment)

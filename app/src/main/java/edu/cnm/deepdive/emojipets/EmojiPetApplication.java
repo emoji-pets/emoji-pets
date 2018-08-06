@@ -1,18 +1,13 @@
 package edu.cnm.deepdive.emojipets;
 
 import android.app.Application;
-import android.os.AsyncTask;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.emojipets.pojo.Player;
 import java.util.List;
 import java.util.Map;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EmojiPetApplication extends Application {
 
@@ -23,6 +18,7 @@ public class EmojiPetApplication extends Application {
   private Player player;
   private List<Player> allPlayers;
   private Map<String, String> playerNameToIdMap;
+  private String friendPeak;
 
   @Override
   public void onCreate() {
@@ -78,5 +74,13 @@ public class EmojiPetApplication extends Application {
 
   public void setPlayerNameToIdMap(Map<String, String> playerNameToIdMap) {
     this.playerNameToIdMap = playerNameToIdMap;
+  }
+
+  public String getFriendPeak() {
+    return friendPeak;
+  }
+
+  public void setFriendPeak(String friendPeak) {
+    this.friendPeak = friendPeak;
   }
 }

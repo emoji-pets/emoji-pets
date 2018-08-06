@@ -1,12 +1,15 @@
 package edu.cnm.deepdive.emojipets;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,6 +34,7 @@ public class FollowersFragment extends Fragment {
 
   ListView followersListView;
   List<Player> followers = new ArrayList<>();
+  private Map<String,String> mapOfNamesToIds = new HashMap<>();
   FollowAdapter followersAdapter;
   EmojiPetService service;
 
@@ -49,12 +53,30 @@ public class FollowersFragment extends Fragment {
     // Get followers
     followers = EmojiPetApplication.getInstance().getPlayer().getFollowers();
 
+    // Add names to ids in map
+    for (Player follower : followers) {
+      if (!mapOfNamesToIds.containsKey(follower.getDisplay_name())) {
+        mapOfNamesToIds.put(follower.getDisplay_name(), follower.getOauthId());
+      }
+    }
+
     // create adapters
     followersAdapter = new FollowAdapter(followers);
     // Set List Views for followers and followers
     followersListView = (ListView) view.findViewById(R.id.followers_list_view);
     // Set adapters
     followersListView.setAdapter(followersAdapter);
+
+    followersListView.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        TextView displayName = view.findViewById(R.id.player_name_for_dropdown);
+        String friendId = mapOfNamesToIds.get(displayName.getText().toString());
+        Intent intent = new Intent(getActivity(), FriendActivity.class);
+        intent.putExtra("id", friendId);
+        startActivity(intent);
+      }
+    });
 
     // Notify both adapters data set changed
     updateLists();

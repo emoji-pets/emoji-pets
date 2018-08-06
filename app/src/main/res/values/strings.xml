@@ -35,7 +35,10 @@
   <string name="create_account">Create account</string>
   <string name="title_activity_create_account_basic_test">CreateAccountBasicActivityTest</string>
   <string name="title_activity_friend">FriendActivity</string>
-  <string name="title_home">Home</string>
-  <string name="title_dashboard">Dashboard</string>
+  <string name="title_pet">Pet</string>
+  <string name="title_wall">Wall</string>
   <string name="title_notifications">Notifications</string>
+  <string name="wall_hint">Mark it up!</string>
+  <string name="wall_button">Change wall</string>
+  <string name="wall_cancel">cancel</string>
 </resources>

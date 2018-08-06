@@ -63,7 +63,6 @@ public class FollowingFragment extends Fragment {
     getActivity().setTitle("Following");
     // Query all following
     following = EmojiPetApplication.getInstance().getPlayer().getFollowing();
-
     // create adapters
     followingAdapter = new FollowAdapter(following);
     // Set List Views for followers and following

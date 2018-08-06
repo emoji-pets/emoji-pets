@@ -51,7 +51,8 @@ public class FriendPetFragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_friend_pet, container, false);
-    id = getArguments().getString("id");
+
+    id = EmojiPetApplication.getInstance().getFriendPeak();
 
     setupServices();
     
@@ -171,10 +172,9 @@ public class FriendPetFragment extends Fragment {
       mana.setText(String.format("%.2f courage points", (float) manaPoints));
       power.setText(String.format("%.2f courage points", (float) powerPoints));
       health.setText(String.format("%.2f courage points", (float) healthPoints));
+      petStatus.setText(friend.getStatus());
       t.start();
     }
   }
-
-
   
 }

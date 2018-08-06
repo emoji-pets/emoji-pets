@@ -23,6 +23,7 @@ public class Player {
   private int powerPointsMax;
   private long healthPoints;
   private int healthPointsMax;
+  private String wall;
 //  String href;
 
   public Player() {
@@ -180,7 +181,16 @@ public class Player {
   public void setHealthPointsMax(int healthPointsMax) {
     this.healthPointsMax = healthPointsMax;
   }
-//
+
+  public String getWall() {
+    return wall;
+  }
+
+  public void setWall(String wall) {
+    this.wall = wall;
+  }
+
+  //
 //  public String getHref() {
 //    return href;
 //  }

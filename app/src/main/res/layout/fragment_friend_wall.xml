@@ -1,0 +1,81 @@
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="edu.cnm.deepdive.emojipets.FriendPetFragment">
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/secret_guide"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:title="secret_placeholder"
+    android:visibility="invisible"/>
+
+  <android.support.design.widget.TextInputLayout
+    android:id="@+id/wall_edit_text_layout"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:layout_margin="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:fontFamily="casual"
+    app:hintAnimationEnabled="true"
+    app:hintEnabled="true"
+    app:layout_constraintBottom_toTopOf="@+id/wall_submit_button"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/secret_guide">
+    <android.support.design.widget.TextInputEditText
+      android:id="@+id/wall_edit_text"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/wall_hint"/>
+  </android.support.design.widget.TextInputLayout>
+
+  <Button
+    android:id="@+id/wall_submit_button"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:text="@string/wall_button"
+    app:layout_constraintBottom_toTopOf="@+id/wall_hidden"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/wall_cancel_button"
+    app:layout_constraintTop_toBottomOf="@+id/wall_edit_text_layout"/>
+
+  <Button
+    android:id="@+id/wall_cancel_button"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:text="@string/wall_cancel"
+    app:layout_constraintBottom_toTopOf="@+id/wall_hidden"
+    app:layout_constraintEnd_toStartOf="@id/wall_submit_button"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/wall_edit_text_layout"/>
+
+  <android.support.design.widget.BottomNavigationView
+    android:id="@+id/wall_hidden"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="0dp"
+    android:layout_marginEnd="0dp"
+    android:background="?android:attr/windowBackground"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    android:visibility="invisible"/>
+
+
+</android.support.constraint.ConstraintLayout>
