@@ -130,6 +130,12 @@ public class MainActivity extends AppCompatActivity
       manager.beginTransaction()
           .replace(R.id.main_activity, settingsFragment)
           .commit();
+    } else if (id == R.id.my_wall_drawer_item) {
+      MyWallFragment myWallFragment = new MyWallFragment();
+      FragmentManager manager = getSupportFragmentManager();
+      manager.beginTransaction()
+          .replace(R.id.main_activity, myWallFragment)
+          .commit();
     }
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
