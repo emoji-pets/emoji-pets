@@ -41,4 +41,8 @@
   <string name="wall_hint">Mark it up!</string>
   <string name="wall_button">Change wall</string>
   <string name="wall_cancel">cancel</string>
+  <string name="my_wall">My Wall</string>
+  <string name="settings">Settings</string>
+  <string name="followers">Followers</string>
+  <string name="following">Following</string>
 </resources>

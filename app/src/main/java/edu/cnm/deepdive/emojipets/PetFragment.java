@@ -85,6 +85,7 @@ public class PetFragment extends Fragment {
       Bundle savedInstanceState) {
 
     View v = inflater.inflate(R.layout.fragment_pet, container, false);
+    getActivity().setTitle(EmojiPetApplication.getInstance().getPlayer().getPet_name());
 
     setupServices();
 

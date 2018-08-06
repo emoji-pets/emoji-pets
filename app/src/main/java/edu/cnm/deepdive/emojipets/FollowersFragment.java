@@ -2,7 +2,6 @@ package edu.cnm.deepdive.emojipets;
 
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,18 +12,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import edu.cnm.deepdive.emojipets.pojo.Follower;
 import edu.cnm.deepdive.emojipets.pojo.Player;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**

@@ -8,23 +8,23 @@
     <item
       android:id="@+id/pet_fragment"
       android:icon="@drawable/ic_pets_black_24dp"
-      android:title="My Pet"/>
+      android:title="@string/my_pet"/>
     <item
       android:id="@+id/following_fragment"
       android:icon="@drawable/ic_following_black_24dp"
-      android:title="Following"/>
+      android:title="@string/following"/>
     <item
       android:id="@+id/followers_fragment"
       android:icon="@drawable/ic_people_outline_black_24dp"
-      android:title="Followers"/>
+      android:title="@string/followers"/>
     <item
       android:id="@+id/my_wall_drawer_item"
-      android:icon="@drawable/ic_people_outline_black_24dp"
-      android:title="My Wall"/>
+      android:icon="@drawable/ic_dashboard_black_24dp"
+      android:title="@string/my_wall"/>
     <item
       android:id="@+id/settings_fragment"
       android:icon="@drawable/ic_settings_black_24dp"
-      android:title="Settings"/>
+      android:title="@string/settings"/>
   </group>
 
 </menu>

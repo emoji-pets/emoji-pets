@@ -5,6 +5,7 @@
   tools:context="edu.cnm.deepdive.emojipets.MyWallFragment">
 
     <TextView
+      android:layout_margin="12dp"
       android:id="@+id/my_wall"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"/>

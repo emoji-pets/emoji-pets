@@ -24,21 +24,18 @@
         android:orientation="vertical"
         android:padding="12dp"
         android:layout_margin="12dp">
-        <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Change your username:"/>
-        <!--TODO get username as string resource for hint-->
         <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
           <EditText
+            android:id="@+id/settings_username_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Username..."/>
           <Button
+            android:id="@+id/settings_username_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="change"/>
@@ -63,21 +60,18 @@
         android:padding="12dp"
         android:layout_margin="12dp"
         android:orientation="vertical">
-        <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Change your pet's name:"/>
-        <!--TODO get emoji_name as string resource for hint-->
         <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
           <EditText
+            android:id="@+id/settings_pet_name_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Emoji name..."/>
           <Button
+            android:id="@+id/settings_pet_name_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="change"/>
@@ -102,21 +96,18 @@
         android:padding="12dp"
         android:layout_margin="12dp"
         android:orientation="vertical">
-        <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Change your pet:"/>
-        <!--TODO get emoji_character as string resource for hint-->
         <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
           <EditText
+            android:id="@+id/settings_emoji_character_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="🍜"/>
           <Button
+            android:id="@+id/settings_emoji_character_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="change"/>
