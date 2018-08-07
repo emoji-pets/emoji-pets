@@ -29,7 +29,12 @@
   <string name="base_url">http://emoji-petz.us-east-2.elasticbeanstalk.com/emoji-pets/</string> <!-- Access localhost from emulator. -->
   <string name="oauth2_header_format">Bearer %1$s</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
+  <string name="pet_name">Pet name: </string>
+  <string name="pet_status">Pet status: </string>
+  <string name="hunger_points">"%.2f hunger points"</string>
+  <string name="love_points">"%.2f love points"</string>
+  <string name="poopy_points">"%.2f poopy points"</string>
+  <string name="play_points">"%.2f play points"</string>
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="search_for_a_friend">Search for a friend...</string>
   <string name="create_account">Create account</string>
@@ -41,6 +46,7 @@
   <string name="wall_hint">Mark it up!</string>
   <string name="wall_button">Change wall</string>
   <string name="wall_cancel">cancel</string>
+  <string name="wall_marked">Wall marked!</string>
   <string name="my_wall">My Wall</string>
   <string name="settings">Settings</string>
   <string name="followers">Followers</string>
@@ -50,7 +56,21 @@
   <string name="enter_a_cool_user_name">Enter a cool user-name</string>
   <string name="what_s_your_emoji_s_name">What\'s your emoji\'s name?</string>
   <string name="and_just_one_emoji">And just one emoji</string>
+  <string name="status">Status</string>
+  <string name="post">post</string>
+  <string name="cuddle">Cuddle</string>
+  <string name="play">Play</string>
+  <string name="hungry">Hungry</string>
+  <string name="potty">Potty</string>
+  <string name="username_hint">Username...</string>
+  <string name="change">change</string>
+  <string name="emoji_name">Emoji name...</string>
+  <string name="enter_one_emoji">Enter one emoji</string>
+  <string name="emoji_pets">Emoji Pets</string>
+  <string name="they_love_you">They love you!</string>
+=======
   <string name="username">Username...</string>
   <string name="your_emoji_s_name">Your emoji\'s name...</string>
   <string name="input_your_emoji">Input your emoji...</string>
+>>>>>>> Stashed changes
 </resources>

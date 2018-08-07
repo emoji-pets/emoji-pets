@@ -1,71 +1,70 @@
 <resources>
-  <string name="app_name">Emoji Pets</string>
+  <string name="app_name">Emoji Petz</string>
 
-  <string name="navigation_drawer_open">Open navigation drawer</string>
-  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <string name="navigation_drawer_open">Ibukas ang navigation drawer</string>
+  <string name="navigation_drawer_close">Isarado ang navigation drawer</string>
 
-  <string name="sign_out">Sign Out</string>
-  <string name="my_pet">My Pet</string>
-  <string name="action_signin">Sign In</string>
-  <string name="title_activity_login">Sign in</string>
+  <string name="sign_out">Log Out</string>
+  <string name="my_pet">Aking Alagang Hayop</string>
+  <string name="action_signin">Log In</string>
+  <string name="title_activity_login">Log in</string>
 
   <!-- Strings related to login -->
   <string name="prompt_email">Email</string>
   <string name="prompt_password">Password (optional)</string>
-  <string name="action_sign_in">Sign in</string>
-  <string name="action_sign_in_short">Sign in</string>
-  <string name="error_invalid_email">This email address is invalid</string>
-  <string name="error_invalid_password">This password is too short</string>
-  <string name="error_incorrect_password">This password is incorrect</string>
-  <string name="error_field_required">This field is required</string>
-  <string name="permission_rationale">"Contacts permissions are needed for providing email
-    completions."
+  <string name="action_sign_in">Log in</string>
+  <string name="action_sign_in_short">Log in</string>
+  <string name="error_invalid_email">Hindi pwede itong email address na ito</string>
+  <string name="error_invalid_password">Masyadong maiksi ang password mo</string>
+  <string name="error_incorrect_password">Mali itong password na ito.</string>
+  <string name="error_field_required">Kailangan mo itong sagutin.</string>
+  <string name="permission_rationale">"Kailangan ng pahintulo mo."
   </string>
 
   <!-- Oauth client-->
   <string name="web_client_id">726718017398-nb9cq3ji1rbo4no9js0nt0bdj7i2qr2e.apps.googleusercontent.com</string>
   <string name="request_passphrase">Request Passphrase</string>
-  <string name="action_logout">Sign out</string>
+  <string name="action_logout">Log out</string>
   <string name="base_url">http://emoji-petz.us-east-2.elasticbeanstalk.com/emoji-pets/</string> <!-- Access localhost from emulator. -->
   <string name="oauth2_header_format">Bearer %1$s</string>
 
-  <string name="pet_name">Pet name: </string>
-  <string name="pet_status">Pet status: </string>
-  <string name="hunger_points">"%.2f hunger points"</string>
-  <string name="love_points">"%.2f love points"</string>
-  <string name="poopy_points">"%.2f poopy points"</string>
-  <string name="play_points">"%.2f play points"</string>
+  <string name="pet_name">Pangalan ng alaga mong hayop: </string>
+  <string name="pet_status">Kalagayan ng alaga mong hayop: </string>
+  <string name="hunger_points">"%.2f gutom"</string>
+  <string name="love_points">"%.2f mahal"</string>
+  <string name="poopy_points">"%.2f natatae"</string>
+  <string name="play_points">"%.2f laro"</string>
   <string name="hello_blank_fragment">Hello blank fragment</string>
-  <string name="search_for_a_friend">Search for a friend...</string>
-  <string name="create_account">Create account</string>
+  <string name="search_for_a_friend">Humanap ng kaibigan...</string>
+  <string name="create_account">Gumawa ng account</string>
   <string name="title_activity_create_account_basic_test">CreateAccountBasicActivityTest</string>
   <string name="title_activity_friend">FriendActivity</string>
-  <string name="title_pet">Pet</string>
-  <string name="title_wall">Wall</string>
+  <string name="title_pet">Alagang Hayop</string>
+  <string name="title_wall">Pader</string>
   <string name="title_notifications">Notifications</string>
-  <string name="wall_hint">Mark it up!</string>
-  <string name="wall_button">Change wall</string>
+  <string name="wall_hint">Markahan mo!</string>
+  <string name="wall_button">Ibahin ang pader</string>
   <string name="wall_cancel">cancel</string>
-  <string name="wall_marked">Wall marked!</string>
-  <string name="my_wall">My Wall</string>
+  <string name="wall_marked">Namarkahan ang pader!</string>
+  <string name="my_wall">Aking Pader</string>
   <string name="settings">Settings</string>
-  <string name="followers">Followers</string>
-  <string name="following">Following</string>
+  <string name="followers">Mga sumusunod sayo</string>
+  <string name="following">Mga sinusundan mo</string>
   <string name="emoji_petz">Emoji Petz</string>
-  <string name="sign_in">Sign in with Google</string>
-  <string name="enter_a_cool_user_name">Enter a cool user-name</string>
-  <string name="what_s_your_emoji_s_name">What\'s your emoji\'s name?</string>
-  <string name="and_just_one_emoji">And just one emoji</string>
+  <string name="sign_in">Mag Log In Ka Gamit Ang Google</string>
+  <string name="enter_a_cool_user_name">Gumawa ka ng astig na user-name</string>
+  <string name="what_s_your_emoji_s_name">Ano ang pangalan ng Emoji mo?</string>
+  <string name="and_just_one_emoji">Isang emoji lang</string>
   <string name="status">Status</string>
   <string name="post">post</string>
-  <string name="cuddle">Cuddlesilly</string>
-  <string name="play">Play</string>
-  <string name="hungry">Hungry</string>
-  <string name="potty">Potty</string>
+  <string name="cuddle">Yakap</string>
+  <string name="play">Laro</string>
+  <string name="hungry">Gutom</string>
+  <string name="potty">Natatae</string>
   <string name="username_hint">Username...</string>
-  <string name="change">change</string>
-  <string name="emoji_name">Emoji name...</string>
-  <string name="enter_one_emoji">Enter one emoji</string>
-  <string name="emoji_pets">Emoji Pets</string>
-  <string name="they_love_you">They love you!</string>
+  <string name="change">Ibahin</string>
+  <string name="emoji_name">Pangalan ng Emoji...</string>
+  <string name="enter_one_emoji">Lagyan ng isang emoji</string>
+  <string name="emoji_pets">Emoji Petz</string>
+  <string name="they_love_you">Mahal ka nila!</string>
 </resources>
