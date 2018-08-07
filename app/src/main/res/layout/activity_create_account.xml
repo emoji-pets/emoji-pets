@@ -66,7 +66,7 @@
             android:id="@+id/create_username_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter a cool user-name "/>
+            android:hint="@string/enter_a_cool_user_name"/>
         </android.support.design.widget.TextInputLayout>
       </LinearLayout>
       <LinearLayout
@@ -88,7 +88,7 @@
             android:id="@+id/create_petname_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="What's your emoji's name?"/>
+            android:hint="@string/what_s_your_emoji_s_name"/>
         </android.support.design.widget.TextInputLayout>
       </LinearLayout>
       <LinearLayout
@@ -110,7 +110,7 @@
             android:id="@+id/create_emoji_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="And just one emoji"/>
+            android:hint="@string/and_just_one_emoji"/>
         </android.support.design.widget.TextInputLayout>
       </LinearLayout>
     </LinearLayout>

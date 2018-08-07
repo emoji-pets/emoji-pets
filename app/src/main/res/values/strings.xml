@@ -47,4 +47,7 @@
   <string name="following">Following</string>
   <string name="emoji_petz">Emoji Petz</string>
   <string name="sign_in">Sign in with Google</string>
+  <string name="enter_a_cool_user_name">Enter a cool user-name</string>
+  <string name="what_s_your_emoji_s_name">What\'s your emoji\'s name?</string>
+  <string name="and_just_one_emoji">And just one emoji</string>
 </resources>
