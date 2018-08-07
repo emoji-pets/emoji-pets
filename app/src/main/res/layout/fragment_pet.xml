@@ -83,7 +83,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="12dp"
     android:layout_marginTop="18dp"
-    android:layout_marginLeft="16dp"
+    android:background="@drawable/edit_text_background"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/mana"
     app:layout_constraintRight_toRightOf="@id/right_guide">
@@ -91,12 +91,17 @@
       android:id="@+id/pet_status_edit"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_margin="4dp"
+      android:layout_marginTop="8dp"
       android:nextFocusUp="@id/pet_status_edit"
       android:nextFocusLeft="@id/pet_status_edit"
+      style="@style/Widget.AppCompat.EditText"
+      android:background="@null"
       android:selectAllOnFocus="true"
       android:hint="Status"/>
   </android.support.design.widget.TextInputLayout>
 
+  <!--android:background="@drawable/edit_text_background"-->
 
   <!--<EditText-->
     <!--android:id="@+id/pet_status_edit"-->
@@ -115,26 +120,26 @@
     android:text="post"
     android:visibility="gone"
     app:layout_constraintEnd_toEndOf="@+id/pet_status_edit_layout"
-    app:layout_constraintTop_toBottomOf="@+id/pet_status_edit_layout"/>
+    app:layout_constraintTop_toBottomOf="@+id/pet_status_edit_layout"
     android:background="@null"
     app:srcCompat="@drawable/post_button"/>
 
-  <TextView
-    android:id="@+id/character"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:text="🍜"
-    android:textSize="128sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.501"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/mana"
-    app:layout_constraintVertical_bias="0.379"/>
+  <!--<TextView-->
+    <!--android:id="@+id/character"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:text="🍜"-->
+    <!--android:textSize="128sp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.501"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/mana"-->
+    <!--app:layout_constraintVertical_bias="0.379"/>-->
 
   <com.varunest.sparkbutton.SparkButton
     android:id="@+id/food"
@@ -268,7 +273,8 @@
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:textSize="128sp"
-    app:layout_constraintBottom_toTopOf="@+id/boost_health"
+    android:textColor="@color/colorPrimaryDark"
+    app:layout_constraintBottom_toTopOf="@+id/potty"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/mana"/>

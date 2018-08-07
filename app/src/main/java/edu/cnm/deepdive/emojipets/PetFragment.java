@@ -1,13 +1,12 @@
 package edu.cnm.deepdive.emojipets;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.graphics.drawable.AnimationDrawable;
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,18 +14,16 @@ import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.TextView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import edu.cnm.deepdive.emojipets.pojo.Player;
-import java.io.IOException;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.airbnb.lottie.LottieAnimationView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.varunest.sparkbutton.SparkButton;
 import com.varunest.sparkbutton.SparkEventListener;
+import edu.cnm.deepdive.emojipets.pojo.Player;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import retrofit2.Response;
@@ -51,10 +48,7 @@ public class PetFragment extends Fragment {
 
   TextInputEditText petStatusEdit;
 
-  long powerCurrentTime;
-  long manaCurrentTime;
-  long courageCurrentTime;
-  long healthCurrentTime;
+  LottieAnimationView animationView;
 
   float powerPoints;
   float manaPoints;
@@ -104,6 +98,7 @@ public class PetFragment extends Fragment {
     animationDrawable.setEnterFadeDuration(2000);
     animationDrawable.setExitFadeDuration(4000);
     animationDrawable.start();
+
 
     power = v.findViewById(R.id.potty);
     mana = v.findViewById(R.id.play);
@@ -181,7 +176,6 @@ public class PetFragment extends Fragment {
       public void onClick(View v) {
         if (petStatusEdit.isFocused()) {
           String text = petStatusEdit.getText().toString();
-//          petStatusEdit.setFocusable(false);
           EmojiPetApplication.getInstance().getPlayer().setStatus(text);
           new UpdatePlayer().execute();
           petStatusEdit.clearFocus();
@@ -192,14 +186,6 @@ public class PetFragment extends Fragment {
           petStatusEdit.setFocusable(true);
           petStatusEdit.requestFocus();
         }
-
-//        petStatusTextView.setText(text);
-//        petStatusEdit.setVisibility(View.GONE);
-//        petStatusButton.setVisibility(View.GONE);
-//        petStatusTextView.setVisibility(View.VISIBLE);
-//        InputMethodManager imm = (InputMethodManager) getContext()
-//            .getSystemService(Context.INPUT_METHOD_SERVICE);
-//        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
       }
     });
 
@@ -212,7 +198,7 @@ public class PetFragment extends Fragment {
     health.setEventListener(new SparkEventListener() {
       @Override
       public void onEvent(ImageView button, boolean buttonState) {
-        EmojiPetApplication.getInstance().getPlayer().setPowerPoints(System.currentTimeMillis());
+        EmojiPetApplication.getInstance().getPlayer().setHealthPoints(System.currentTimeMillis());
         new UpdatePlayer().execute();
       }
       

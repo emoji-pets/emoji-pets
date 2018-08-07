@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
     if (drawer.isDrawerOpen(GravityCompat.START)) {
       drawer.closeDrawer(GravityCompat.START);
     } else {
-      super.onBackPressed();
+      signOut();
     }
   }
 
@@ -109,16 +109,7 @@ public class MainActivity extends AppCompatActivity
     if (id == R.id.sign_out) {
       signOut();
     }
-  }
-
-  private void signOut() {
-    EmojiPetApplication application = EmojiPetApplication.getInstance().getInstance();
-    application.getSignInClient().signOut().addOnCompleteListener(this, (task) -> {
-      application.setSignInAccount(null);
-      Intent intent = new Intent(MainActivity.this, SignInActivity.class);
-      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-      startActivity(intent);
-    });
+    return true;
   }
 
   @SuppressWarnings("StatementWithEmptyBody")

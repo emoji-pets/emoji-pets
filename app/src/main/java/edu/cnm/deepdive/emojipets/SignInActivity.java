@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -58,21 +59,11 @@ public class SignInActivity extends AppCompatActivity {
     });
 
     //Background animation starter for the background of the SignInActivity.
-    ConstraintLayout constraintLayout = findViewById(R.id.layout);
-    AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
-    animationDrawable.setEnterFadeDuration(2000);
-    animationDrawable.setExitFadeDuration(4000);
-    animationDrawable.start();
-
-    final ImageButton imageButton2 = findViewById(R.id.imageButton2);
-    imageButton2.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Animation animation = new AlphaAnimation(1.0f, 0.0f);
-        animation.setDuration(1000);
-        imageButton2.startAnimation(animation);
-      }
-    });
+//    ConstraintLayout constraintLayout = findViewById(R.id.layout);
+//    AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
+//    animationDrawable.setEnterFadeDuration(2000);
+//    animationDrawable.setExitFadeDuration(4000);
+//    animationDrawable.start();
 //    // Rotation animation for a button.
 //    final ImageButton imageButton3 = findViewById(R.id.imageButton3);
 //    imageButton3.setOnClickListener(new OnClickListener() {
