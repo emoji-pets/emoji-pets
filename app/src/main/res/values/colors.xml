@@ -3,6 +3,7 @@
   <color name="colorPrimary">#3F51B5</color>
   <color name="colorPrimaryDark">#000000</color>
   <color name="colorAccent">#FF4081</color>
+  <color name="white">#FFFFFF</color>
   <color name="primary_color">#ffe850</color>
   <color name="secondary_color">#ea0404</color>
   <color name="play_color1">#00eaff</color>
@@ -14,5 +15,4 @@
   <color name="hug_color1">#dd00ff</color>
   <color name="hug_color2">#00b2ff</color>
   <color name="signout">#87f4e7</color>
-
 </resources>

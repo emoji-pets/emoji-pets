@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:card_view="http://schemas.android.com/apk/res-auto"
+  xmlns:custom="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/settings"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimaryDark"
+    card_view:title="@string/create_account"
+    card_view:titleTextColor="@color/white"
+    card_view:navigationIcon="@drawable/ic_arrow_back_white_24dp" />
+
+  <android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="355dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_gravity="center"
+    android:id="@+id/create_account_fields_card"
+    android:padding="8dp"
+    android:elevation="3dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:layout_constraintEnd_toEndOf="parent"
+    card_view:layout_constraintStart_toStartOf="parent"
+    card_view:layout_constraintTop_toBottomOf="@id/toolbar">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="12dp"
+      android:padding="12dp"
+      android:orientation="vertical">
+      <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="casual"-->
+        <!--android:text="Welcome to EmojiPets!"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textSize="24sp"/>-->
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/create_username_edittext_layout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginTop="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:fontFamily="casual"
+          card_view:hintAnimationEnabled="true"
+          card_view:hintEnabled="true">
+          <android.support.design.widget.TextInputEditText
+            android:id="@+id/create_username_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter a cool user-name "/>
+        </android.support.design.widget.TextInputLayout>
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/create_petname_edittext_layout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginTop="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:fontFamily="casual"
+          card_view:hintAnimationEnabled="true"
+          card_view:hintEnabled="true">
+          <android.support.design.widget.TextInputEditText
+            android:id="@+id/create_petname_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="What's your emoji's name?"/>
+        </android.support.design.widget.TextInputLayout>
+      </LinearLayout>
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <android.support.design.widget.TextInputLayout
+          android:id="@+id/create_emoji_edittext_layout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:layout_marginTop="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:fontFamily="casual"
+          card_view:hintAnimationEnabled="true"
+          card_view:hintEnabled="true">
+          <android.support.design.widget.TextInputEditText
+            android:id="@+id/create_emoji_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="And just one emoji"/>
+        </android.support.design.widget.TextInputLayout>
+      </LinearLayout>
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_gravity="center"
+    android:padding="8dp"
+    android:elevation="3dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:layout_constraintEnd_toEndOf="parent"
+    card_view:layout_constraintLeft_toLeftOf="parent"
+    card_view:layout_constraintRight_toRightOf="parent"
+    card_view:layout_constraintStart_toStartOf="parent"
+    card_view:layout_constraintTop_toBottomOf="@id/create_account_fields_card"
+    tools:layout_editor_absoluteY="352dp">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="2dp"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:text="Create Account"/>
+
+      <!--<com.dd.processbutton.ProcessButton-->
+      <!--android:id="@+id/create_account_button"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="48dp"-->
+      <!--android:layout_marginBottom="16dp"-->
+      <!--android:text="Create account!"-->
+      <!--android:textColor="@android:color/white"-->
+      <!--android:textSize="18sp"/>-->
+      <!--custom:pb_colorComplete="@color/green_complete"-->
+      <!--custom:pb_colorNormal="@color/blue_normal"-->
+      <!--custom:pb_colorPressed="@color/blue_pressed"-->
+      <!--custom:pb_colorProgress="@color/purple_progress"-->
+      <!--custom:pb_textComplete="@string/Success"-->
+      <!--custom:pb_textProgress="@string/Loading"/>-->
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

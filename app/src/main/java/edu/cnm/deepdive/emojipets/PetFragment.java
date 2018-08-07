@@ -1,13 +1,14 @@
 package edu.cnm.deepdive.emojipets;
 
-import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +16,11 @@ import android.view.View.OnFocusChangeListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.TextView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import edu.cnm.deepdive.emojipets.pojo.Player;
+import java.io.IOException;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,6 +29,9 @@ import com.varunest.sparkbutton.SparkButton;
 import com.varunest.sparkbutton.SparkEventListener;
 import java.util.Timer;
 import java.util.TimerTask;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class PetFragment extends Fragment {
@@ -33,28 +42,31 @@ public class PetFragment extends Fragment {
   SparkButton health;
   ImageButton petStatusButton;
 
-  TextView powerPoints;
-  TextView manaPoints;
-  TextView couragePoints;
-  TextView healthPoints;
-  TextView petStatus;
+  TextView powerPointsTextView;
+  TextView manaPointsTextView;
+  TextView couragePointsTextView;
+  TextView healthPointsTextView;
+  TextView petStatusTextView;
+  TextView petTextView;
 
-  EditText petStatusEdit;
+  TextInputEditText petStatusEdit;
 
   long powerCurrentTime;
   long manaCurrentTime;
   long courageCurrentTime;
   long healthCurrentTime;
 
-  float powerCurrentValue;
-  float manaCurrentValue;
-  float courageCurrentValue;
-  float healthCurrentValue;
+  float powerPoints;
+  float manaPoints;
+  float couragePoints;
+  float healthPoints;
 
   Timer timer;
   TimerTask timerTask;
 
   Thread t;
+
+  EmojiPetService service;
 
   public PetFragment() {
     // Required empty public constructor
@@ -76,11 +88,16 @@ public class PetFragment extends Fragment {
     return fragment;
   }
 
+
+
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
 
     View v = inflater.inflate(R.layout.fragment_pet, container, false);
+    getActivity().setTitle(EmojiPetApplication.getInstance().getPlayer().getPet_name());
+
+    setupServices();
 
     ConstraintLayout constraintLayout = v.findViewById(R.id.pet_layout);
     AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
@@ -93,34 +110,24 @@ public class PetFragment extends Fragment {
     courage = v.findViewById(R.id.cuddles);
     health = v.findViewById(R.id.food);
 
-    powerPoints = (TextView) v.findViewById(R.id.power);
-    manaPoints = (TextView) v.findViewById(R.id.mana);
-    couragePoints = (TextView) v.findViewById(R.id.courage);
-    healthPoints = (TextView) v.findViewById(R.id.health);
+    powerPointsTextView = (TextView) v.findViewById(R.id.power);
+    manaPointsTextView = (TextView) v.findViewById(R.id.mana);
+    couragePointsTextView = (TextView) v.findViewById(R.id.courage);
+    healthPointsTextView = (TextView) v.findViewById(R.id.health);
+    petTextView = (TextView) v.findViewById(R.id.pet);
+    petTextView.setText(EmojiPetApplication.getInstance().getPlayer().getPet_emoji());
 
-    powerCurrentTime = System.currentTimeMillis() + 100200;
-    manaCurrentTime = System.currentTimeMillis() + 100200;
-    courageCurrentTime = System.currentTimeMillis() + 100200;
-    healthCurrentTime = System.currentTimeMillis() + 100200;
+    setPoint("courage");
+    setPoint("health");
+    setPoint("mana");
+    setPoint("power");
 
-    powerCurrentValue = (float) powerCurrentTime;
-    manaCurrentValue = (float) manaCurrentTime;
-    courageCurrentValue = (float) courageCurrentTime;
-    healthCurrentValue = (float) healthCurrentTime;
+    // long manaPoints = manaPointsMax + (manaTime - currentTime);
 
     // TODO add pet status endpoints here
-    petStatus = v.findViewById(R.id.pet_status);
-    petStatus.setText("TEST TEXT");
     petStatusEdit = v.findViewById(R.id.pet_status_edit);
-    petStatusEdit.setVisibility(View.GONE);
+    petStatusEdit.setText(EmojiPetApplication.getInstance().getPlayer().getStatus());
     petStatusButton = v.findViewById(R.id.pet_status_set_button);
-    petStatusButton.setVisibility(View.GONE);
-
-    // TODO just fix the button from being pushed off screen
-    DisplayMetrics displayMetrics = new DisplayMetrics();
-    ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-    int width = displayMetrics.widthPixels;
-    petStatusEdit.setMaxWidth(width - 240);
 
     t = new Thread() {
 
@@ -128,27 +135,19 @@ public class PetFragment extends Fragment {
       public void run() {
         try {
           while (!isInterrupted()) {
-            Thread.sleep(100);
+            Thread.sleep(500);
             getActivity().runOnUiThread(new Runnable() {
               @Override
               public void run() {
                 // Here we update the value of points
-                powerCurrentValue = powerCurrentTime - System.currentTimeMillis();
-                powerCurrentValue = powerCurrentValue < 0 ? 0 : powerCurrentValue;
-                powerCurrentValue = powerCurrentValue > 100000 ? 100000 : powerCurrentValue;
-                powerPoints.setText(String.format("%.2f Potty", (float) powerCurrentValue / 1000));
-                manaCurrentValue = manaCurrentTime - System.currentTimeMillis();
-                manaCurrentValue = manaCurrentValue < 0 ? 0 : manaCurrentValue;
-                manaCurrentValue = manaCurrentValue > 100000 ? 100000 : manaCurrentValue;
-                manaPoints.setText(String.format("%.2f Play", (float) manaCurrentValue / 1000));
-                healthCurrentValue = healthCurrentTime - System.currentTimeMillis();
-                healthCurrentValue = healthCurrentValue < 0 ? 0 : healthCurrentValue;
-                healthCurrentValue = healthCurrentValue > 100000 ? 100000 : healthCurrentValue;
-                healthPoints.setText(String.format("%.2f Hunger", (float) healthCurrentValue / 1000));
-                courageCurrentValue = courageCurrentTime - System.currentTimeMillis();
-                courageCurrentValue = courageCurrentValue < 0 ? 0 : courageCurrentValue;
-                courageCurrentValue = courageCurrentValue > 100000 ? 100000 : courageCurrentValue;
-                couragePoints.setText(String.format("%.2f Cuddle", (float) courageCurrentValue / 1000));
+                setPoint("courage");
+                setPoint("health");
+                setPoint("mana");
+                setPoint("power");
+                powerPointsTextView.setText(String.format("%.2f power points", powerPoints));
+                manaPointsTextView.setText(String.format("%.2f mana points", manaPoints));
+                healthPointsTextView.setText(String.format("%.2f health points", healthPoints));
+                couragePointsTextView.setText(String.format("%.2f courage points", couragePoints));
               }
             });
           }
@@ -157,45 +156,66 @@ public class PetFragment extends Fragment {
       }
     };
 
-    petStatus.setOnClickListener(new OnClickListener() {
+    v.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        // TODO add pet status put endpoints here
-        String text = petStatus.getText().toString();
-        petStatusEdit.setText(text);
-        petStatus.setVisibility(View.GONE);
-        petStatusEdit.setSelectAllOnFocus(true);
-        petStatusEdit.requestFocus();
-        petStatusEdit.setVisibility(View.VISIBLE);
-        petStatusButton.setVisibility(View.VISIBLE);
-        petStatusButton.setOnClickListener(new OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            String text = petStatusEdit.getText().toString();
-            petStatusEdit.clearFocus();
-            petStatus.setText(text);
-            petStatusEdit.setVisibility(View.GONE);
-            petStatusButton.setVisibility(View.GONE);
-            petStatus.setVisibility(View.VISIBLE);
-            InputMethodManager imm = (InputMethodManager) getContext()
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-          }
-        });
+        v.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getContext()
+            .getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
       }
     });
 
-    powerPoints.setText(String.format("%.2f potty", (powerCurrentValue) / 1000));
-    manaPoints.setText(String.format("%.2f play", (manaCurrentValue) / 1000));
-    couragePoints.setText(String.format("%.2f cuddle", (courageCurrentValue)/ 1000));
-    healthPoints.setText(String.format("%.2f hunger", (healthCurrentValue)/ 1000));
+    petStatusEdit.setOnFocusChangeListener(new OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+          petStatusButton.setVisibility(View.VISIBLE);
+        } else {
+          petStatusButton.setVisibility(View.GONE);
+        }
+      }
+    });
+    petStatusButton.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (petStatusEdit.isFocused()) {
+          String text = petStatusEdit.getText().toString();
+//          petStatusEdit.setFocusable(false);
+          EmojiPetApplication.getInstance().getPlayer().setStatus(text);
+          new UpdatePlayer().execute();
+          petStatusEdit.clearFocus();
+          InputMethodManager imm = (InputMethodManager) getContext()
+              .getSystemService(Context.INPUT_METHOD_SERVICE);
+          imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        } else {
+          petStatusEdit.setFocusable(true);
+          petStatusEdit.requestFocus();
+        }
+
+//        petStatusTextView.setText(text);
+//        petStatusEdit.setVisibility(View.GONE);
+//        petStatusButton.setVisibility(View.GONE);
+//        petStatusTextView.setVisibility(View.VISIBLE);
+//        InputMethodManager imm = (InputMethodManager) getContext()
+//            .getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+      }
+    });
+
+    couragePointsTextView
+        .setText(String.format("%.2f potty", (float) couragePoints));
+    manaPointsTextView.setText(String.format("%.2f play", (float) manaPoints));
+    powerPointsTextView.setText(String.format("%.2f cuddle", (float) powerPoints));
+    healthPointsTextView.setText(String.format("%.2f hunger", (float) healthPoints));
 
     health.setEventListener(new SparkEventListener() {
       @Override
       public void onEvent(ImageView button, boolean buttonState) {
-        healthCurrentTime = System.currentTimeMillis() + 100200;
+        EmojiPetApplication.getInstance().getPlayer().setPowerPoints(System.currentTimeMillis());
+        new UpdatePlayer().execute();
       }
-
+      
       @Override
       public void onEventAnimationEnd(ImageView button, boolean buttonState) {
         health.setChecked(false);
@@ -210,7 +230,8 @@ public class PetFragment extends Fragment {
     courage.setEventListener(new SparkEventListener() {
       @Override
       public void onEvent(ImageView button, boolean buttonState) {
-        courageCurrentTime = System.currentTimeMillis() + 100200;
+        EmojiPetApplication.getInstance().getPlayer().setCouragePoints(System.currentTimeMillis());
+        new UpdatePlayer().execute();
       }
 
       @Override
@@ -223,11 +244,12 @@ public class PetFragment extends Fragment {
 
       }
     });
-
+    
     mana.setEventListener(new SparkEventListener() {
       @Override
       public void onEvent(ImageView button, boolean buttonState) {
-        manaCurrentTime = System.currentTimeMillis() + 100200;
+        EmojiPetApplication.getInstance().getPlayer().setManaPoints(System.currentTimeMillis());
+        new UpdatePlayer().execute();
       }
 
       @Override
@@ -244,7 +266,8 @@ public class PetFragment extends Fragment {
     power.setEventListener(new SparkEventListener() {
       @Override
       public void onEvent(ImageView button, boolean buttonState) {
-        powerCurrentTime = System.currentTimeMillis() + 100200;
+        EmojiPetApplication.getInstance().getPlayer().setPowerPoints(System.currentTimeMillis());
+        new UpdatePlayer().execute();
       }
 
       @Override
@@ -254,7 +277,6 @@ public class PetFragment extends Fragment {
 
       @Override
       public void onEventAnimationStart(ImageView button, boolean buttonState) {
-
       }
     });
 
@@ -263,9 +285,72 @@ public class PetFragment extends Fragment {
     return v;
   }
 
+  private void setupServices() {
+    Gson gson = new GsonBuilder()
+        .create();
+    service = new Retrofit.Builder()
+        .baseUrl(getString(R.string.base_url))
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build()
+        .create(EmojiPetService.class);
+  }
+
   @Override
   public void onDetach() {
     super.onDetach();
     t.interrupt();
+  }
+
+  private void setPoint(String point) {
+    switch (point) {
+      case "power":
+        powerPoints = (float) EmojiPetApplication.getInstance().getPlayer().getPowerPointsMax() + (float) (
+            EmojiPetApplication.getInstance().getPlayer().getPowerPoints() - System.currentTimeMillis()
+        )/10000;
+        powerPoints = powerPoints < 0 ? 0f : powerPoints;
+        break;
+      case "mana":
+        manaPoints = (float) EmojiPetApplication.getInstance().getPlayer().getManaPointsMax() + (float) (
+            EmojiPetApplication.getInstance().getPlayer().getManaPoints() - System.currentTimeMillis()
+        )/10000;
+        manaPoints = manaPoints < 0 ? 0f : manaPoints;
+        break;
+      case "courage":
+        couragePoints = (float) EmojiPetApplication.getInstance().getPlayer().getCouragePointsMax() + (float) (
+            EmojiPetApplication.getInstance().getPlayer().getCouragePoints() - System.currentTimeMillis()
+        )/10000;
+        couragePoints = couragePoints < 0 ? 0f : couragePoints;
+        break;
+      case "health":
+        healthPoints = (float) EmojiPetApplication.getInstance().getPlayer().getHealthPointsMax() + (float) (
+            EmojiPetApplication.getInstance().getPlayer().getHealthPoints() - System.currentTimeMillis()
+        )/10000;
+        healthPoints = healthPoints < 0 ? 0f : healthPoints;
+    }
+  }
+
+  private class UpdatePlayer extends AsyncTask<Void, Void, Void> {
+
+    @Override
+    protected Void doInBackground(Void... voids) {
+      try {
+        String token = EmojiPetApplication.getInstance().getSignInAccount().getIdToken();
+        Response<Player> response = service.updatePlayer(
+            getString(R.string.oauth2_header_format, token),
+            EmojiPetApplication.getInstance().getSignInAccount().getId(),
+            EmojiPetApplication.getInstance().getPlayer()).execute();
+        if (response.isSuccessful()) {
+          Player player = response.body();
+          EmojiPetApplication.getInstance().setPlayer(player);
+        }
+      } catch (IOException e) {
+
+      } finally {
+//        if (player == null) {
+//          cancel(true);
+//        }
+      }
+      return null;
+    }
   }
 }

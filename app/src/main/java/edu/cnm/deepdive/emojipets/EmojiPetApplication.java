@@ -5,6 +5,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import edu.cnm.deepdive.emojipets.pojo.Player;
+import java.util.List;
+import java.util.Map;
 
 public class EmojiPetApplication extends Application {
 
@@ -12,6 +15,10 @@ public class EmojiPetApplication extends Application {
 
   private GoogleSignInClient signInClient;
   private GoogleSignInAccount signInAccount;
+  private Player player;
+  private List<Player> allPlayers;
+  private Map<String, String> playerNameToIdMap;
+  private String friendPeak;
 
   @Override
   public void onCreate() {
@@ -45,4 +52,35 @@ public class EmojiPetApplication extends Application {
     this.signInAccount = signInAccount;
   }
 
+  public Player getPlayer() {
+    return player;
+  }
+
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
+
+  public List<Player> getAllPlayers() {
+    return allPlayers;
+  }
+
+  public void setAllPlayers(List<Player> allPlayers) {
+    this.allPlayers = allPlayers;
+  }
+
+  public Map<String, String> getPlayerNameToIdMap() {
+    return playerNameToIdMap;
+  }
+
+  public void setPlayerNameToIdMap(Map<String, String> playerNameToIdMap) {
+    this.playerNameToIdMap = playerNameToIdMap;
+  }
+
+  public String getFriendPeak() {
+    return friendPeak;
+  }
+
+  public void setFriendPeak(String friendPeak) {
+    this.friendPeak = friendPeak;
+  }
 }

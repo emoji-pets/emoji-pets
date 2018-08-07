@@ -4,60 +4,54 @@ import java.util.List;
 
 public class Player {
 
-  long id;
-  String displayName;
-  String status;
-  String emoji;
-  List<Follower> followers;
-  List<Follower> following;
-  String petName;
-  int level;
-  int xp;
-  int maxXp;
-  long timeStamp;
-  int couragePoints;
-  int couragePointsMax;
-  int manaPoints;
-  int manaPointsMax;
-  int powerPoints;
-  int powerPointsMax;
-  int healthPoints;
-  int healthPointsMax;
-  String href;
+  private long id;
+  private String oauthId;
+  private String display_name;
+  private String status;
+  private String pet_name;
+  private String pet_emoji;
+  private List<Player> followers;
+  private List<Player> following;
+  private int level;
+  private int xp;
+  private int maxXp;
+  private long couragePoints;
+  private int couragePointsMax;
+  private long manaPoints;
+  private int manaPointsMax;
+  private long powerPoints;
+  private int powerPointsMax;
+  private long healthPoints;
+  private int healthPointsMax;
+  private String wall;
+//  String href;
 
-  public Player(long id, String displayName, String status, String emoji,
-      List<Follower> followers, List<Follower> following, String petName, int level, int xp,
-      int maxXp, long timeStamp, int couragePoints, int couragePointsMax, int manaPoints,
-      int manaPointsMax, int powerPoints, int powerPointsMax, int healthPoints, int healthPointsMax,
-      String href) {
+  public Player() {
+
+  }
+
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
     this.id = id;
-    this.displayName = displayName;
-    this.status = status;
-    this.emoji = emoji;
-    this.followers = followers;
-    this.following = following;
-    this.petName = petName;
-    this.level = level;
-    this.xp = xp;
-    this.maxXp = maxXp;
-    this.timeStamp = timeStamp;
-    this.couragePoints = couragePoints;
-    this.couragePointsMax = couragePointsMax;
-    this.manaPoints = manaPoints;
-    this.manaPointsMax = manaPointsMax;
-    this.powerPoints = powerPoints;
-    this.powerPointsMax = powerPointsMax;
-    this.healthPoints = healthPoints;
-    this.healthPointsMax = healthPointsMax;
-    this.href = href;
   }
 
-  public String getDisplayName() {
-    return displayName;
+  public String getOauthId() {
+    return oauthId;
   }
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  public void setOauthId(String oauthId) {
+    this.oauthId = oauthId;
+  }
+
+  public String getDisplay_name() {
+    return display_name;
+  }
+
+  public void setDisplay_name(String display_name) {
+    this.display_name = display_name;
   }
 
   public String getStatus() {
@@ -68,36 +62,36 @@ public class Player {
     this.status = status;
   }
 
-  public String getEmoji() {
-    return emoji;
+  public String getPet_name() {
+    return pet_name;
   }
 
-  public void setEmoji(String emoji) {
-    this.emoji = emoji;
+  public void setPet_name(String pet_name) {
+    this.pet_name = pet_name;
   }
 
-  public List<Follower> getFollowers() {
+  public String getPet_emoji() {
+    return pet_emoji;
+  }
+
+  public void setPet_emoji(String pet_emoji) {
+    this.pet_emoji = pet_emoji;
+  }
+
+  public List<Player> getFollowers() {
     return followers;
   }
 
-  public void setFollowers(List<Follower> followers) {
+  public void setFollowers(List<Player> followers) {
     this.followers = followers;
   }
 
-  public List<Follower> getFollowing() {
+  public List<Player> getFollowing() {
     return following;
   }
 
-  public void setFollowing(List<Follower> following) {
+  public void setFollowing(List<Player> following) {
     this.following = following;
-  }
-
-  public String getPetName() {
-    return petName;
-  }
-
-  public void setPetName(String petName) {
-    this.petName = petName;
   }
 
   public int getLevel() {
@@ -124,19 +118,11 @@ public class Player {
     this.maxXp = maxXp;
   }
 
-  public long getTimeStamp() {
-    return timeStamp;
-  }
-
-  public void setTimeStamp(long timeStamp) {
-    this.timeStamp = timeStamp;
-  }
-
-  public int getCouragePoints() {
+  public long getCouragePoints() {
     return couragePoints;
   }
 
-  public void setCouragePoints(int couragePoints) {
+  public void setCouragePoints(long couragePoints) {
     this.couragePoints = couragePoints;
   }
 
@@ -148,11 +134,11 @@ public class Player {
     this.couragePointsMax = couragePointsMax;
   }
 
-  public int getManaPoints() {
+  public long getManaPoints() {
     return manaPoints;
   }
 
-  public void setManaPoints(int manaPoints) {
+  public void setManaPoints(long manaPoints) {
     this.manaPoints = manaPoints;
   }
 
@@ -164,11 +150,11 @@ public class Player {
     this.manaPointsMax = manaPointsMax;
   }
 
-  public int getPowerPoints() {
+  public long getPowerPoints() {
     return powerPoints;
   }
 
-  public void setPowerPoints(int powerPoints) {
+  public void setPowerPoints(long powerPoints) {
     this.powerPoints = powerPoints;
   }
 
@@ -180,11 +166,11 @@ public class Player {
     this.powerPointsMax = powerPointsMax;
   }
 
-  public int getHealthPoints() {
+  public long getHealthPoints() {
     return healthPoints;
   }
 
-  public void setHealthPoints(int healthPoints) {
+  public void setHealthPoints(long healthPoints) {
     this.healthPoints = healthPoints;
   }
 
@@ -196,11 +182,21 @@ public class Player {
     this.healthPointsMax = healthPointsMax;
   }
 
-  public String getHref() {
-    return href;
+  public String getWall() {
+    return wall;
   }
 
-  public void setHref(String href) {
-    this.href = href;
+  public void setWall(String wall) {
+    this.wall = wall;
   }
+
+  //
+//  public String getHref() {
+//    return href;
+//  }
+//
+//  public void setHref(String href) {
+//    this.href = href;
+//  }
+
 }

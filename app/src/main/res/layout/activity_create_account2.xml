@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/settings"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:padding="8dp"
+    android:elevation="3dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardUseCompatPadding="true">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="12dp"
+      android:padding="12dp"
+      android:orientation="vertical">
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Welcome to EmojiPets!"
+        android:textAlignment="center"
+        android:textSize="24sp"/>
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Enter a username:"/>
+      <!--TODO get username as string resource for hint-->
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+          android:id="@+id/create_username_edittext"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="casual"
+          android:hint="Username..."/>
+        <Button
+          android:id="@+id/create_username_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="ok 👍!"/>
+        <TextView
+          android:id="@+id/create_username_textview"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:clickable="true"
+          android:focusable="true"
+          android:fontFamily="casual"
+          android:visibility="gone"/>
+      </LinearLayout>
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Enter a name for your emoji:"/>
+      <!--TODO get username as string resource for hint-->
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+          android:id="@+id/create_petname_edittext"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="casual"
+          android:hint="Your emoji's name..."/>
+        <Button
+          android:id="@+id/create_petname_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="ok 👍!"/>
+        <TextView
+          android:id="@+id/create_petname_textview"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:clickable="true"
+          android:focusable="true"
+          android:fontFamily="casual"
+          android:visibility="gone"/>
+      </LinearLayout>
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Enter one emoji:"/>
+      <!--TODO get username as string resource for hint-->
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+          android:id="@+id/create_emoji_edittext"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:fontFamily="casual"
+          android:hint="Input your emoji..."/>
+        <Button
+          android:id="@+id/create_emoji_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="ok 👍!"/>
+        <TextView
+          android:id="@+id/create_emoji_textview"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:clickable="true"
+          android:focusable="true"
+          android:fontFamily="casual"
+          android:visibility="gone"/>
+      </LinearLayout>
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+  <android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_gravity="center"
+    android:padding="8dp"
+    android:elevation="3dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:layout_constraintBottom_toBottomOf="parent">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+      <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Create Account"/>
+
+      <!--<com.dd.processbutton.ProcessButton-->
+      <!--android:id="@+id/create_account_button"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="48dp"-->
+      <!--android:layout_marginBottom="16dp"-->
+      <!--android:text="Create account!"-->
+      <!--android:textColor="@android:color/white"-->
+      <!--android:textSize="18sp"/>-->
+      <!--custom:pb_colorComplete="@color/green_complete"-->
+      <!--custom:pb_colorNormal="@color/blue_normal"-->
+      <!--custom:pb_colorPressed="@color/blue_pressed"-->
+      <!--custom:pb_colorProgress="@color/purple_progress"-->
+      <!--custom:pb_textComplete="@string/Success"-->
+      <!--custom:pb_textProgress="@string/Loading"/>-->
+    </LinearLayout>
+  </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

@@ -4,8 +4,12 @@
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <item
-    android:id="@+id/action_logout"
+    android:id="@+id/sign_out"
+    android:orderInCategory="100"
+    android:title="@string/sign_out"
+    app:showAsAction="never"/>
+<!--     android:id="@+id/action_logout"
     android:title="@string/action_logout"
-    app:showAsAction="never" />
+    app:showAsAction="never" /> -->
 
 </menu>

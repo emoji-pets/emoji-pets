@@ -1,17 +1,22 @@
 package edu.cnm.deepdive.emojipets;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import edu.cnm.deepdive.emojipets.pojo.Follower;
+import edu.cnm.deepdive.emojipets.pojo.Player;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -20,8 +25,10 @@ import java.util.List;
 public class FollowersFragment extends Fragment {
 
   ListView followersListView;
-  List<Follower> followers;
+  List<Player> followers = new ArrayList<>();
+  private Map<String,String> mapOfNamesToIds = new HashMap<>();
   FollowAdapter followersAdapter;
+  EmojiPetService service;
 
 
   public FollowersFragment() {
@@ -35,20 +42,32 @@ public class FollowersFragment extends Fragment {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.followers, container, false);
     getActivity().setTitle("Followers");
-    // Query all folling
-    List<Follower> followers = new ArrayList<>();
-    followers.add(new Follower("Blake", "lil boss", "\uD83D\uDE4A",
-        "Just chillin at the lake RN crystal AF"));
-    followers.add(new Follower("Karol", "Baby", "\uD83D\uDECD", "I found my phone!"));
-    followers.add(new Follower("Husain", "Elvis", "\uD83C\uDF54",
-        "Hanging with friends, see you all next week"));
+    // Get followers
+    followers = EmojiPetApplication.getInstance().getPlayer().getFollowers();
 
+    // Add names to ids in map
+    for (Player follower : followers) {
+      if (!mapOfNamesToIds.containsKey(follower.getDisplay_name())) {
+        mapOfNamesToIds.put(follower.getDisplay_name(), follower.getOauthId());
+      }
+    }
     // create adapters
     followersAdapter = new FollowAdapter(followers);
     // Set List Views for followers and followers
     followersListView = (ListView) view.findViewById(R.id.followers_list_view);
     // Set adapters
     followersListView.setAdapter(followersAdapter);
+
+    followersListView.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        TextView displayName = view.findViewById(R.id.player_name_for_dropdown);
+        String friendId = mapOfNamesToIds.get(displayName.getText().toString());
+        Intent intent = new Intent(getActivity(), FriendActivity.class);
+        intent.putExtra("id", friendId);
+        startActivity(intent);
+      }
+    });
 
     // Notify both adapters data set changed
     updateLists();
@@ -63,9 +82,9 @@ public class FollowersFragment extends Fragment {
 
   private class FollowAdapter extends BaseAdapter {
 
-    List<Follower> followList;
+    List<Player> followList;
 
-    public FollowAdapter(List<Follower> followList) {
+    public FollowAdapter(List<Player> followList) {
       this.followList = followList;
     }
 
@@ -86,16 +105,18 @@ public class FollowersFragment extends Fragment {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-      convertView = getLayoutInflater().inflate(R.layout.friends_list, null);
-      TextView emojiCharacter = convertView.findViewById(R.id.emoji_character);
-      TextView playerName = convertView.findViewById(R.id.player_name);
-      TextView emojiName = convertView.findViewById(R.id.emoji_name);
-      TextView emojiStatus = convertView.findViewById(R.id.emoji_status);
+      if (convertView == null) {
+        convertView = getLayoutInflater().inflate(R.layout.friends_dropdown_item, null);
+      }
+      TextView friendsName = convertView.findViewById(R.id.player_name_for_dropdown);
+      TextView friendsPetName = convertView.findViewById(R.id.drop_down_pet_name);
+      TextView friendsEmoji = convertView.findViewById(R.id.emoji_character_for_dropdown);
+      TextView friendsStatus = convertView.findViewById(R.id.drop_down_pet_status);
 
-      emojiCharacter.setText(followList.get(position).getPet_emoji());
-      playerName.setText(followList.get(position).getName());
-      emojiName.setText(followList.get(position).getPet_name());
-      emojiStatus.setText(followList.get(position).getStatus());
+      friendsName.setText(followList.get(position).getDisplay_name());
+      friendsEmoji.setText(followList.get(position).getPet_emoji());
+      friendsPetName.setText("Pet name: " + followList.get(position).getPet_name());
+      friendsStatus.setText("Pet status: " + followList.get(position).getStatus());
 
       return convertView;
     }

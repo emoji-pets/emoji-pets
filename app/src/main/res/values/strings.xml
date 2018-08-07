@@ -4,7 +4,7 @@
   <string name="navigation_drawer_open">Open navigation drawer</string>
   <string name="navigation_drawer_close">Close navigation drawer</string>
 
-  <string name="action_settings">Settings</string>
+  <string name="sign_out">Sign Out</string>
   <string name="my_pet">My Pet</string>
   <string name="action_signin">Sign In</string>
   <string name="title_activity_login">Sign in</string>
@@ -26,10 +26,23 @@
   <string name="web_client_id">156574812337-gdgvafho71lln8ab1rfge19gedh5n93q.apps.googleusercontent.com</string>
   <string name="request_passphrase">Request Passphrase</string>
   <string name="action_logout">Sign out</string>
-  <string name="base_url">http://10.0.2.2:18081/rest/</string> <!-- Access localhost from emulator. -->
+  <string name="base_url">http://10.0.2.2:8080/emoji-pets/</string> <!-- Access localhost from emulator. -->
   <string name="oauth2_header_format">Bearer %1$s</string>
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
   <string name="search_for_a_friend">Search for a friend...</string>
+  <string name="create_account">Create account</string>
+  <string name="title_activity_create_account_basic_test">CreateAccountBasicActivityTest</string>
+  <string name="title_activity_friend">FriendActivity</string>
+  <string name="title_pet">Pet</string>
+  <string name="title_wall">Wall</string>
+  <string name="title_notifications">Notifications</string>
+  <string name="wall_hint">Mark it up!</string>
+  <string name="wall_button">Change wall</string>
+  <string name="wall_cancel">cancel</string>
+  <string name="my_wall">My Wall</string>
+  <string name="settings">Settings</string>
+  <string name="followers">Followers</string>
+  <string name="following">Following</string>
 </resources>

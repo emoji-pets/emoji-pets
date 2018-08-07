@@ -9,10 +9,10 @@
   <uses-permission android:name="android.permission.INTERNET"/>
 
   <application
-    android:name="edu.cnm.deepdive.emojipets.EmojiPetApplication"
     android:allowBackup="true"
     android:icon="@mipmap/ic_launcher"
     android:label="@string/app_name"
+    android:name=".EmojiPetApplication"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
@@ -21,12 +21,28 @@
       android:name=".MainActivity"
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
+      android:windowSoftInputMode="adjustResize"
       android:label="@string/title_activity_login"
-      android:name="edu.cnm.deepdive.emojipets.SignInActivity">
+      android:name=".SignInActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
+
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+    </activity>
+    <activity
+      android:windowSoftInputMode="adjustResize"
+      android:label="@string/create_account"
+      android:name=".CreateAccountActivity"
+      android:parentActivityName=".SignInActivity">
+
+      <!-- android:theme="@style/ThemeOverlay.AppCompat.ActionBar" -->
+    </activity>
+    <activity
+      android:windowSoftInputMode="adjustResize"
+      android:label="@string/title_activity_friend"
+      android:name=".FriendActivity"
+      android:parentActivityName=".MainActivity">
     </activity>
   </application>
 
