@@ -51,7 +51,6 @@ public class FollowersFragment extends Fragment {
         mapOfNamesToIds.put(follower.getDisplay_name(), follower.getOauthId());
       }
     }
-
     // create adapters
     followersAdapter = new FollowAdapter(followers);
     // Set List Views for followers and followers
@@ -122,5 +121,4 @@ public class FollowersFragment extends Fragment {
       return convertView;
     }
   }
-
 }

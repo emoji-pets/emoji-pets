@@ -4,9 +4,9 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/layout"
-  android:background="@drawable/gradient_list"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:background="@drawable/gradient_list"
   tools:context="edu.cnm.deepdive.emojipets.SignInActivity">
 
   <TextView
@@ -19,13 +19,13 @@
     app:layout_constraintTop_toTopOf="@id/layout"/>
 
   <ImageView
-    android:id="@+id/imageView"
-    android:layout_width="259dp"
-    android:layout_height="123dp"
+    android:id="@+id/emoji_pets_title"
+    android:layout_width="424dp"
+    android:layout_height="178dp"
     android:layout_marginTop="68dp"
     android:layout_marginBottom="8dp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintHorizontal_bias="0.504"
+    app:layout_constraintHorizontal_bias="0.523"
     app:layout_constraintLeft_toLeftOf="@id/layout"
     app:layout_constraintRight_toRightOf="@id/layout"
     app:layout_constraintTop_toTopOf="@id/layout"
@@ -38,75 +38,58 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"/>
 
-  <!--<ImageButton-->
-  <!--android:id="@+id/imageButton"-->
-  <!--android:layout_width="wrap_content"-->
-  <!--android:layout_height="wrap_content"-->
-  <!--android:background="@drawable/button"-->
-  <!--app:layout_constraintHorizontal_bias="0.501"-->
-  <!--app:layout_constraintLeft_toLeftOf="@id/layout"-->
-  <!--app:layout_constraintRight_toRightOf="@id/layout"-->
-  <!--app:layout_constraintBottom_toTopOf="@+id/imageButton2"-->
-  <!--app:layout_constraintTop_toBottomOf="@id/imageView"-->
-  <!--app:srcCompat="@drawable/new_game_button"-->
-  <!--tools:layout_editor_absoluteY="170dp"/>-->
-
-  <com.google.android.gms.common.SignInButton
-    android:id="@+id/imageButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+  <Button
+    android:id="@+id/imageButton1"
+    android:layout_width="175dp"
+    android:layout_height="150dp"
     android:background="@drawable/button"
-    app:layout_constraintBottom_toTopOf="@+id/imageButton2"
-    app:layout_constraintLeft_toLeftOf="@id/layout"
-    app:layout_constraintRight_toRightOf="@id/layout"
-    app:layout_constraintTop_toBottomOf="@id/imageView"
-    app:srcCompat="@drawable/new_game_button"
-    />
-
-  <ImageButton
-    android:id="@+id/imageButton2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@null"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintHorizontal_bias="0.501"
     app:layout_constraintLeft_toLeftOf="@id/layout"
     app:layout_constraintRight_toRightOf="@id/layout"
-    app:layout_constraintTop_toBottomOf="@id/imageButton"
-    app:srcCompat="@drawable/saved_button"/>
-
+    app:layout_constraintTop_toBottomOf="@id/emoji_pets_title"
+    app:layout_constraintVertical_bias="0.398"
+    app:srcCompat="@drawable/new_game_button"/>
   <TextView
     android:id="@+id/textView2"
-    android:textStyle="bold"
+    android:textStyle="bold|italic"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:fontFamily="serif"
-    android:text="Sign In"
-    android:textAlignment="center"
-    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-    android:textSize="18sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/imageButton"
-    app:layout_constraintVertical_bias="0.068"/>
-
-  <TextView
-    android:id="@+id/textView5"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:fontFamily="serif"
-    android:text="Create Account"
-    android:textAlignment="center"
+    android:text="Sign In "
     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-    android:textSize="18sp"
+    android:textSize="20sp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintHorizontal_bias="0.502"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="@+id/imageButton2"
-    app:layout_constraintVertical_bias="0.736"/>
+    app:layout_constraintTop_toBottomOf="@+id/imageButton1"
+    app:layout_constraintVertical_bias="0.0"/>
+
+  <!--<ImageButton-->
+    <!--android:id="@+id/imageButton2"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@null"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.501"-->
+    <!--app:layout_constraintLeft_toLeftOf="@id/layout"-->
+    <!--app:layout_constraintRight_toRightOf="@id/layout"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/imageButton1"-->
+    <!--app:srcCompat="@drawable/saved_button"/>-->
+
+  <!--<Button-->
+    <!--android:id="@+id/imageButton"-->
+    <!--android:layout_width="159dp"-->
+    <!--android:layout_height="98dp"-->
+    <!--android:background="@drawable/button"-->
+    <!--app:layout_constraintBottom_toTopOf="@+id/imageButton2"-->
+    <!--app:layout_constraintLeft_toLeftOf="@id/layout"-->
+    <!--app:layout_constraintRight_toRightOf="@id/layout"-->
+    <!--app:layout_constraintTop_toBottomOf="@id/emoji_pets_title"-->
+    <!--app:srcCompat="@drawable/new_game_button"-->
+    <!--/>-->
 
 </android.support.constraint.ConstraintLayout>
+
+<!--Commented out button might be of use later-->

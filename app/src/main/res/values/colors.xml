@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="colorPrimary">#3F51B5</color>
-  <color name="colorPrimaryDark">#303F9F</color>
+  <color name="colorPrimaryDark">#000000</color>
   <color name="colorAccent">#FF4081</color>
   <color name="white">#FFFFFF</color>
+  <color name="primary_color">#ffe850</color>
+  <color name="secondary_color">#ea0404</color>
+  <color name="play_color1">#00eaff</color>
+  <color name="play_color2">#ff5ee4</color>
+  <color name="food_color1">#ff0000</color>
+  <color name="food_color2">#ff7300</color>
+  <color name="potty_color1">#8cfda1</color>
+  <color name="potty_color2">#ffea00</color>
+  <color name="hug_color1">#dd00ff</color>
+  <color name="hug_color2">#00b2ff</color>
+  <color name="signout">#87f4e7</color>
 </resources>

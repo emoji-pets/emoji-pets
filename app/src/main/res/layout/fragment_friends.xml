@@ -26,9 +26,6 @@
         <include layout="@layout/following"/>
         <include layout="@layout/followers"/>
       </FrameLayout>
-
-
-
     </LinearLayout>
   </TabHost>
 

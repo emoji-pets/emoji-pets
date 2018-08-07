@@ -4,6 +4,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +21,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.cnm.deepdive.emojipets.pojo.Player;
 import java.io.IOException;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.varunest.sparkbutton.SparkButton;
+import com.varunest.sparkbutton.SparkEventListener;
 import java.util.Timer;
 import java.util.TimerTask;
 import retrofit2.Response;
@@ -26,11 +36,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PetFragment extends Fragment {
 
-  Button power;
-  Button mana;
-  Button courage;
-  Button health;
-  Button petStatusButton;
+  SparkButton power;
+  SparkButton mana;
+  SparkButton courage;
+  SparkButton health;
+  ImageButton petStatusButton;
 
   TextView powerPointsTextView;
   TextView manaPointsTextView;
@@ -89,10 +99,16 @@ public class PetFragment extends Fragment {
 
     setupServices();
 
-    power = v.findViewById(R.id.boost_power);
-    mana = v.findViewById(R.id.boost_mana);
-    courage = v.findViewById(R.id.boost_courage);
-    health = v.findViewById(R.id.boost_health);
+    ConstraintLayout constraintLayout = v.findViewById(R.id.pet_layout);
+    AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
+    animationDrawable.setEnterFadeDuration(2000);
+    animationDrawable.setExitFadeDuration(4000);
+    animationDrawable.start();
+
+    power = v.findViewById(R.id.potty);
+    mana = v.findViewById(R.id.play);
+    courage = v.findViewById(R.id.cuddles);
+    health = v.findViewById(R.id.food);
 
     powerPointsTextView = (TextView) v.findViewById(R.id.power);
     manaPointsTextView = (TextView) v.findViewById(R.id.mana);
@@ -160,7 +176,6 @@ public class PetFragment extends Fragment {
         }
       }
     });
-
     petStatusButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -189,40 +204,79 @@ public class PetFragment extends Fragment {
     });
 
     couragePointsTextView
-        .setText(String.format("%.2f courage points", (float) couragePoints));
-    manaPointsTextView.setText(String.format("%.2f courage points", (float) manaPoints));
-    powerPointsTextView.setText(String.format("%.2f courage points", (float) powerPoints));
-    healthPointsTextView.setText(String.format("%.2f courage points", (float) healthPoints));
+        .setText(String.format("%.2f potty", (float) couragePoints));
+    manaPointsTextView.setText(String.format("%.2f play", (float) manaPoints));
+    powerPointsTextView.setText(String.format("%.2f cuddle", (float) powerPoints));
+    healthPointsTextView.setText(String.format("%.2f hunger", (float) healthPoints));
 
-    power.setOnClickListener(new OnClickListener() {
+    health.setEventListener(new SparkEventListener() {
       @Override
-      public void onClick(View v) {
+      public void onEvent(ImageView button, boolean buttonState) {
         EmojiPetApplication.getInstance().getPlayer().setPowerPoints(System.currentTimeMillis());
         new UpdatePlayer().execute();
       }
+      
+      @Override
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        health.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
+      }
     });
 
-    mana.setOnClickListener(new OnClickListener() {
+    courage.setEventListener(new SparkEventListener() {
       @Override
-      public void onClick(View v) {
+      public void onEvent(ImageView button, boolean buttonState) {
+        EmojiPetApplication.getInstance().getPlayer().setCouragePoints(System.currentTimeMillis());
+        new UpdatePlayer().execute();
+      }
+
+      @Override
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        courage.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
+      }
+    });
+    
+    mana.setEventListener(new SparkEventListener() {
+      @Override
+      public void onEvent(ImageView button, boolean buttonState) {
         EmojiPetApplication.getInstance().getPlayer().setManaPoints(System.currentTimeMillis());
         new UpdatePlayer().execute();
       }
-    });
 
-    health.setOnClickListener(new OnClickListener() {
       @Override
-      public void onClick(View v) {
-        EmojiPetApplication.getInstance().getPlayer().setHealthPoints(System.currentTimeMillis());
-        new UpdatePlayer().execute();
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        mana.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
+
       }
     });
 
-    courage.setOnClickListener(new OnClickListener() {
+    power.setEventListener(new SparkEventListener() {
       @Override
-      public void onClick(View v) {
-        EmojiPetApplication.getInstance().getPlayer().setCouragePoints(System.currentTimeMillis());
+      public void onEvent(ImageView button, boolean buttonState) {
+        EmojiPetApplication.getInstance().getPlayer().setPowerPoints(System.currentTimeMillis());
         new UpdatePlayer().execute();
+      }
+
+      @Override
+      public void onEventAnimationEnd(ImageView button, boolean buttonState) {
+        power.setChecked(false);
+      }
+
+      @Override
+      public void onEventAnimationStart(ImageView button, boolean buttonState) {
       }
     });
 
@@ -299,5 +353,4 @@ public class PetFragment extends Fragment {
       return null;
     }
   }
-
 }

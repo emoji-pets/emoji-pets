@@ -1,14 +1,17 @@
 package edu.cnm.deepdive.emojipets;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,11 +29,13 @@ import java.util.List;
 import java.util.Map;
 import retrofit2.Response;
 
+/**
+ * This is the MainActivity class and it hosts to the navigation drawer.
+ */
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-  private Button gameMenu;
-  private Button petButton;
+  ActionBar actionBar;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,9 @@ public class MainActivity extends AppCompatActivity
     setContentView(R.layout.activity_main);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
+    actionBar = getSupportActionBar();
+    actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFF67C7")));
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -53,6 +61,12 @@ public class MainActivity extends AppCompatActivity
     manager.beginTransaction()
         .replace(R.id.main_activity, petFragment)
         .commit();
+
+    ObjectAnimator animation = ObjectAnimator
+        .ofFloat(findViewById(R.id.emoji_pets_title), "translationX", 100f);
+    animation.setDuration(1000);
+    animation.start();
+
   }
 
   @Override
@@ -67,7 +81,6 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.main, menu);
     return true;
   }
@@ -96,8 +109,16 @@ public class MainActivity extends AppCompatActivity
     if (id == R.id.sign_out) {
       signOut();
     }
+  }
 
-    return super.onOptionsItemSelected(item);
+  private void signOut() {
+    EmojiPetApplication application = EmojiPetApplication.getInstance().getInstance();
+    application.getSignInClient().signOut().addOnCompleteListener(this, (task) -> {
+      application.setSignInAccount(null);
+      Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+      startActivity(intent);
+    });
   }
 
   @SuppressWarnings("StatementWithEmptyBody")

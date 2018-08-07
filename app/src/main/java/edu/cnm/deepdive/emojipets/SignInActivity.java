@@ -31,6 +31,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * This is the SignInActivity Class. It contains a lot of button animations. It hosts to the
+ * logging in activities.
+ */
 public class SignInActivity extends AppCompatActivity {
 
   private static final int REQUEST_CODE = 1000;
@@ -43,7 +47,8 @@ public class SignInActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_sign_in);
 
-    SignInButton signIn = findViewById(R.id.imageButton);
+    // Button for logging in to google to play the app.
+    Button signIn = findViewById(R.id.imageButton1);
     signIn.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -52,6 +57,7 @@ public class SignInActivity extends AppCompatActivity {
       }
     });
 
+    //Background animation starter for the background of the SignInActivity.
     ConstraintLayout constraintLayout = findViewById(R.id.layout);
     AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
     animationDrawable.setEnterFadeDuration(2000);
@@ -67,6 +73,25 @@ public class SignInActivity extends AppCompatActivity {
         imageButton2.startAnimation(animation);
       }
     });
+//    // Rotation animation for a button.
+//    final ImageButton imageButton3 = findViewById(R.id.imageButton3);
+//    imageButton3.setOnClickListener(new OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        imageButton3.animate().rotation(imageButton3.getRotation()-360).start();
+//      }
+//    });
+
+//    // Fade animation for a button.
+//    final ImageButton imageButton2 = findViewById(R.id.imageButton2);
+//    imageButton2.setOnClickListener(new OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        Animation animation = new AlphaAnimation(1.0f, 0.0f);
+//        animation.setDuration(1000);
+//        imageButton2.startAnimation(animation);
+//      }
+//    });
   }
 
   @Override
@@ -139,5 +164,13 @@ public class SignInActivity extends AppCompatActivity {
 
   }
 
+  //  // Tried having sliding transition animation when switching to another activity but didn't work (no effect) LR
+//  public void openNewGameActivity(View view) {
+//    Intent intent = new Intent(this, NewGameActivity.class);
+//    startActivity(intent);
+//    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//  }
 }
+
+//Commented out animations might be of use later.
 

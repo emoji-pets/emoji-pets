@@ -324,5 +324,4 @@ public class FollowingFragment extends Fragment {
       updateLists();
     }
   }
-
 }

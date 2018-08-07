@@ -5,7 +5,9 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:focusableInTouchMode="true">
+  android:focusableInTouchMode="true"
+  android:id="@+id/pet_layout"
+  android:background="@drawable/gradient_lists">
 
   <TextView
     android:id="@+id/courage"
@@ -16,7 +18,7 @@
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toEndOf="@+id/mana"
     app:layout_constraintTop_toBottomOf="@+id/health"
-    tools:text="courage"/>
+    tools:text="Cuddle"/>
 
   <TextView
     android:id="@+id/mana"
@@ -27,7 +29,7 @@
     app:layout_constraintEnd_toStartOf="@+id/courage"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/power"
-    tools:text="mana"/>
+    tools:text="Play"/>
 
   <TextView
     android:id="@+id/health"
@@ -40,7 +42,7 @@
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="health"/>
+    tools:text="Hunger"/>
 
   <TextView
     android:id="@+id/power"
@@ -52,7 +54,7 @@
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toEndOf="@+id/health"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="power"/>
+    tools:text="Potty"/>
 
   <!--<TextView-->
     <!--android:id="@+id/pet_status"-->
@@ -68,6 +70,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     app:layout_constraintGuide_percent=".75"/>
+<!--     android:layout_marginTop="18dp"
+    android:layout_marginLeft="16dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/mana"/> -->
 
   <android.support.design.widget.TextInputLayout
     android:id="@+id/pet_status_edit_layout"
@@ -77,6 +83,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="12dp"
     android:layout_marginTop="18dp"
+    android:layout_marginLeft="16dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/mana"
     app:layout_constraintRight_toRightOf="@id/right_guide">
@@ -99,7 +106,7 @@
     <!--app:layout_constraintRight_toLeftOf="@id/pet_status_edit"-->
     <!--app:layout_constraintTop_toBottomOf="@+id/mana"/>-->
 
-  <Button
+  <ImageButton
     android:id="@+id/pet_status_set_button"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -109,51 +116,151 @@
     android:visibility="gone"
     app:layout_constraintEnd_toEndOf="@+id/pet_status_edit_layout"
     app:layout_constraintTop_toBottomOf="@+id/pet_status_edit_layout"/>
+    android:background="@null"
+    app:srcCompat="@drawable/post_button"/>
 
-  <Button
-    android:id="@+id/boost_power"
+  <TextView
+    android:id="@+id/character"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    android:layout_marginEnd="8dp"
-    android:text="Power Boost"
-    app:layout_constraintBottom_toTopOf="@+id/boost_courage"
+    android:text="🍜"
+    android:textSize="128sp"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/boost_health"/>
-  <Button
-    android:id="@+id/boost_mana"
+    app:layout_constraintHorizontal_bias="0.501"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/mana"
+    app:layout_constraintVertical_bias="0.379"/>
+
+  <com.varunest.sparkbutton.SparkButton
+    android:id="@+id/food"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_centerHorizontal="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.674"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.829"
+    app:sparkbutton_activeImage="@drawable/food_emoji_active"
+    app:sparkbutton_iconSize="40dp"
+    app:sparkbutton_inActiveImage="@drawable/food_emoji_inactive"
+    app:sparkbutton_primaryColor="@color/food_color1"
+    app:sparkbutton_secondaryColor="@color/food_color2"/>
+
+  <com.varunest.sparkbutton.SparkButton
+    android:id="@+id/cuddles"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_centerHorizontal="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.052"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.829"
+    app:sparkbutton_activeImage="@drawable/cuddle_active"
+    app:sparkbutton_iconSize="40dp"
+    app:sparkbutton_inActiveImage="@drawable/cuddle_inactive"
+    app:sparkbutton_primaryColor="@color/hug_color1"
+    app:sparkbutton_secondaryColor="@color/hug_color2"/>
+
+  <com.varunest.sparkbutton.SparkButton
+    android:id="@+id/play"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_centerHorizontal="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.328"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.829"
+    app:sparkbutton_activeImage="@drawable/play_active"
+    app:sparkbutton_iconSize="40dp"
+    app:sparkbutton_inActiveImage="@drawable/play_inactive"
+    app:sparkbutton_primaryColor="@color/play_color1"
+    app:sparkbutton_secondaryColor="@color/play_color2"/>
+
+  <com.varunest.sparkbutton.SparkButton
+    android:id="@+id/potty"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_centerHorizontal="true"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.947"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.829"
+    app:sparkbutton_activeImage="@drawable/poop_active"
+    app:sparkbutton_iconSize="40dp"
+    app:sparkbutton_inActiveImage="@drawable/poop_inactive"
+    app:sparkbutton_primaryColor="@color/potty_color1"
+    app:sparkbutton_secondaryColor="@color/potty_color2"/>
+  <TextView
+    android:id="@+id/textView3"
+    android:textStyle="bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:text="Mana Boost"
+    android:fontFamily="serif"
+    android:text="Cuddle"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/boost_courage"
-    app:layout_constraintStart_toStartOf="parent"/>
-  <Button
-    android:id="@+id/boost_health"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.069"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/cuddles"
+    app:layout_constraintVertical_bias="0.0"/>
+  <TextView
+    android:id="@+id/textView5"
+    android:textStyle="bold"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="32dp"
+    android:layout_marginEnd="8dp"
+    android:fontFamily="serif"
+    android:text="Play"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.051"
+    app:layout_constraintStart_toEndOf="@+id/textView3"
+    app:layout_constraintTop_toBottomOf="@+id/play"
+    app:layout_constraintVertical_bias="0.0"/>
+  <TextView
+    android:id="@+id/textView6"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    android:text="Health Boost"
-    app:layout_constraintBottom_toTopOf="@+id/boost_mana"
-    app:layout_constraintEnd_toStartOf="@+id/boost_power"
-    app:layout_constraintStart_toStartOf="parent"/>
-  <Button
-    android:id="@+id/boost_courage"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginEnd="8dp"
-    android:text="Courage Boost"
+    android:fontFamily="serif"
+    android:text="Hungry"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/boost_mana"/>
+    app:layout_constraintHorizontal_bias="0.35"
+    app:layout_constraintStart_toEndOf="@+id/textView5"
+    app:layout_constraintTop_toBottomOf="@+id/food"
+    app:layout_constraintVertical_bias="0.0"/>
   <TextView
     android:id="@+id/pet"
     android:layout_width="wrap_content"
@@ -165,5 +272,25 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/mana"/>
+  
+    <TextView
+    android:id="@+id/textView7"
+    android:textStyle="bold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:fontFamily="serif"
+    android:text="Potty"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.508"
+    app:layout_constraintStart_toEndOf="@+id/textView6"
+    app:layout_constraintTop_toBottomOf="@+id/potty"
+    app:layout_constraintVertical_bias="0.0"/>
 
 </android.support.constraint.ConstraintLayout>
