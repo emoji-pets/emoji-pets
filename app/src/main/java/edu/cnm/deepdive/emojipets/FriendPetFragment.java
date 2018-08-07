@@ -80,10 +80,10 @@ public class FriendPetFragment extends Fragment {
                 setPoint("health");
                 setPoint("mana");
                 setPoint("power");
-                power.setText(String.format("%.2f power points", powerPoints));
-                mana.setText(String.format("%.2f mana points", manaPoints));
-                health.setText(String.format("%.2f health points", healthPoints));
-                courage.setText(String.format("%.2f courage points", couragePoints));
+                power.setText(String.format(getString(R.string.hunger_points), powerPoints));
+                mana.setText(String.format(getString(R.string.poopy_points), manaPoints));
+                health.setText(String.format(getString(R.string.play_points), healthPoints));
+                courage.setText(String.format(getString(R.string.love_points), couragePoints));
               }
             });
           }
@@ -168,10 +168,10 @@ public class FriendPetFragment extends Fragment {
       setPoint("health");
       setPoint("mana");
       setPoint("power");
-      courage.setText(String.format("%.2f courage points", (float) couragePoints));
-      mana.setText(String.format("%.2f courage points", (float) manaPoints));
-      power.setText(String.format("%.2f courage points", (float) powerPoints));
-      health.setText(String.format("%.2f courage points", (float) healthPoints));
+      power.setText(String.format(getString(R.string.hunger_points), powerPoints));
+      mana.setText(String.format(getString(R.string.poopy_points), manaPoints));
+      health.setText(String.format(getString(R.string.play_points), healthPoints));
+      courage.setText(String.format(getString(R.string.love_points), couragePoints));
       petStatus.setText(friend.getStatus());
       t.start();
     }

@@ -33,12 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Username..."/>
+            android:hint="@string/username_hint"/>
           <Button
             android:id="@+id/settings_username_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="change"/>
+            android:text="@string/change"/>
         </LinearLayout>
       </LinearLayout>
   </android.support.v7.widget.CardView>
@@ -69,12 +69,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Emoji name..."/>
+            android:hint="@string/emoji_name"/>
           <Button
             android:id="@+id/settings_pet_name_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="change"/>
+            android:text="@string/change"/>
         </LinearLayout>
       </LinearLayout>
   </android.support.v7.widget.CardView>
@@ -105,12 +105,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="🍜"/>
+            android:hint="@string/enter_one_emoji"/>
           <Button
             android:id="@+id/settings_emoji_character_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="change"/>
+            android:text="@string/change"/>
         </LinearLayout>
       </LinearLayout>
   </android.support.v7.widget.CardView>

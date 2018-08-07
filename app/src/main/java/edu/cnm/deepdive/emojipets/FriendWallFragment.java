@@ -79,7 +79,7 @@ public class FriendWallFragment extends Fragment {
         InputMethodManager imm = (InputMethodManager) getContext()
             .getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-        Toast.makeText(getContext(), "Wall marked.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getString(R.string.wall_marked), Toast.LENGTH_SHORT).show();
       }
     });
 

@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.emojipets;
 
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
@@ -139,10 +138,10 @@ public class PetFragment extends Fragment {
                 setPoint("health");
                 setPoint("mana");
                 setPoint("power");
-                powerPointsTextView.setText(String.format("%.2f power points", powerPoints));
-                manaPointsTextView.setText(String.format("%.2f mana points", manaPoints));
-                healthPointsTextView.setText(String.format("%.2f health points", healthPoints));
-                couragePointsTextView.setText(String.format("%.2f courage points", couragePoints));
+                powerPointsTextView.setText(String.format(getString(R.string.hunger_points), powerPoints));
+                manaPointsTextView.setText(String.format(getString(R.string.poopy_points), manaPoints));
+                healthPointsTextView.setText(String.format(getString(R.string.play_points), healthPoints));
+                couragePointsTextView.setText(String.format(getString(R.string.love_points), couragePoints));
               }
             });
           }
@@ -189,11 +188,10 @@ public class PetFragment extends Fragment {
       }
     });
 
-    couragePointsTextView
-        .setText(String.format("%.2f potty", (float) couragePoints));
-    manaPointsTextView.setText(String.format("%.2f play", (float) manaPoints));
-    powerPointsTextView.setText(String.format("%.2f cuddle", (float) powerPoints));
-    healthPointsTextView.setText(String.format("%.2f hunger", (float) healthPoints));
+    powerPointsTextView.setText(String.format(getString(R.string.hunger_points), powerPoints));
+    manaPointsTextView.setText(String.format(getString(R.string.poopy_points), manaPoints));
+    healthPointsTextView.setText(String.format(getString(R.string.play_points), healthPoints));
+    couragePointsTextView.setText(String.format(getString(R.string.love_points), couragePoints));
 
     health.setEventListener(new SparkEventListener() {
       @Override

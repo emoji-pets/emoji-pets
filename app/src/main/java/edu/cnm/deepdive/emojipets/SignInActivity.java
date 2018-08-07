@@ -31,8 +31,6 @@ public class SignInActivity extends AppCompatActivity {
   private EmojiPetService service;
   private Player player;
 
-  {}
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -47,32 +45,6 @@ public class SignInActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_CODE);
       }
     });
-
-    //Background animation starter for the background of the SignInActivity.
-//    ConstraintLayout constraintLayout = findViewById(R.id.layout);
-//    AnimationDrawable animationDrawable = (AnimationDrawable)constraintLayout.getBackground();
-//    animationDrawable.setEnterFadeDuration(2000);
-//    animationDrawable.setExitFadeDuration(4000);
-//    animationDrawable.start();
-//    // Rotation animation for a button.
-//    final ImageButton imageButton3 = findViewById(R.id.imageButton3);
-//    imageButton3.setOnClickListener(new OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        imageButton3.animate().rotation(imageButton3.getRotation()-360).start();
-//      }
-//    });
-
-//    // Fade animation for a button.
-//    final ImageButton imageButton2 = findViewById(R.id.imageButton2);
-//    imageButton2.setOnClickListener(new OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        Animation animation = new AlphaAnimation(1.0f, 0.0f);
-//        animation.setDuration(1000);
-//        imageButton2.startAnimation(animation);
-//      }
-//    });
   }
 
   @Override
@@ -144,14 +116,5 @@ public class SignInActivity extends AppCompatActivity {
     }
 
   }
-
-  //  // Tried having sliding transition animation when switching to another activity but didn't work (no effect) LR
-//  public void openNewGameActivity(View view) {
-//    Intent intent = new Intent(this, NewGameActivity.class);
-//    startActivity(intent);
-//    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//  }
 }
-
-//Commented out animations might be of use later.
 

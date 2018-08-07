@@ -143,7 +143,7 @@
         android:layout_height="match_parent"
         android:elevation="2dp"
         android:shadowColor="@color/colorPrimaryDark"
-        android:text="Create Account"/>
+        android:text="@string/create_account"/>
 
       <!--<com.dd.processbutton.ProcessButton-->
       <!--android:id="@+id/create_account_button"-->

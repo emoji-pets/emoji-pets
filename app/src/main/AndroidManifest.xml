@@ -36,7 +36,6 @@
       android:name=".CreateAccountActivity"
       android:parentActivityName=".SignInActivity">
 
-      <!-- android:theme="@style/ThemeOverlay.AppCompat.ActionBar" -->
     </activity>
     <activity
       android:windowSoftInputMode="adjustResize"

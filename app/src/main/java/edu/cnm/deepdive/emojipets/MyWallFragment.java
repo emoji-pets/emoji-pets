@@ -26,7 +26,7 @@ public class MyWallFragment extends Fragment {
       Bundle savedInstanceState) {
 
     View view = inflater.inflate(R.layout.fragment_my_wall, container, false);
-    getActivity().setTitle("My Wall");
+    getActivity().setTitle(R.string.my_wall);
 
     wall = view.findViewById(R.id.my_wall);
     wall.setText(EmojiPetApplication.getInstance().getPlayer().getWall());

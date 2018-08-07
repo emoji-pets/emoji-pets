@@ -41,7 +41,7 @@ public class FollowersFragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.followers, container, false);
-    getActivity().setTitle("Followers");
+    getActivity().setTitle(getString(R.string.followers));
     // Get followers
     followers = EmojiPetApplication.getInstance().getPlayer().getFollowers();
 
@@ -115,8 +115,8 @@ public class FollowersFragment extends Fragment {
 
       friendsName.setText(followList.get(position).getDisplay_name());
       friendsEmoji.setText(followList.get(position).getPet_emoji());
-      friendsPetName.setText("Pet name: " + followList.get(position).getPet_name());
-      friendsStatus.setText("Pet status: " + followList.get(position).getStatus());
+      friendsStatus.setText(String.format("%s%s", getString(R.string.pet_name), followList.get(position).getPet_name()));
+      friendsStatus.setText(String.format("%s%s", getString(R.string.pet_status), followList.get(position).getStatus()));
 
       return convertView;
     }

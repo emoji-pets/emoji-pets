@@ -98,7 +98,7 @@
       style="@style/Widget.AppCompat.EditText"
       android:background="@null"
       android:selectAllOnFocus="true"
-      android:hint="Status"/>
+      android:hint="@string/status"/>
   </android.support.design.widget.TextInputLayout>
 
   <!--android:background="@drawable/edit_text_background"-->
@@ -117,7 +117,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
-    android:text="post"
+    android:text="@string/post"
     android:visibility="gone"
     app:layout_constraintEnd_toEndOf="@+id/pet_status_edit_layout"
     app:layout_constraintTop_toBottomOf="@+id/pet_status_edit_layout"
@@ -218,7 +218,7 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:fontFamily="serif"
-    android:text="Cuddle"
+    android:text="@string/cuddle"
     android:textAlignment="center"
     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
     android:textSize="14sp"
@@ -238,7 +238,7 @@
     android:layout_marginStart="32dp"
     android:layout_marginEnd="8dp"
     android:fontFamily="serif"
-    android:text="Play"
+    android:text="@string/play"
     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
     android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -257,7 +257,7 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:fontFamily="serif"
-    android:text="Hungry"
+    android:text="@string/hungry"
     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
     android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -289,7 +289,7 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:fontFamily="serif"
-    android:text="Potty"
+    android:text="@string/potty"
     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
     android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"

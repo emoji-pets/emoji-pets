@@ -45,7 +45,7 @@ public class SettingsFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_settings, container, false);
-    getActivity().setTitle("Settings");
+    getActivity().setTitle(R.string.settings);
 
     usernameEditText = view.findViewById(R.id.settings_username_edit_text);
     petNameEditText = view.findViewById(R.id.settings_pet_name_edit_text);
