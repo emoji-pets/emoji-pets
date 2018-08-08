@@ -26,14 +26,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
-        android:text="Welcome to EmojiPets!"
+        android:text="@string/welcome_to_emojipets"
         android:textAlignment="center"
         android:textSize="24sp"/>
       <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
-        android:text="Enter a username:"/>
+        android:text="@string/enter_a_username"/>
       <!--TODO get username as string resource for hint-->
       <LinearLayout
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
           android:id="@+id/create_username_button"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="ok 👍!"/>
+          android:text="@string/ok"/>
         <TextView
           android:id="@+id/create_username_textview"
           android:layout_width="match_parent"
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
-        android:text="Enter a name for your emoji:"/>
+        android:text="@string/enter_a_name_for_your_emoji"/>
       <!--TODO get username as string resource for hint-->
       <LinearLayout
         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
           android:id="@+id/create_petname_button"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="ok 👍!"/>
+          android:text="@string/ok"/>
         <TextView
           android:id="@+id/create_petname_textview"
           android:layout_width="match_parent"
@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
-        android:text="Enter one emoji:"/>
+        android:text="@string/enter_one_emoji"/>
       <!--TODO get username as string resource for hint-->
       <LinearLayout
         android:layout_width="match_parent"
@@ -112,7 +112,7 @@
           android:id="@+id/create_emoji_button"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="ok 👍!"/>
+          android:text="@string/ok"/>
         <TextView
           android:id="@+id/create_emoji_textview"
           android:layout_width="match_parent"
@@ -144,7 +144,7 @@
         android:id="@+id/create_account_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Create Account"/>
+        android:text="@string/create_account"/>
 
       <!--<com.dd.processbutton.ProcessButton-->
       <!--android:id="@+id/create_account_button"-->

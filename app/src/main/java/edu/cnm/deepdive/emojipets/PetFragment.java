@@ -29,7 +29,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
+/**
+ * This is the PetFragment subclass. This hosts to the main screen of the app.
+ * This is where the user wall. This contains the codes for interacting with
+ * the user's emoji petz.
+ */
 public class PetFragment extends Fragment {
 
   SparkButton power;

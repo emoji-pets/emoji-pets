@@ -2,6 +2,10 @@ package edu.cnm.deepdive.emojipets.pojo;
 
 import java.util.List;
 
+/**
+ * This is the Player class which is a "Plain Old Java Object" or POJO for short.
+ * This POJO is a pure data structure that has fields with getters and setters.
+ */
 public class Player {
 
   private long id;

@@ -13,6 +13,10 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+/**
+ * This is the FriendActivity class and it extends AppCompatActivity.
+ * This holds the code to enable users to write on other users wall in the app.
+ */
 public class FriendActivity extends AppCompatActivity {
 
   private TextView mTextMessage;

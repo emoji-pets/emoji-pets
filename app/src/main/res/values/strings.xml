@@ -65,12 +65,16 @@
   <string name="username_hint">Username...</string>
   <string name="change">change</string>
   <string name="emoji_name">Emoji name...</string>
-  <string name="enter_one_emoji">Enter one emoji</string>
+  <string name="enter_one_emoji">Enter one emoji:</string>
   <string name="emoji_pets">Emoji Pets</string>
   <string name="they_love_you">They love you!</string>
 =======
   <string name="username">Username...</string>
   <string name="your_emoji_s_name">Your emoji\'s name...</string>
   <string name="input_your_emoji">Input your emoji...</string>
->>>>>>> Stashed changes
+  <string name="welcome_to_emojipets">Welcome to EmojiPets!</string>
+  <string name="enter_a_username">Enter a username:</string>
+  <string name="enter_a_name_for_your_emoji">Enter a name for your emoji:</string>
+  <string name="ok">ok 👍!</string>
+  >>>>>>> Stashed changes
 </resources>

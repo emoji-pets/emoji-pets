@@ -23,6 +23,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * This is the CreateAccountActivity class which hosts the "Create Account" page of the app.
+ * This holds the code for creating usernames, pet names, and the emoji of the user.
+ */
 public class CreateAccountActivity extends AppCompatActivity {
 
   private EmojiPetService service;

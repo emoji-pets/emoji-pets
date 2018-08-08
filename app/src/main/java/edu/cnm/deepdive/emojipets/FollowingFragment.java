@@ -47,7 +47,6 @@ public class FollowingFragment extends Fragment {
   private List<String> names = new ArrayList<>();
   private AutoCompleteAdapter friendSearchAdapter;
 
-
   public FollowingFragment() {
     // Required empty public constructor
   }

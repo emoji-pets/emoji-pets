@@ -10,6 +10,13 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
+/**
+ * This is the EmojiPetService interface.
+ * It holds GET, POST, and PUT methods.
+ * The Get method is used to retrieve information.
+ * The Post method is used to send a resource request at the URI to do something with the provided entity.
+ * The Put methos is used to store an entity at a URI.
+ */
 public interface EmojiPetService {
 
   @GET("players/{oauthId}")

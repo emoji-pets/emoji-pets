@@ -18,7 +18,7 @@
   <string name="error_invalid_password">Masyadong maiksi ang password mo</string>
   <string name="error_incorrect_password">Mali itong password na ito.</string>
   <string name="error_field_required">Kailangan mo itong sagutin.</string>
-  <string name="permission_rationale">"Kailangan ng pahintulo mo."
+  <string name="permission_rationale">"Kailangan ng pahintulot mo."
   </string>
 
   <!-- Oauth client-->

@@ -30,6 +30,12 @@ import java.util.Map;
 import retrofit2.Response;
 
 /**
+ * @author Nick LoCicero
+ * @author Justin Torrez
+ * @author Lora Racca
+ *
+ * @version 1.0
+ *
  * This is the MainActivity class and it hosts to the navigation drawer.
  */
 public class MainActivity extends AppCompatActivity
