@@ -10,50 +10,48 @@
   android:background="@drawable/gradient_lists">
 
   <TextView
-    android:id="@+id/courage"
+    android:id="@+id/cuddle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/mana"
-    app:layout_constraintTop_toBottomOf="@+id/health"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/play_top"
     tools:text="Cuddle"/>
 
   <TextView
-    android:id="@+id/mana"
+    android:id="@+id/play_top"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toStartOf="@+id/courage"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/power"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/cuddle"
+    app:layout_constraintTop_toTopOf="parent"
     tools:text="Play"/>
 
   <TextView
-    android:id="@+id/health"
+    android:id="@+id/hunger_top"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toStartOf="@+id/power"
-    app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/cuddle"
+    app:layout_constraintEnd_toStartOf="@+id/potty_top"
     tools:text="Hunger"/>
 
   <TextView
-    android:id="@+id/power"
+    android:id="@+id/potty_top"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
+    android:layout_marginRight="16dp"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/health"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/hunger_top"
+    app:layout_constraintTop_toBottomOf="@+id/play_top"
     tools:text="Potty"/>
 
   <!--<TextView-->
@@ -77,28 +75,29 @@
 
   <android.support.design.widget.TextInputLayout
     android:id="@+id/pet_status_edit_layout"
-    app:hintEnabled="true"
-    app:hintAnimationEnabled="true"
-    android:layout_width="wrap_content"
+    android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="18dp"
+    android:layout_marginBottom="8dp"
     android:background="@drawable/edit_text_background"
+    app:hintAnimationEnabled="true"
+    app:hintEnabled="true"
+    android:layout_marginTop="24dp"
+    android:layout_marginStart="12dp"
+    app:layout_constraintBottom_toTopOf="@+id/pet"
+    app:layout_constraintEnd_toEndOf="@id/right_guide"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/mana"
-    app:layout_constraintRight_toRightOf="@id/right_guide">
+    app:layout_constraintTop_toBottomOf="@+id/play_top">
     <android.support.design.widget.TextInputEditText
       android:id="@+id/pet_status_edit"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
       android:layout_margin="4dp"
       android:layout_marginTop="8dp"
-      android:nextFocusUp="@id/pet_status_edit"
-      android:nextFocusLeft="@id/pet_status_edit"
-      style="@style/Widget.AppCompat.EditText"
       android:background="@null"
-      android:selectAllOnFocus="true"
-      android:hint="@string/status"/>
+      android:hint="@string/status"
+      android:nextFocusLeft="@id/pet_status_edit"
+      android:nextFocusUp="@id/pet_status_edit"
+      android:selectAllOnFocus="true"/>
   </android.support.design.widget.TextInputLayout>
 
   <!--android:background="@drawable/edit_text_background"-->
@@ -209,64 +208,6 @@
     app:sparkbutton_primaryColor="@color/potty_color1"
     app:sparkbutton_secondaryColor="@color/potty_color2"/>
   <TextView
-    android:id="@+id/textView3"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:fontFamily="serif"
-    android:text="@string/cuddle"
-    android:textAlignment="center"
-    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-    android:textSize="14sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.069"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/cuddles"
-    app:layout_constraintVertical_bias="0.0"/>
-  <TextView
-    android:id="@+id/textView5"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="32dp"
-    android:layout_marginEnd="8dp"
-    android:fontFamily="serif"
-    android:text="@string/play"
-    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-    android:textSize="14sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.051"
-    app:layout_constraintStart_toEndOf="@+id/textView3"
-    app:layout_constraintTop_toBottomOf="@+id/play"
-    app:layout_constraintVertical_bias="0.0"/>
-  <TextView
-    android:id="@+id/textView6"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:fontFamily="serif"
-    android:text="@string/hungry"
-    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-    android:textSize="14sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.35"
-    app:layout_constraintStart_toEndOf="@+id/textView5"
-    app:layout_constraintTop_toBottomOf="@+id/food"
-    app:layout_constraintVertical_bias="0.0"/>
-  <TextView
     android:id="@+id/pet"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -277,26 +218,6 @@
     app:layout_constraintBottom_toTopOf="@+id/potty"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/mana"/>
-  
-    <TextView
-    android:id="@+id/textView7"
-    android:textStyle="bold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:fontFamily="serif"
-    android:text="@string/potty"
-    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-    android:textSize="14sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.508"
-    app:layout_constraintStart_toEndOf="@+id/textView6"
-    app:layout_constraintTop_toBottomOf="@+id/potty"
-    app:layout_constraintVertical_bias="0.0"/>
+    app:layout_constraintTop_toBottomOf="@+id/play_top"/>
 
 </android.support.constraint.ConstraintLayout>

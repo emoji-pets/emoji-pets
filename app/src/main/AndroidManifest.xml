@@ -22,7 +22,7 @@
       android:theme="@style/AppTheme.NoActionBar"/>
     <activity
       android:windowSoftInputMode="adjustResize"
-      android:label="@string/title_activity_login"
+      android:label="@string/app_name"
       android:name=".SignInActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

@@ -42,10 +42,10 @@ public class PetFragment extends Fragment {
   SparkButton health;
   ImageButton petStatusButton;
 
-  TextView powerPointsTextView;
-  TextView manaPointsTextView;
-  TextView couragePointsTextView;
-  TextView healthPointsTextView;
+  TextView pottyPointsTextView;
+  TextView playPointsTextView;
+  TextView cuddlePointsTextView;
+  TextView hungerPointsTextView;
   TextView petStatusTextView;
   TextView petTextView;
 
@@ -108,10 +108,10 @@ public class PetFragment extends Fragment {
     courage = v.findViewById(R.id.cuddles);
     health = v.findViewById(R.id.food);
 
-    powerPointsTextView = (TextView) v.findViewById(R.id.power);
-    manaPointsTextView = (TextView) v.findViewById(R.id.mana);
-    couragePointsTextView = (TextView) v.findViewById(R.id.courage);
-    healthPointsTextView = (TextView) v.findViewById(R.id.health);
+    pottyPointsTextView = (TextView) v.findViewById(R.id.potty_top);
+    playPointsTextView = (TextView) v.findViewById(R.id.play_top);
+    cuddlePointsTextView = (TextView) v.findViewById(R.id.cuddle);
+    hungerPointsTextView = (TextView) v.findViewById(R.id.hunger_top);
     petTextView = (TextView) v.findViewById(R.id.pet);
     petTextView.setText(EmojiPetApplication.getInstance().getPlayer().getPet_emoji());
 
@@ -142,10 +142,14 @@ public class PetFragment extends Fragment {
                 setPoint("health");
                 setPoint("mana");
                 setPoint("power");
-                powerPointsTextView.setText(String.format(getString(R.string.hunger_points), powerPoints));
-                manaPointsTextView.setText(String.format(getString(R.string.poopy_points), manaPoints));
-                healthPointsTextView.setText(String.format(getString(R.string.play_points), healthPoints));
-                couragePointsTextView.setText(String.format(getString(R.string.love_points), couragePoints));
+                pottyPointsTextView
+                    .setText(String.format(getString(R.string.poopy_points), powerPoints));
+                playPointsTextView
+                    .setText(String.format(getString(R.string.play_points), manaPoints));
+                hungerPointsTextView
+                    .setText(String.format(getString(R.string.hunger_points), healthPoints));
+                cuddlePointsTextView
+                    .setText(String.format(getString(R.string.love_points), couragePoints));
               }
             });
           }
@@ -192,10 +196,10 @@ public class PetFragment extends Fragment {
       }
     });
 
-    powerPointsTextView.setText(String.format(getString(R.string.hunger_points), powerPoints));
-    manaPointsTextView.setText(String.format(getString(R.string.poopy_points), manaPoints));
-    healthPointsTextView.setText(String.format(getString(R.string.play_points), healthPoints));
-    couragePointsTextView.setText(String.format(getString(R.string.love_points), couragePoints));
+    pottyPointsTextView.setText(String.format(getString(R.string.hunger_points), powerPoints));
+    playPointsTextView.setText(String.format(getString(R.string.poopy_points), manaPoints));
+    hungerPointsTextView.setText(String.format(getString(R.string.play_points), healthPoints));
+    cuddlePointsTextView.setText(String.format(getString(R.string.love_points), couragePoints));
 
     health.setEventListener(new SparkEventListener() {
       @Override

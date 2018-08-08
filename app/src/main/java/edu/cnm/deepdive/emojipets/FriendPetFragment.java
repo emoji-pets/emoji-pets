@@ -58,10 +58,10 @@ public class FriendPetFragment extends Fragment {
     
     new UpdatePlayer().execute();
 
-    power = (TextView) view.findViewById(R.id.power);
-    mana = (TextView) view.findViewById(R.id.mana);
-    courage = (TextView) view.findViewById(R.id.courage);
-    health = (TextView) view.findViewById(R.id.health);
+    power = (TextView) view.findViewById(R.id.potty_top);
+    mana = (TextView) view.findViewById(R.id.play_top);
+    courage = (TextView) view.findViewById(R.id.cuddle);
+    health = (TextView) view.findViewById(R.id.hunger_top);
     pet = (TextView) view.findViewById(R.id.pet);
     petStatus = (TextView) view.findViewById(R.id.pet_status);
 

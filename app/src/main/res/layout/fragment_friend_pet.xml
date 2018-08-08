@@ -17,49 +17,49 @@
     android:visibility="invisible"/>
 
   <TextView
-    android:id="@+id/courage"
+    android:id="@+id/cuddle"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/mana"
-    app:layout_constraintTop_toBottomOf="@+id/health"
+    app:layout_constraintStart_toEndOf="@+id/play_top"
+    app:layout_constraintTop_toBottomOf="@+id/hunger_top"
     tools:text="courage"/>
 
   <TextView
-    android:id="@+id/mana"
+    android:id="@+id/play_top"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toStartOf="@+id/courage"
+    app:layout_constraintEnd_toStartOf="@+id/cuddle"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/power"
+    app:layout_constraintTop_toBottomOf="@+id/potty_top"
     tools:text="mana"/>
 
   <TextView
-    android:id="@+id/health"
+    android:id="@+id/hunger_top"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
-    app:layout_constraintEnd_toStartOf="@+id/power"
+    app:layout_constraintEnd_toStartOf="@+id/potty_top"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/secret_guide"
     tools:text="health"/>
 
   <TextView
-    android:id="@+id/power"
+    android:id="@+id/potty_top"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toEndOf="@+id/health"
+    app:layout_constraintStart_toEndOf="@+id/hunger_top"
     app:layout_constraintTop_toBottomOf="@id/secret_guide"
     tools:text="power"/>
 
@@ -72,7 +72,7 @@
     android:textSize="18dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/mana"/>
+    app:layout_constraintTop_toBottomOf="@+id/play_top"/>
 
   <TextView
     android:id="@+id/pet"
