@@ -58,12 +58,26 @@
     android:id="@+id/imageButton1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="96dp"
+    android:layout_marginBottom="12dp"
     android:background="@drawable/sign_in_invert_selector"
     android:fontFamily="@font/lato_light"
     android:text="@string/sign_in"
     android:textColor="@drawable/sign_in_button_color_invert_selector"
-    android:textSize="24dp"
+    android:textSize="20sp"
+    app:layout_constraintBottom_toTopOf="@+id/imageButton2"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"/>
+
+  <Button
+    android:id="@+id/imageButton2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="24dp"
+    android:background="@drawable/sign_in_invert_selector"
+    android:fontFamily="@font/lato_light"
+    android:text="@string/sign_in_sf"
+    android:textColor="@drawable/sign_in_button_color_invert_selector"
+    android:textSize="20sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"/>

@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.emojipets;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.app.AlertDialog.Builder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -45,13 +47,45 @@ public class SignInActivity extends AppCompatActivity {
 
     // Button for logging in to google to play the app.
     Button signIn = findViewById(R.id.imageButton1);
+    Button signInSf = findViewById(R.id.imageButton2);
     signIn.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-//        EmojiPetApplication.getInstance().getSignInClient().signOut();
-//        EmojiPetApplication.getInstance().setSignInAccount(null);
+        EmojiPetApplication.getInstance().setUsingForce(false);
         Intent intent = EmojiPetApplication.getInstance().getSignInClient().getSignInIntent();
         startActivityForResult(intent, REQUEST_CODE);
+      }
+    });
+    signInSf.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        EmojiPetApplication.getInstance().setUsingForce(true);
+        AlertDialog.Builder dialog = new Builder(SignInActivity.this);
+        View dialogView = getLayoutInflater().inflate(R.layout.salesforce_sign_in_dialog, null);
+        dialog.setView(dialogView);
+        final AlertDialog dialogBuilt = dialog.create();
+        dialogBuilt.show();
+        InputMethodManager inputMethodManager =
+            (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInputFromWindow(
+            dialogView.getApplicationWindowToken(),
+            InputMethodManager.SHOW_FORCED, 0);
+        Button aws = dialogView.findViewById(R.id.dialog_use_salesforce_button);
+        Button sf = dialogView.findViewById(R.id.dialog_use_aws_button);
+        aws.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            // get password and username and sign in
+            // new GetSalesForceUserData().execute();
+            Toast.makeText(SignInActivity.this, "Sorry, SalesForce is still being developed.", Toast.LENGTH_SHORT).show();
+          }
+        });
+        sf.setOnClickListener(new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            dialogBuilt.dismiss();
+          }
+        });
       }
     });
   }
@@ -74,43 +108,13 @@ public class SignInActivity extends AppCompatActivity {
     // make first request to server to test if player exists with for this account
     gson = new GsonBuilder()
         .create();
-    AlertDialog.Builder dialog = new Builder(this);
-    View dialogView = getLayoutInflater().inflate(R.layout.choose_backend_dialog, null);
-    Button aws = dialogView.findViewById(R.id.dialog_use_aws_button);
-    Button sf = dialogView.findViewById(R.id.dialog_use_salesforce_button);
-    dialog.setView(dialogView);
-    final AlertDialog dialogBuilt = dialog.create();
-    dialogBuilt.show();
-    aws.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        EmojiPetApplication.getInstance().setUsingForce(false);
-        emojiPetService = new Retrofit.Builder()
-            .baseUrl(getString(R.string.base_url_aws))
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(EmojiPetService.class);
-        new StartAWS().execute();
-      }
-    });
-    sf.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        EmojiPetApplication.getInstance().setUsingForce(true);
-        sfAuthenticatorService = new Retrofit.Builder()
-            .baseUrl(getString(R.string.base_url_sf_authenticate))
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(AuthenticateService.class);
-        // Call to get token
-        sfCredentials = new SfCredentials();
-        sfCredentials.setUsername("jt@salesforce.com");
-        sfCredentials.setPassword("W@rm2020jlQEUlHx7XENFopw5AP3qapj");
-        new GetSalesForceUserData().execute();
-        // New service with url to activate for SF
-
-      }
-    });
+    EmojiPetApplication.getInstance().setUsingForce(false);
+    emojiPetService = new Retrofit.Builder()
+        .baseUrl(getString(R.string.base_url_aws))
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .build()
+        .create(EmojiPetService.class);
+    new StartAWS().execute();
 //    service = new Retrofit.Builder()
 //        .baseUrl(getString(R.string.base_url_aws))
 //        .addConverterFactory(GsonConverterFactory.create(gson))
