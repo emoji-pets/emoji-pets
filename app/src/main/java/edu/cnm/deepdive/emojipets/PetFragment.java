@@ -165,10 +165,13 @@ public class PetFragment extends Fragment {
       }
     });
 
-    pottyPointsTextView.setText(String.format(getString(R.string.hunger_points), powerPoints));
-    playPointsTextView.setText(String.format(getString(R.string.poopy_points), manaPoints));
-    hungerPointsTextView.setText(String.format(getString(R.string.play_points), healthPoints));
-    cuddlePointsTextView.setText(String.format(getString(R.string.love_points), couragePoints));
+    pottyPointsTextView.setText(String.format("%.2f \uD83D\uDCA9", powerPoints));
+//                    .setText(String.format(getString(R.string.poopy_points), powerPoints));
+    playPointsTextView.setText(String.format("%.2f \uD83C\uDFBE", manaPoints));
+//                    .setText(String.format(getString(R.string.play_points), manaPoints));
+    hungerPointsTextView.setText(String.format("%.2f \uD83C\uDF54", healthPoints));
+//                    .setText(String.format(getString(R.string.hunger_points), healthPoints));
+    cuddlePointsTextView.setText(String.format("%.2f \uD83E\uDD17", couragePoints));
 
     health.setEventListener(new SparkEventListener() {
       @Override
