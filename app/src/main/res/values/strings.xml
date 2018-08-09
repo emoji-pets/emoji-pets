@@ -42,6 +42,8 @@
   <string name="create_account">Create account</string>
   <string name="title_activity_create_account_basic_test">CreateAccountBasicActivityTest</string>
   <string name="title_activity_friend">FriendActivity</string>
+  <string name="title_friend_pet_fragment">My Friend\'s Pet</string>
+  <string name="title_friend_pet_wall">My Friend\'s Wall</string>
   <string name="title_pet">Pet</string>
   <string name="title_wall">Wall</string>
   <string name="title_notifications">Notifications</string>

@@ -77,7 +77,6 @@ public class PetFragment extends Fragment {
    * @param param2 Parameter 2.
    * @return A new instance of fragment PetFragment.
    */
-  // TODO: Rename and change types and number of parameters
   public static PetFragment newInstance(String param1, String param2) {
     PetFragment fragment = new PetFragment();
     Bundle args = new Bundle();

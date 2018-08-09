@@ -47,6 +47,10 @@ public class FriendActivity extends AppCompatActivity {
     }
   };
 
+  public void setActionBarTitle(String title) {
+    getSupportActionBar().setTitle(title);
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -65,6 +69,7 @@ public class FriendActivity extends AppCompatActivity {
 
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+    setActionBarTitle(intent.getStringExtra("display name"));
 
     if (getSupportActionBar() != null) {
       getSupportActionBar().setDisplayHomeAsUpEnabled(true);

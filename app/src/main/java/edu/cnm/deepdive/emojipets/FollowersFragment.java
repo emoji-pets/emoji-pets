@@ -68,6 +68,7 @@ public class FollowersFragment extends Fragment {
         String friendId = mapOfNamesToIds.get(displayName.getText().toString());
         Intent intent = new Intent(getActivity(), FriendActivity.class);
         intent.putExtra("id", friendId);
+        intent.putExtra("display name", displayName.getText().toString());
         startActivity(intent);
       }
     });
