@@ -22,10 +22,13 @@ public class EmojiPetApplication extends Application {
 
   private GoogleSignInClient signInClient;
   private GoogleSignInAccount signInAccount;
+  private String sfId;
+  private String sfToken;
   private Player player;
   private List<Player> allPlayers;
   private Map<String, String> playerNameToIdMap;
   private String friendPeak;
+  private boolean usingForce;
 
   @Override
   public void onCreate() {
@@ -154,5 +157,29 @@ public class EmojiPetApplication extends Application {
    */
   public void setFriendPeak(String friendPeak) {
     this.friendPeak = friendPeak;
+  }
+
+  public String getSfId() {
+    return sfId;
+  }
+
+  public void setSfId(String sfId) {
+    this.sfId = sfId;
+  }
+
+  public boolean isUsingForce() {
+    return usingForce;
+  }
+
+  public void setUsingForce(boolean usingForce) {
+    this.usingForce = usingForce;
+  }
+
+  public String getSfToken() {
+    return sfToken;
+  }
+
+  public void setSfToken(String sfToken) {
+    this.sfToken = sfToken;
   }
 }

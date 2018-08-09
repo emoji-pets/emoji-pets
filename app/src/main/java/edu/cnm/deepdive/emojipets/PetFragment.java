@@ -281,7 +281,7 @@ public class PetFragment extends Fragment {
     Gson gson = new GsonBuilder()
         .create();
     service = new Retrofit.Builder()
-        .baseUrl(getString(R.string.base_url))
+        .baseUrl(getString(R.string.base_url_aws))
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
         .create(EmojiPetService.class);
