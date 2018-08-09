@@ -110,6 +110,7 @@
             android:id="@+id/create_emoji_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLength="2"
             android:hint="@string/and_just_one_emoji"/>
         </android.support.design.widget.TextInputLayout>
       </LinearLayout>

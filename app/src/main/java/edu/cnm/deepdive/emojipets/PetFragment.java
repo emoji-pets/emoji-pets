@@ -126,37 +126,6 @@ public class PetFragment extends Fragment {
     petStatusEdit.setText(EmojiPetApplication.getInstance().getPlayer().getStatus());
     petStatusButton = v.findViewById(R.id.pet_status_set_button);
 
-    t = new Thread() {
-
-      @Override
-      public void run() {
-        try {
-          while (!isInterrupted()) {
-            Thread.sleep(500);
-            getActivity().runOnUiThread(new Runnable() {
-              @Override
-              public void run() {
-                // Here we update the value of points
-                setPoint("courage");
-                setPoint("health");
-                setPoint("mana");
-                setPoint("power");
-                pottyPointsTextView
-                    .setText(String.format(getString(R.string.poopy_points), powerPoints));
-                playPointsTextView
-                    .setText(String.format(getString(R.string.play_points), manaPoints));
-                hungerPointsTextView
-                    .setText(String.format(getString(R.string.hunger_points), healthPoints));
-                cuddlePointsTextView
-                    .setText(String.format(getString(R.string.love_points), couragePoints));
-              }
-            });
-          }
-        } catch (InterruptedException e) {
-        }
-      }
-    };
-
     v.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -270,6 +239,37 @@ public class PetFragment extends Fragment {
       public void onEventAnimationStart(ImageView button, boolean buttonState) {
       }
     });
+
+    t = new Thread() {
+
+      @Override
+      public void run() {
+        try {
+          while (!isInterrupted()) {
+            Thread.sleep(500);
+            getActivity().runOnUiThread(new Runnable() {
+              @Override
+              public void run() {
+                // Here we update the value of points
+                setPoint("courage");
+                setPoint("health");
+                setPoint("mana");
+                setPoint("power");
+                pottyPointsTextView
+                    .setText(String.format(getString(R.string.poopy_points), powerPoints));
+                playPointsTextView
+                    .setText(String.format(getString(R.string.play_points), manaPoints));
+                hungerPointsTextView
+                    .setText(String.format(getString(R.string.hunger_points), healthPoints));
+                cuddlePointsTextView
+                    .setText(String.format(getString(R.string.love_points), couragePoints));
+              }
+            });
+          }
+        } catch (InterruptedException e) {
+        }
+      }
+    };
 
     t.start();
 

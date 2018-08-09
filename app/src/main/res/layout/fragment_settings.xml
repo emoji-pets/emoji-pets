@@ -105,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:maxLength="2"
             android:hint="@string/enter_one_emoji"/>
           <Button
             android:id="@+id/settings_emoji_character_button"
