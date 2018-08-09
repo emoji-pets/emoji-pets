@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment is where the user can change his or her username, pet's name and emoji pet.
  */
 public class SettingsFragment extends Fragment {
 

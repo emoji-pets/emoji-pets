@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment is the wall of the user. This is where the user can interact with
+ * their friends.
  */
 public class MyWallFragment extends Fragment {
 

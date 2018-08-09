@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment holds the loop method for the state of the user's pet.
  */
 public class FriendPetFragment extends Fragment {
 

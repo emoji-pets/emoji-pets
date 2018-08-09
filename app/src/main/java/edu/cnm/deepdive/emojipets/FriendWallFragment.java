@@ -23,7 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment is the page of the user's friend
+ * where the user can write on his or her friend's wall.
  */
 public class FriendWallFragment extends Fragment {
 

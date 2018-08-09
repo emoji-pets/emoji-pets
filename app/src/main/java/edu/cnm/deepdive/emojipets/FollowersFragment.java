@@ -20,7 +20,10 @@ import java.util.Map;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This is the FollowersFragment subclass.
+ * This is the page where the user can see his or her followers
+ * and click on their followers name to go to their follower's page.
+ *
  */
 public class FollowersFragment extends Fragment {
 

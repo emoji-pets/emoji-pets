@@ -34,7 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment is where users can see who they are following.
  */
 public class FollowingFragment extends Fragment {
 
