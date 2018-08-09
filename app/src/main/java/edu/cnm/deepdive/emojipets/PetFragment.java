@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -240,6 +241,14 @@ public class PetFragment extends Fragment {
       }
     });
 
+
+
+    return v;
+  }
+
+  @Override
+  public void onAttach(Context context) {
+    super.onAttach(context);
     t = new Thread() {
 
       @Override
@@ -255,14 +264,14 @@ public class PetFragment extends Fragment {
                 setPoint("health");
                 setPoint("mana");
                 setPoint("power");
-                pottyPointsTextView
-                    .setText(String.format(getString(R.string.poopy_points), powerPoints));
-                playPointsTextView
-                    .setText(String.format(getString(R.string.play_points), manaPoints));
-                hungerPointsTextView
-                    .setText(String.format(getString(R.string.hunger_points), healthPoints));
-                cuddlePointsTextView
-                    .setText(String.format(getString(R.string.love_points), couragePoints));
+                pottyPointsTextView.setText(String.format("%.2f \uD83D\uDCA9", powerPoints));
+//                    .setText(String.format(getString(R.string.poopy_points), powerPoints));
+                playPointsTextView.setText(String.format("%.2f \uD83C\uDFBE", manaPoints));
+//                    .setText(String.format(getString(R.string.play_points), manaPoints));
+                hungerPointsTextView.setText(String.format("%.2f \uD83C\uDF54", healthPoints));
+//                    .setText(String.format(getString(R.string.hunger_points), healthPoints));
+                cuddlePointsTextView.setText(String.format("%.2f \uD83E\uDD17", couragePoints));
+//                    .setText(String.format(getString(R.string.love_points), couragePoints));
               }
             });
           }
@@ -272,8 +281,6 @@ public class PetFragment extends Fragment {
     };
 
     t.start();
-
-    return v;
   }
 
   private void setupServices() {
@@ -284,6 +291,12 @@ public class PetFragment extends Fragment {
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
         .create(EmojiPetService.class);
+  }
+
+  @Override
+  public void onAttachFragment(Fragment childFragment) {
+    super.onAttachFragment(childFragment);
+
   }
 
   @Override

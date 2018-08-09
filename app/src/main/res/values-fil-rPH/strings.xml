@@ -67,4 +67,16 @@
   <string name="enter_one_emoji">Lagyan ng isang emoji</string>
   <string name="emoji_pets">Emoji Petz</string>
   <string name="they_love_you">Mahal ka nila!</string>
+  <string name="base_url_sf_authenticate">http://Salesforce-env.iwdndfgnwu.us-east-2.elasticbeanstalk.com/rest/authenticate/</string>
+  <string name="base_url_sf_actual">https://na53.salesforce.com/services/apexrest/emoji-pets</string>
+  <string name="sign_in_sf">Mag Log In Ka Gamit Ang SalesForce</string>
+  <string name="your_emoji_s_name">Pangalan ng Emoji</string>
+  <string name="input_your_emoji">Lagyan ng isang emoji</string>
+  <string name="ok">ok 👍!</string>
+  <string name="title_friend_pet_wall">Pader</string>
+  <string name="title_friend_pet_fragment">Alagang Hayop</string>
+  <string name="username">Username...</string>
+  <string name="welcome_to_emojipets">EmojiPets</string>
+  <string name="enter_a_username">Gumawa ka ng astig na user-name</string>
+  <string name="enter_a_name_for_your_emoji">Pangalan ng Emoji...</string>
 </resources>
