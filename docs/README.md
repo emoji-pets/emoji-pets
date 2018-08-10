@@ -26,8 +26,6 @@
 ### Current State of Emoji Pets
      Currently, Emoji Pets has basic functionality as outlined in Wire Frames.
      
- 
-
 ### List of Java versions, Android API's and hardware tested
 * Android API 21 platform
 * Nexus 5X API 27
@@ -40,15 +38,12 @@
 
 ### List of aesthetic/cosmetic improvements that would improve Emoji Pets
 * A GUI and Color Style Update to Material Design guidelines.
-* A Graph representation of past fasts that can be filtered by timeline. e.g.(week, month, year)
 * Better Implementation of Material Design
 * More User Friendly Displays.
 * Animation Transitions between the fragments. 
 
 ### List of functional stretch goals for Emoji Pets
-* Bar Chart for Completed Fast Durations. 
-* Calendar Display of Completed Fasts.
-* being able to make friends and see your friends completed Fasts.
+
  
 ### Emoji Pets Links
 
