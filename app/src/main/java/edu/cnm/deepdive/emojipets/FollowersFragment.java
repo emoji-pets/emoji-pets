@@ -88,6 +88,10 @@ public class FollowersFragment extends Fragment {
 
     List<Player> followList;
 
+    /**
+     *
+     * @param followList This is an adapter to generate the list of who the user is following.
+     */
     public FollowAdapter(List<Player> followList) {
       this.followList = followList;
     }

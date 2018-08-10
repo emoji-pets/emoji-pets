@@ -159,26 +159,56 @@ public class EmojiPetApplication extends Application {
     this.friendPeak = friendPeak;
   }
 
+  /**
+   *
+   * @return This is an accessor method for the sfId variable.
+   * This method returns the value of this private member variable.
+   */
   public String getSfId() {
     return sfId;
   }
 
+  /**
+   *
+   * @param sfId This is a  mutator method for the sfId variable.
+   * This method is used to control changes to this variable.
+   */
   public void setSfId(String sfId) {
     this.sfId = sfId;
   }
 
+  /**
+   *
+   * @return This is an accessor method for the usingForce variable.
+   * This method returns the value of this private member variable.
+   */
   public boolean isUsingForce() {
     return usingForce;
   }
 
+  /**
+   *
+   * @param usingForce This is a  mutator method for the usingForce variable.
+   * This method is used to control changes to this variable.
+   */
   public void setUsingForce(boolean usingForce) {
     this.usingForce = usingForce;
   }
 
+  /**
+   *
+   * @return This is an accessor method for the sfToken variable.
+   * This method returns the value of this private member variable.
+   */
   public String getSfToken() {
     return sfToken;
   }
 
+  /**
+   *
+   * @param sfToken This is a  mutator method for the sfToken variable.
+   * This method is used to control changes to this variable.
+   */
   public void setSfToken(String sfToken) {
     this.sfToken = sfToken;
   }
