@@ -31,17 +31,17 @@
 * Nexus 5X API 27
 
 ### List of 3rd-party libraries used by Emoji Pets
-* Json
+ * Json
  * REST
-  * Gson
-  * Jira
+ * Gson
+ * Jira
  * Github
-  * Retrofit
-*  Lottie
-  * Spring
+ * Retrofit
+ *  Lottie
+ * Spring
  * Salesforce
  * Java
-  * Android
+ * Android
 
 ### List of the external services consumed by Emoji Pets
 * Google Oauth 2.0
