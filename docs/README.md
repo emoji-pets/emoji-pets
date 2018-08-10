@@ -59,33 +59,29 @@
 
 #### Emoji Pets Wireframes
 
-[Emoji Pets Wireframe 1](docs/emojipet-wire-frame.pdf)
+[Emoji Pets Wireframe 1](emojipet-wire-frame.pdf)
 
-[Emoji Pets Wireframe 2](docs/wire_frame_emoji_pets.pdf)
+[Emoji Pets Wireframe 2](wire_frame_emoji_pets.pdf)
 
-[Emoji Pets Wireframe 3](docs/wireframe731.png)
+[Emoji Pets Wireframe 3](wireframe731.png)
 
-[Emoji Pets Wireframe 4](docs/wireframe_emojipetz.png)
+[Emoji Pets Wireframe 4](wireframe_emojipetz.png)
 
 #### Emoji Pets User Stories
 
-[Emoji Pets User Story 1](docs/userStory1.txt)
+[Emoji Pets User Story 1](userStory1.txt)
 
-[Emoji Pets User Story 2](docs/userStory2.txt)
+[Emoji Pets User Story 2](userStory2.txt)
 
-[Emoji Pets User Story 3](docs/userStory3.txt)
-
-#### Emoji Pets ERD
-
-[Entity Relationship Diagram](docs/erd_emoji_pets.pdf)
-
-#### Emoji Pets DDL
-
-[Emoji Pets DDL](docs/ddl.sql)
+[Emoji Pets User Story 3](userStory3.txt)
 
 #### Emoji Pets Javadoc HTML
 
-[Emoji Pets Javadocs](docs/api)
+[Emoji Pets Javadocs](../api/docs/index.html)
+
+### ERD and DDL:
+
+- please see [EmojiPetz Services](http://emoji-pets.github.io/emoji-pets-service)
 
 #### Emoji Pets License Information
 
@@ -93,8 +89,8 @@
 
 #### Emoji Pets Build Instructions
 
-[Emoji Pets Installation Instructions](docs/installation.md)
+[Emoji Pets Installation Instructions](installation.md)
 
 #### Emoji Pets User Instructions
 
-[Emoji Pets User Instructions](docs/instructions.md)
+[Emoji Pets User Instructions](instructions.md)
