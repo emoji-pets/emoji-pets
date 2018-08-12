@@ -26,7 +26,8 @@
   <string name="web_client_id">726718017398-nb9cq3ji1rbo4no9js0nt0bdj7i2qr2e.apps.googleusercontent.com</string>
   <string name="request_passphrase">Request Passphrase</string>
   <string name="action_logout">Sign out</string>
-  <string name="base_url_aws">http://emoji-petz.us-east-2.elasticbeanstalk.com/emoji-pets/</string>
+  <string name="base_url_aws">http://10.0.2.2:5000/emoji-pets/</string> <!--for production-->
+  <!--<string name="base_url_aws">http://emoji-petz.us-east-2.elasticbeanstalk.com/emoji-pets/</string>-->
   <string name="base_url_sf_authenticate">http://Salesforce-env.iwdndfgnwu.us-east-2.elasticbeanstalk.com/rest/authenticate/</string>
   <string name="base_url_sf_actual">https://na53.salesforce.com/services/apexrest/emoji-pets</string>
   <string name="oauth2_header_format">Bearer %1$s</string>
